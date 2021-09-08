@@ -3,11 +3,6 @@ import React from "react";
 const FooterCallaction = () => {
     return (
         <>
-            {/* <Link to="/ProductDetails/imac-2021">
-                <button className="btn banner-btn btn--primary">
-                  Buy Now
-                </button>
-              </Link> */}
 
             <ul className="list-unstyled">
                 <li className="btn-link">
