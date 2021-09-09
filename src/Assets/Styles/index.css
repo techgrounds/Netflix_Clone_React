@@ -84,10 +84,6 @@ pre {
 }
 
 /* Header */
-img.logo {
-  height: 100px;
-}
-
 /* 09 - Sidebar - vertical Collapsable menu
 ===========================================*/
 /* 10 - Footer
@@ -332,4 +328,7 @@ textarea:focus {
 ===========================================*/
 /* // Medium devices (tablets, less than 992px) */
 /* // Small devices (landscape phones, less than 768px) */
-/* // X-Small devices (portrait phones, less than 576px) *//*# sourceMappingURL=index.css.map */
+/* // X-Small devices (portrait phones, less than 576px) */
+img.logo {
+  height: 100px;
+}/*# sourceMappingURL=index.css.map */
