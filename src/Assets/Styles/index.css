@@ -19,6 +19,10 @@ body {
   line-height: 1.5;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   color: #101010;
   text-decoration: none;
@@ -85,7 +89,9 @@ pre {
 
 /* Header */
 img.logo {
+  position: relative;
   height: 100px;
+  right:8rem;
 }
 
 /* 09 - Sidebar - vertical Collapsable menu
@@ -233,7 +239,7 @@ textarea:focus {
 /* 03 - Item Search
 ===========================================*/
 .search-container {
-  padding: 20px;
+  padding: 10px;
 }
 .search-box {
   background: white;
@@ -253,6 +259,7 @@ textarea:focus {
 .search-box + label .search-icon {
   color: #fff;
   transition: all 0.6s;
+  margin-left: -4px;
 }
 .search-box:hover {
   background: #d30404;
@@ -270,7 +277,7 @@ textarea:focus {
   cursor: text;
   outline: none;
   padding-left: 15px;
-  transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
+  transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1), border-radius 0.6s, background 0.6s;
   width: 300px;
 }
 .search-box:focus + label .search-icon {
@@ -285,7 +292,7 @@ textarea:focus {
   cursor: pointer;
   left: -31px;
   position: relative;
-  top: 2px;
+  bottom: 2px;
 }
 .search-btn {
   display: none;
