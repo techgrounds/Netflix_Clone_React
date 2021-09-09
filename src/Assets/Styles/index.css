@@ -83,11 +83,9 @@ pre {
   margin: 0 0 12px;
 }
 
-/* Header */
-/* 09 - Sidebar - vertical Collapsable menu
-===========================================*/
-/* 10 - Footer
-===========================================*/
+/* - Header - */
+/*   - Sidebar - vertical Collapsable menu - */
+/*   - Footer - */
 .footer-primary {
   background-color: #161616;
 }
@@ -106,8 +104,7 @@ pre {
   margin-right: 10px;
 }
 
-/* 02 - Buttons
-===========================================*/
+/* - Buttons - */
 .btn {
   display: block;
   font-weight: 400;
@@ -193,9 +190,8 @@ textarea:focus {
   min-height: 100px;
 }
 
-/* Product Detail page */
-/* 04 - Horizontal Rules - Divider
-===========================================*/
+/* Movie Detail page */
+/*   - Horizontal Rules - Divider - */
 /* .weather hr {
   border-top-width: 1px;
   border-top-style: solid;
@@ -226,8 +222,7 @@ textarea:focus {
 
 /* Price */
 /* Registration / SignIn / SignUp */
-/* 03 - Item Search
-===========================================*/
+/*  - Item Search - */
 .search-container {
   padding: 20px;
 }
@@ -288,9 +283,8 @@ textarea:focus {
   position: relative;
 }
 
-/* Specs */
-/* 03 -Subscribe
-===========================================*/
+/* - Specs - */
+/*   -Subscribe - */
 .subscribe form input:focus {
   background-color: #23282f;
 }
@@ -324,11 +318,11 @@ textarea:focus {
   border-width: 10px;
 }
 
-/* 12 - Media Queries
-===========================================*/
+/*   - Media Queries - */
 /* // Medium devices (tablets, less than 992px) */
 /* // Small devices (landscape phones, less than 768px) */
 /* // X-Small devices (portrait phones, less than 576px) */
+/* Logo */
 img.logo {
   height: 100px;
 }/*# sourceMappingURL=index.css.map */
