@@ -6,7 +6,7 @@ const HeaderNav = (props) => {
     return (
         <>
 
-            <a className="navbar-brand" href="#top">
+            <a className="navbar-brand" href="#">
                 <img className="logo"
 
                     src={logo}
@@ -36,11 +36,6 @@ const HeaderNav = (props) => {
                             Series
                         </a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                            Films
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a className="nav-link" href="#">
                             Nieuw en populair
@@ -48,7 +43,7 @@ const HeaderNav = (props) => {
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">
-                            Mijn lijst
+                            Min lijst
                         </a>
                     </li>
 
