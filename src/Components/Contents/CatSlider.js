@@ -6,7 +6,7 @@ import image from "../../Assets/images/slider/40X40.gif";
 // import Button from 'react-bootstrap/Button';
 // import Carousel from 'react-bootstrap/Carousel';
 
-const HorizSlider = (props) => {
+const CatSlider = (props) => {
     return (
         <>
             <p>Home -  Horizontal Slider ___ This area is ready to be used by Frankie - American man :) </p>
@@ -95,4 +95,4 @@ const HorizSlider = (props) => {
     );
 };
 
-export default HorizSlider;
+export default CatSlider;
