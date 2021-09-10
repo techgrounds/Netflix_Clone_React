@@ -1,6 +1,5 @@
 import React from "react";
 // import image from "../../Assets/images/slider/1920x500.gif";
-import image from "../../Assets/images/slider/netflix-home-banner-02.jpg";
 import Carousel from "react-bootstrap/Carousel";
 
 import { FaPlay } from "react-icons/fa";
@@ -10,7 +9,7 @@ import { FaPlay } from "react-icons/fa";
 // import Button from 'react-bootstrap/Button';
 // import Carousel from 'react-bootstrap/Carousel';
 
-const HomeSlider = (props) => {
+const FeaturedSlider = ({image}) => {
     return (
         <>
             <Carousel>
@@ -66,4 +65,4 @@ const HomeSlider = (props) => {
     );
 };
 
-export default HomeSlider;
+export default FeaturedSlider;

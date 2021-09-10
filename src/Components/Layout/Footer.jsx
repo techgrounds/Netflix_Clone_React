@@ -2,6 +2,7 @@ import FooterLinks from "../Contents/FooterLinks";
 import FooterCallaction from "../Contents/FooterCallaction";
 import FooterCopyright from "../Contents/FooterCopyright";
 import Social from "../Contents/Social";
+
 const Footer = () => {
   return (
     <>

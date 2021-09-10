@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../Assets/images/netflix-logo.svg";
 import SearchBar from "../Contents/SearchBar";
 
@@ -27,16 +28,13 @@ const HeaderNav = (props) => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">
-                            Homepagina <span class="sr-only">(current)</span>
-                        </a>
+                        <Link className="nav-link" to="/">Home</Link>
                     </li>
                     <li class="nav-item">
-                        <a className="nav-link" href="#">
-                            Series
-                        </a>
+                        <Link className="nav-link" to="/films">Films</Link>
                     </li>
-                    <li class="nav-item">
+
+                    {/* <li class="nav-item">
                         <a className="nav-link" href="#">
                             Nieuw en populair
                         </a>
@@ -45,7 +43,7 @@ const HeaderNav = (props) => {
                         <a className="nav-link" href="#">
                             Min lijst
                         </a>
-                    </li>
+                    </li> */}
 
                     {/* <!--
               <li class="nav-item">
