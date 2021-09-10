@@ -6,10 +6,10 @@ import image from "../../Assets/images/slider/40X40.gif";
 // import Button from 'react-bootstrap/Button';
 // import Carousel from 'react-bootstrap/Carousel';
 
-const HomeHorizSlider = (props) => {
+const HomeCatSlider = (props) => {
     return (
         <>
-            <p>Home -  Horizontal Slider ___ This area is ready to be used by Frankie - American man :) </p>
+            <p>Home -  Category Horizontal Slider ___ This area is ready to be used by Frankie - American man :) </p>
             <section className="container-fluid bg-secondary py-5">
                 <h2 className="movie__title">NETFLIX ORIGINALS</h2>
 
@@ -33,6 +33,8 @@ const HomeHorizSlider = (props) => {
                 <h2 className="movie__title">DOCUMENTARIES</h2>
 
                 <div className="row movie__posters">{/* Thumbnails goed here */}</div>
+
+                {/* This is just placeholder  */}
 
                 <div className="row posters">
                     <div className="col-md-4 pb-1 pb-md-0 col-lg-2">
@@ -95,4 +97,4 @@ const HomeHorizSlider = (props) => {
     );
 };
 
-export default HomeHorizSlider;
+export default HomeCatSlider;

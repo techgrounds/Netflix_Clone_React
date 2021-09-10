@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Layout/Header";
 import HomeFeaturedSlider from "../Contents/HomeFeaturedSlider";
-import HomeHorizSlider from "../Contents/HomeHorizSlider";
+import HomeCatSlider from "../Contents/HomeHorizSlider";
 import Footer from "../Layout/Footer";
 
 const Home = (props) => {
@@ -9,7 +9,7 @@ const Home = (props) => {
     <>
       <Header {...props} />
       <HomeFeaturedSlider {...props} />
-      <HomeHorizSlider {...props} />
+      <HomeCatSlider {...props} />
       <Footer {...props} />
     </>
   );
