@@ -1,6 +1,6 @@
 import Navigation from "./Navigation";
 
-const Footer = () => {
+const Header = () => {
   return (
     <>
       <div className="container-fluid bg-dark text-left">
@@ -10,4 +10,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Header;
