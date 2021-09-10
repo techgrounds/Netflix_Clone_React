@@ -1,17 +1,16 @@
 import React from "react";
-import Header from "../Layout/Header";
-import HomeFeaturedSlider from "../Contents/HomeFeaturedSlider";
-import HomeHorizSlider from "../Contents/HomeHorizSlider";
-import Footer from "../Layout/Footer";
+
+import FeaturedSlider from "../Contents/FeaturedSlider";
+import CatSlider from "../Contents/CatSlider";
+import HomeImage from "../../Assets/images/slider/netflix-home-banner-02.jpg";
+
 
 const Home = (props) => {
   return (
-    <>
-      <Header {...props} />
-      <HomeFeaturedSlider {...props} />
-      <HomeHorizSlider {...props} />
-      <Footer {...props} />
-    </>
+   <div className="home-container">
+      <FeaturedSlider  image={HomeImage} />
+      <CatSlider />
+  </div>
   );
 };
 
