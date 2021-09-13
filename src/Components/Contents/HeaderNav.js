@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../Assets/images/netflix-logo.svg";
 import SearchBar from "../Contents/SearchBar";
 
+
 const HeaderNav = (props) => {
     return (
         <>

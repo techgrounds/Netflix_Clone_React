@@ -24,7 +24,7 @@ const Navigation = (props) => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark  fixed-top" 
      style={{ transition: '1s ease',backgroundColor: navBackground ? 'black' : 'transparent'}}>
-        <div className="container">
+        <div className="container-fluid">
           <HeaderNav />
         </div>
       </nav>
