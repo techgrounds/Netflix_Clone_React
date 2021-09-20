@@ -1,16 +1,5 @@
 import React, { useState } from "react";
-import {
-  Col,
-  Container,
-  Image,
-  Row,
-  Form,
-  FormGroup,
-  FormControl,
-  FormText,
-  FormLabel,
-  Button,
-} from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 // import logo from "../Assets/Netflix_Logo_RGB.png";
 
 export default function LoginPage() {

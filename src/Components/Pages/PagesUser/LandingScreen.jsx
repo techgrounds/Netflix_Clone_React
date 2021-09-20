@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../Assets/images/netflix-logo.svg";
+import logo from "../../../Assets/images/netflix-logo.svg";
 import { FaGlobe } from "react-icons/fa";
 
 export default function LandingPage() {
