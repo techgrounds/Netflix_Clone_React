@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Components/Layout/Header";
 import Footer from "./Components/Layout/Footer";
 import Home from "./Components/Pages/HomeScreen";
-import Films from "./Components/Pages/FilmsScreen";
+import FilmsScreen from "./Components/Pages/FilmsScreen";
 import LogInScreen from "./Components/Pages/LogInScreen";
 import LandingScreen from "./Components/Pages/LandingScreen";
 
@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/films" component={Films} />
+          <Route path="/FilmsScreen" component={FilmsScreen} />
           <Route path="/LogInScreen" component={LogInScreen} />
           <Route path="/LandingScreen" component={LandingScreen} />
         </Switch>

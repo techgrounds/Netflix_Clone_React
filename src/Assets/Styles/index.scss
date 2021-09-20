@@ -8,14 +8,14 @@
 
 // 1. Configuration
 
-// @import "../assets/styles/sass/abstract-uitilities/variables";
-// @import "../assets/styles/sass/abstract-uitilities/functions";
-// @import "../assets/styles/sass/abstract-uitilities/mixin";
-// @import "../assets/styles/sass/abstract-uitilities/extend";
+@import "../Styles/sass/abstract-uitilities/variables";
+// @import "../Styles/sass/abstract-uitilities/functions";
+// @import "../Styles/sass/abstract-uitilities/mixin";
+// @import "../Styles/sass/abstract-uitilities/extend";
 
 // 2. Base
 
-@import "../styles/sass/base/reset";
+@import "../Styles/sass/base/reset";
 @import "../Styles/sass/base/base";
 @import "../Styles/sass/base/fonts";
 @import "../Styles/sass/base/typography";
@@ -46,6 +46,5 @@
 
 // Newely Added
 @import "../Styles/sass/components-modules/slider";
-
-// @import "../Styles/sass/components-modules/login";
+@import "../Styles/sass/components-modules/login";
 // @import "../Styles/sass/components-modules/landing-page";
