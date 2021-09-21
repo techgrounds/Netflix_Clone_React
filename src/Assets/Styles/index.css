@@ -535,102 +535,140 @@ img.logo {
   color: #fff;
 }
 
-#landing-page {
+.slider-container {
+  display: flex;
+  width: 90%;
+  overflow-y: visible;
+  margin: 0 auto;
+  justify-content: center;
+  margin-top: 300px;
+  align-items: center;
+  overflow-x: clip;
+  flex-wrap: wrap;
+}
+.slider-container .slider-item {
+  display: flex;
+  flex-direction: column;
   background-color: #221f1f;
   color: #f5f5f1;
+  width: 200px;
+  height: 120px;
+  position: relative;
+  margin: 1px;
+  border-radius: 5px;
+  transition: all 300ms ease;
 }
-#landing-page > div:nth-of-type(1) {
-  height: 43.125rem;
-  background-size: auto;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.144)), url("https://assets.nflxext.com/ffe/siteui/vlv3/5a27cb25-33a9-4bcc-b441-95fefabcbd37/897182ab-a592-4015-9372-5047825c92df/NL-nl-20210823-popsignuptwoweeks-perspective_alpha_website_small.jpg");
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.144)), url("https://assets.nflxext.com/ffe/siteui/vlv3/5a27cb25-33a9-4bcc-b441-95fefabcbd37/897182ab-a592-4015-9372-5047825c92df/NL-nl-20210823-popsignuptwoweeks-perspective_alpha_website_large.jpg");
-  margin-bottom: 8px;
+.slider-container .slider-item .slider-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-#landing-page > div:nth-of-type(1) #nav {
-  height: 6.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 9.375rem;
-}
-#landing-page > div:nth-of-type(1) #nav #logo {
-  width: 13rem;
-  padding: 1.5rem;
-  margin-top: 5rem;
-  margin-left: 1.875rem;
-  z-index: 1;
-  transform: translateY(-50%);
-}
-#landing-page > div:nth-of-type(1) #nav button {
-  height: 2.5rem;
-  color: #f5f5f1;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: 1px solid #aaaaaa;
-  transform: translateY(-50%);
-  border-radius: 3px;
-  padding-left: 7px;
-  padding-right: 7px;
-  margin-top: 2rem;
-  margin-right: 1.875rem;
-}
-#landing-page > div:nth-of-type(1) #nav button:hover {
-  border: 1px solid #047bf5;
-}
-#landing-page > div:nth-of-type(1) #nav button + button {
-  background-color: #e50914;
-  border: none;
-  line-height: normal;
-  padding: 0 1.25rem;
-  margin-right: 3.125rem;
-  transform: translateY(-50%);
-}
-#landing-page > div:nth-of-type(1) #nav h1,
-#landing-page > div:nth-of-type(1) #nav h5,
-#landing-page > div:nth-of-type(1) #nav p {
-  text-align: center;
-}
-#landing-page > div:nth-of-type(1) #nav form {
+.slider-container .slider-item .image-placeholder {
+  width: 200px;
+  height: 120px;
+  display: block;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#landing-page > div:nth-of-type(1) #nav form input {
-  height: 3.75rem;
-  width: 40%;
-  max-width: 43.75rem;
+.slider-container .slider-item .card-hovered {
+  display: none;
 }
-#landing-page > div:nth-of-type(1) #nav form button {
-  height: 3.75rem;
-  width: 20%;
-  max-width: 12.5rem;
-  color: #f5f5f1;
-  background-color: #e50914;
+.slider-container .slider-item:before {
+  width: 200px;
+  height: 120px;
 }
-#landing-page > div:nth-of-type(1) > div:nth-of-type(2) {
+.slider-container .slider-item:hover .slider-inner {
+  top: -90%;
+  left: -35%;
+  width: 170%;
+  height: 300%;
+  z-index: 5;
+  transition: all 200ms ease;
+  border-radius: 2%;
+  overflow: hidden;
+}
+.slider-container .slider-item:hover .image-placeholder {
+  display: none;
+}
+.slider-container .slider-item:hover .card-hovered {
   display: flex;
-  background-color: black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
 }
-#landing-page > div:nth-of-type(1) > div:nth-of-type(2) div {
-  height: 31.25rem;
+.slider-container .slider-item:hover .card-hovered .video-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 100%;
+  background-color: #221f1f;
+  color: #f5f5f1;
+  border-bottom: 1px solid #f5f5f1;
 }
-#landing-page > div:nth-of-type(1) > div:nth-of-type(2) h2 {
-  margin-top: 9.375rem;
-  margin-left: 6.25rem;
-  margin-bottom: 1.875rem;
+.slider-container .slider-item:hover .card-hovered .buttons-container {
+  height: 15%;
+  width: 100%;
+  background-color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-#landing-page > div:nth-of-type(1) > div:nth-of-type(2) p {
-  margin-left: 6.25rem;
+.slider-container .slider-item:hover .card-hovered .buttons-container .left-buttons {
+  display: flex;
+  margin-left: 5px;
 }
-#landing-page > div:nth-of-type(1) > div:nth-of-type(2) img {
-  position: relative;
-  z-index: 2;
+.slider-container .slider-item:hover .card-hovered .buttons-container ul .slider-play-button {
+  background: #f5f5f1;
+  color: #221f1f;
+  border-color: #f5f5f1;
+  font-size: 13px;
 }
-#landing-page > div:nth-of-type(1) > div:nth-of-type(2) video {
-  display: inline-block;
-  position: relative;
-  left: 5rem;
-  bottom: 24.375rem;
-  z-index: 1;
+.slider-container .slider-item:hover .card-hovered .buttons-container ul .slider-play-button:hover {
+  background: #8e8e8e;
+  border-color: #8e8e8e;
+}
+.slider-container .slider-item:hover .card-hovered .buttons-container ul li {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid #8e8e8e 2px;
+  border-radius: 50%;
+  margin: 2px;
+  font-size: 15px;
+}
+.slider-container .slider-item:hover .card-hovered .buttons-container ul li:hover {
+  border-color: #f5f5f1;
+}
+.slider-container .slider-item:hover .card-hovered .buttons-container .right-buttons {
+  margin-right: 5px;
+}
+.slider-container .slider-item:hover .card-hovered .slider-more-info {
+  height: 35%;
+  background-color: slategray;
+  width: 100%;
+  background-color: #333333;
+}
+.slider-container .slider-item:hover .card-hovered .slider-more-info .slider-information {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.slider-container .slider-item:hover .card-hovered .slider-more-info .slider-information h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.slider-container .slider-item:hover .card-hovered .slider-more-info .slider-information .match-percentage {
+  color: #45d369;
+  font-weight: bold;
+  font-size: 17px;
 }
 
 .login-wrapper {
