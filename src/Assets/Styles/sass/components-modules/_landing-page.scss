@@ -80,20 +80,20 @@
     margin-bottom: 0.5rem;
     // border: 8px 0 solid $background-color;
     overflow: hidden;
-    background-color: $dark;
+    background-color: $dark-color;
 
     .our-story-card-text {
       flex-basis: 50%;
     }
 
     .our-story-card-title {
-      color: $light;
+      color: $light-color;
       line-height: 1.1;
       margin-bottom: 0.4em;
     }
 
     .our-story-card-subtitle {
-      color: $light;
+      color: $light-color;
     }
   }
 
@@ -140,7 +140,7 @@
     top: 17.5rem;
     transform: translateX(-50%);
     margin: 0 auto;
-    background: $dark;
+    background: $dark-color;
     display: flex;
     align-items: center;
     width: 60%;
@@ -150,13 +150,13 @@
     border-radius: 0.75em;
     border: 2px solid $background-color-alt;
     z-index: 100;
-    box-shadow: 0 0 2em 0 $dark;
+    box-shadow: 0 0 2em 0 $dark-color;
 
     &::after {
       width: 3em;
       margin-left: auto;
       height: 3em;
-      outline: 2px solid $dark;
+      outline: 2px solid $dark-color;
       outline-offset: -2px;
       display: block;
       background: url(https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif)
