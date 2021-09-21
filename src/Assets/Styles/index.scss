@@ -7,28 +7,24 @@
 //============================================================*//
 
 // 1. Configuration
-
 @import "../Styles/sass/abstract-uitilities/variables";
 // @import "../Styles/sass/abstract-uitilities/functions";
 // @import "../Styles/sass/abstract-uitilities/mixin";
 // @import "../Styles/sass/abstract-uitilities/extend";
 
 // 2. Base
-
 @import "../Styles/sass/base/reset";
 @import "../Styles/sass/base/base";
 @import "../Styles/sass/base/fonts";
 @import "../Styles/sass/base/typography";
 
 // 3. Layout
-
 @import "../Styles/sass/layout/header";
 @import "../Styles/sass/layout/navigation";
 @import "../Styles/sass/layout/mainContent";
 @import "../Styles/sass/layout/footer";
 
 // 4. Components
-
 @import "../Styles/sass/components-modules/buttons";
 @import "../Styles/sass/components-modules/contactForm";
 @import "../Styles/sass/components-modules/detailPage";
