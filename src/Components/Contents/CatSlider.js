@@ -7,61 +7,13 @@ import React from "react";
 // import Button from 'react-bootstrap/Button';
 // import Carousel from 'react-bootstrap/Carousel';
 
-import movieDataRequests from "../../utilities/config";
-import Main from "../Contents/mainMovies";
 
-const CatSlider = (props) => {
+
+
+const CatSlider = ({categories}) => {
     return (
         <>
-            <Main
-                title="NETFLIX ORIGINALS"
-                fetchUrl={movieDataRequests.fetchNetflixOriginals}
-                isLargeRow
-            />
-
-            <Main
-                title="TRENDING NOW"
-                fetchUrl={movieDataRequests.fetchTrending}
-                isLargeRow
-            />
-            {/* <Main
-                title="TOP RATED"
-
-                fetchUrl={movieDataRequests.fetchTopRated}
-                isLargeRow
-            />
-            <Main
-                title="ACTION MOVIES"
-
-                fetchUrl={movieDataRequests.fetchActionMovies}
-                isLargeRow
-            />
-             <Main
-                title="COMEDY MOVIES"
-
-                fetchUrl={movieDataRequests.fetchComedyMovies}
-                isLargeRow
-            />
-
-            <Main
-                title="HORROR MOVIES"
-
-                fetchUrl={movieDataRequests.fetchHorrorMovies}
-                isLargeRow
-            />
-            <Main
-                title="ROMANCE MOVIES"
-
-                fetchUrl={movieDataRequests.fetchRomanceMovies}
-                isLargeRow
-            />
-
-            <Main
-                title="DOCUMENTARIES"
-
-                fetchUrl={movieDataRequests.fetchDocumentaries}
-                isLargeRow
-            /> */}
+        {categories} 
         </>
     );
 };

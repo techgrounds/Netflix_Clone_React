@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import Header from "./Components/Layout/Header";
 // import Footer from "./Components/Layout/Footer";
 import Home from "./Components/Pages/MainPages/HomeScreen";
-import FilmsScreen from "./Components/Pages/MainPages/HomeScreen";
+import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
 import LandingScreen from "./Components/Pages/PagesUser/LandingScreen";
 import LogInScreen from "./Components/Pages/PagesUser/LogInScreen";
 
