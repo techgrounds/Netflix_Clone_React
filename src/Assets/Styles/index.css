@@ -663,11 +663,6 @@ img.logo {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0) 100%);
 }
 
-.hybrid-login-wrapper .nfHeader {
-  background: 0 0;
-  border: 0;
-}
-
 .login-page {
   color: #f5f5f1;
   width: 400px;
