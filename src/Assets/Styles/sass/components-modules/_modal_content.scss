@@ -1,0 +1,43 @@
+.meer-zoals-dit-container{
+    height: 400px;
+    // background-color: green;
+    background-image: linear-gradient(to bottom, $semi-dark-color 95%, rgba(24, 24, 24, 0.5));
+    overflow: hidden;
+}
+
+.my-hr {
+    height: 3px;
+    background-color: purple;
+}
+
+.expand-mzd-button{
+    display: block;
+    position: relative;
+    z-index: 1;
+    bottom: 27px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(24, 24, 24, 0.7);
+    border: 2px solid white;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+}
+
+.expand-mzd-button:hover{
+    background-color: $font-color-alt;
+}
+
+.expand-mzd-button:focus{
+    outline: none;
+}
+
+.trailers-en-meer-container{
+    background-color: $semi-dark-color;
+    margin-top: -53px;
+
+    h2{
+        margin-top: 20px;
+    }
+}
