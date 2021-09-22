@@ -1,22 +1,22 @@
 import React from 'react'
 import movieDataRequests from "../../utilities/config";
-import Main from "./mainMovies";
+import CatSlider from "./CatSlider";
 
 export default function HomeCategories() {
     return (
         <>
-            <Main
+            <CatSlider
                 title="Zeroes"
                 fetchUrl={movieDataRequests.fetchZeroes}
                 isLargeRow
             />
 
-            <Main
+            <CatSlider
                 title="Nineties"
                 fetchUrl={movieDataRequests.fetchNineties}
                 isLargeRow
             />
-             <Main
+             <CatSlider
                 title="Eighties"
                 fetchUrl={movieDataRequests.fetchEighties}
                 isLargeRow
