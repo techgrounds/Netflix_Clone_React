@@ -1,21 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../../utilities/axios";
 
-// === R E S E R V E D ===
-// import thumbnail from "../../Assets/images/slider/40X40.gif";
-// import Toast from 'react-bootstrap/Toast';
-// import Container from 'react-bootstrap/Container';
-// import Button from 'react-bootstrap/Button';
-// import Carousel from 'react-bootstrap/Carousel';
+// import MovieModal from "./MovieModal";
+
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
+const CatSlider = ({ title, fetchUrl, isLargeRow, id }) => {
+  const base_url = "https://image.tmdb.org/t/p/original/";
+  const [movies, setMovies] = useState([]);
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const [movieSelected, setMovieSelection] = useState({});
+
+  
+  useEffect(() => {
 
 
+    async function fetchData() {
+     
+      const request = await axios.get(fetchUrl);
+      setMovies(request.data.results);
+      return request;
+    }
 
+    fetchData();
+  }, [fetchUrl]);
 
-const CatSlider = ({categories}) => {
-    return (
-        <>
-        {categories} 
-        </>
-    );
+  const handleClick = (movie) => {
+    setModalVisibility(true);
+    setMovieSelection(movie);
+  };
+  return (
+    <div className="container-fluid bg-dark py-5">
+      <section className="row">
+        <h2 className="movie__title text-secondary px-4">{title}</h2>
+        <div class="cat-slider">
+          <div className="cat-slider__arrow-left">
+            <span
+              className="arrow"
+              onClick={() => {
+                document.getElementById(id).scrollLeft -=
+                  window.innerWidth - 80;
+              }}
+            >
+              <FaArrowLeft />
+            </span>
+          </div>
+          <div id={id} className="movie__posters">
+            {/**Maping movie Thumbnails */}
+            {movies.map((movie) => (
+              <img
+                key={movie.id}
+                onClick={() => handleClick(movie)}
+                className={`movie__poster ${isLargeRow && "movie__poster_lg"}`}
+                src={`${base_url}${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                loading="lazy"
+                alt={movie.name}
+              />
+            ))}
+          </div>
+          <div className="cat-slider__arrow-right">
+            <span
+              className="arrow"
+              onClick={() => {
+                document.getElementById(id).scrollLeft +=
+                  window.innerWidth - 80;
+              }}
+            >
+              <FaArrowRight />
+            </span>
+          </div>
+        </div>
+        {/* {modalVisibility && (
+        <MovieModal
+          {...movieSelected}
+          setModalVisibility={setModalVisibility}
+        />
+      )} */}{" "}
+      </section>
+    </div>
+  );
 };
 
 export default CatSlider;
