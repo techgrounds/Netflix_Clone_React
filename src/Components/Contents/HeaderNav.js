@@ -32,7 +32,7 @@ const HeaderNav = (props) => {
                 className="navbar navbar-expand-lg navbar-dark  fixed-top text-white-50"
                 style={{
                     transition: "1s ease",
-                    backgroundColor: navBackground ? "black" : "transparent",
+                    backgroundColor: navBackground ? "$backgound-color" : "transparent",
                 }}
             >
                 <Navbar.Brand href="#home">

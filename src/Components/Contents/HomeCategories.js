@@ -2,6 +2,7 @@ import React from 'react'
 import movieDataRequests from "../../utilities/config";
 import CatSlider from "./CatSlider";
 
+
 export default function HomeCategories() {
     return (
         <>
@@ -14,12 +15,12 @@ export default function HomeCategories() {
             <CatSlider
                 title="Nineties"
                 fetchUrl={movieDataRequests.fetchNineties}
-                isLargeRow
+                // isLargeRow
             />
              <CatSlider
                 title="Eighties"
                 fetchUrl={movieDataRequests.fetchEighties}
-                isLargeRow
+                // isLargeRow
             />
       </>
     )
