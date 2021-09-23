@@ -12,9 +12,9 @@ import React from "react";
 
 const CatOverview = ({categories}) => {
     return (
-        <>
+        <div className="cat-overview-container">
         {categories} 
-        </>
+        </div>
     );
 };
 

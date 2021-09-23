@@ -2,6 +2,7 @@ import React from 'react'
 import movieDataRequests from "../../utilities/config";
 import CatSlider from "./CatSlider";
 
+
 export default function FilmsCategories() {
     return (
         <>

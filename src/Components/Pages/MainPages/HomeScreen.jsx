@@ -8,6 +8,9 @@ import CatOverview from "../../Contents/CatOverview";
 import HomeCategories from "../../Contents/HomeCategories";
 import HomeImage from "../../../Assets/images/slider/netflix-home-banner-02.jpg";
 
+
+
+
 const Home = (props) => {
   return (
     <>
