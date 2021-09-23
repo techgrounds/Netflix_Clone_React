@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utilities/axios";
+import {Link} from 'react-router-dom';
 
 // import MovieModal from "./MovieModal";
 
@@ -49,6 +50,10 @@ const Main = ({ title, fetchUrl, isLargeRow, id }) => {
           <div id={id} className="movie__posters">
             {/**Maping movie Thumbnails */}
             {movies.map((movie) => (
+              <Link 
+                to={{pathname: `/more-info/${movie.id}`,
+                state: {modal: true}
+              }}>
               <img
                 key={movie.id}
                 onClick={() => handleClick(movie)}
@@ -59,6 +64,7 @@ const Main = ({ title, fetchUrl, isLargeRow, id }) => {
                 loading="lazy"
                 alt={movie.name}
               />
+              </Link>
             ))}
           </div>
           <div className="cat-slider__arrow-right">

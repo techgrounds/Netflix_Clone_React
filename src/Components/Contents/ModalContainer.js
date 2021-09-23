@@ -1,17 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default function ModalContainer() {
+const Modal = () => (
+  <div
+    role="button"
+    className="modal-wrapper"
+    onClick={() => this.props.history.goBack()}
+  >
+    <div
+      role="button"
+      className="modal"
+      onClick={e => e.stopPropagation()}
+    >
+      <p>
+        CONTENT
+      </p>
+    </div>
+  </div>
+);
 
-    return (
-        <div>
-            <div className="modal-wrapper">
-                <div className="modal-box">
-
-                </div>
-
-            </div>
-
-            
-        </div>
-    )
-}
+export default withRouter(Modal);

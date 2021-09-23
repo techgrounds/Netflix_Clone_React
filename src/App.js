@@ -9,8 +9,11 @@ import Home from "./Components/Pages/MainPages/HomeScreen";
 import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
 import LandingScreen from "./Components/Pages/PagesUser/LandingScreen";
 import LogInScreen from "./Components/Pages/PagesUser/LogInScreen";
+import ModalContainer from "./Components/Contents/ModalContainer";
 
 function App() {
+
+
   return (
     <Router>
       <div className="App">
@@ -20,7 +23,9 @@ function App() {
           <Route path="/FilmsScreen" component={FilmsScreen} />
           <Route path="/LandingScreen" component={LandingScreen} />
           <Route path="/LogInScreen" component={LogInScreen} />
+          <Route exact path="/more-info/:id" component={ModalContainer} />
         </Switch>
+        <Route exact path="/more-info/:id" component={ModalContainer} />
         {/* <Footer /> */}
       </div>
     </Router>
@@ -28,3 +33,6 @@ function App() {
 }
 
 export default App;
+
+
+
