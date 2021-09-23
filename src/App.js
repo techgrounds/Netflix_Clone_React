@@ -10,6 +10,7 @@ import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
 import LandingScreen from "./Components/Pages/PagesUser/LandingScreen";
 import LogInScreen from "./Components/Pages/PagesUser/LogInScreen";
 import ModalContainer from "./Components/Contents/ModalContainer";
+import ModalContent from "../src/Components/Contents/ModalContent";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
       <div className="App">
         {/* <Header /> */}
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={ModalContent} />
           <Route path="/FilmsScreen" component={FilmsScreen} />
           <Route path="/LandingScreen" component={LandingScreen} />
           <Route path="/LogInScreen" component={LogInScreen} />

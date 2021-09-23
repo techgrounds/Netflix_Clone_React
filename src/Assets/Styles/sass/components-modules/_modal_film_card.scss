@@ -1,0 +1,35 @@
+.modal-card-container{
+
+    
+    .le-image{
+        height: 135px;
+        // width: auto;
+    }
+
+    .play-button{
+        width: 100%;
+        height: auto;
+        max-height: 75px;
+        position: relative;
+        bottom: 150%;
+    }
+
+    .match-text{
+        color: #43BB60;
+        font-weight: bold;
+    }
+
+    .age-pic{
+        height: 30px;
+        width: auto;
+        margin-right: 5px;
+    }
+
+    .add-to-wishlist{
+        width: 40px;
+        height: 40px;
+        border: 2px solid white;
+        border-radius: 25px;
+        padding: 8px;
+    }
+}
