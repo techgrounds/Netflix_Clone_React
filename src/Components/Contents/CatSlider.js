@@ -1,69 +1,50 @@
-import React from "react";
 
-// === R E S E R V E D ===
-// import thumbnail from "../../Assets/images/slider/40X40.gif";
-// import Toast from 'react-bootstrap/Toast';
-// import Container from 'react-bootstrap/Container';
-// import Button from 'react-bootstrap/Button';
-// import Carousel from 'react-bootstrap/Carousel';
+import React, {useState, useEffect } from 'react'
+import Carousel from './Carousel'
+import axios from "../../utilities/axios";
 
-import movieDataRequests from "../../utilities/config";
-import Main from "../Contents/mainMovies";
 
-const CatSlider = (props) => {
+
+
+export default function CatSlider({ title, fetchUrl, isLargeRow, id }) {
+  const base_url = "https://image.tmdb.org/t/p/original/";
+  const [movies, setMovies] = useState([]);
+
+
+  useEffect(() => {
+
+
+    async function fetchData() {
+     
+      const request = await axios.get(fetchUrl);
+      setMovies(request.data.results);
+      return request;
+    }
+
+    fetchData();
+  }, [fetchUrl]);
+
+
     return (
-        <>
-            <Main
-                title="NETFLIX ORIGINALS"
-                fetchUrl={movieDataRequests.fetchNetflixOriginals}
-                isLargeRow
-            />
+     
+        <div className="container-fluid py-5">
+          <h2 className="movie__title text-secondary px-4">{title}</h2>
+          <Carousel
+              show={6}
+              infiniteLoop={true}
+          >
+               {movies.map((movie) => (
+              <img className="movie-thumb"
+                key={movie.id}
+                src={`${base_url}${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                alt={movie.name}
+              />
+            ))}
 
-            <Main
-                title="TRENDING NOW"
-                fetchUrl={movieDataRequests.fetchTrending}
-                isLargeRow
-            />
-            {/* <Main
-                title="TOP RATED"
-
-                fetchUrl={movieDataRequests.fetchTopRated}
-                isLargeRow
-            />
-            <Main
-                title="ACTION MOVIES"
-
-                fetchUrl={movieDataRequests.fetchActionMovies}
-                isLargeRow
-            />
-             <Main
-                title="COMEDY MOVIES"
-
-                fetchUrl={movieDataRequests.fetchComedyMovies}
-                isLargeRow
-            />
-
-            <Main
-                title="HORROR MOVIES"
-
-                fetchUrl={movieDataRequests.fetchHorrorMovies}
-                isLargeRow
-            />
-            <Main
-                title="ROMANCE MOVIES"
-
-                fetchUrl={movieDataRequests.fetchRomanceMovies}
-                isLargeRow
-            />
-
-            <Main
-                title="DOCUMENTARIES"
-
-                fetchUrl={movieDataRequests.fetchDocumentaries}
-                isLargeRow
-            /> */}
-        </>
-    );
-};
-
-export default CatSlider;
+          </Carousel>
+   
+        </div>
+    )
+}

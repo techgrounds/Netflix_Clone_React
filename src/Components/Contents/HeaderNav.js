@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../Assets/images/netflix-logo.svg";
 import SearchBar from "../Contents/SearchBar";
 import avator from "../../Assets/images/Netflix-avatar.png";
@@ -32,7 +32,7 @@ const HeaderNav = (props) => {
                 className="navbar navbar-expand-lg navbar-dark  fixed-top text-white-50"
                 style={{
                     transition: "1s ease",
-                    backgroundColor: navBackground ? "black" : "transparent",
+                    backgroundColor: navBackground ? "$backgound-color" : "transparent",
                 }}
             >
                 <Navbar.Brand href="#home">
@@ -41,15 +41,14 @@ const HeaderNav = (props) => {
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" >
-                    <Nav.Link href="#" className="text-white-50">Home</Nav.Link>
-                    <Nav.Link href="#" className="text-white-50">Films</Nav.Link>
-
+                <Link className="nav-link" to="/">Home</Link>
+                <Link className="nav-link" to="/FilmsScreen">Films</Link>
                     <Nav className=" mr-auto- navbar-nav ml-auto">
                         <SearchBar />
                     </Nav>
                     <img className="avator" src={avator} alt="avator" />
 
-                    <NavDropdown title="UserInfo" id="collasible-nav-dropdown">
+                    <NavDropdown title="UserInfo" id="collapsible-nav-dropdown">
 
                         <NavDropdown.Item href="#">Something 1</NavDropdown.Item>
                         <NavDropdown.Item href="#">Something 2</NavDropdown.Item>

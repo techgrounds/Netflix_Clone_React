@@ -28,7 +28,9 @@
         "sass/components-modules/_social.scss",
         "sass/components-modules/_slider.scss",
         "sass/components-modules/_login.scss",
-        "sass/components-modules/_landing-page.scss"
+        "sass/components-modules/_landing-page.scss",
+        "sass/components-modules/_carousel.scss",
+        "sass/components-modules/_cat_overview.scss"
     ],
     "names": [],
     "file": "index.css"
