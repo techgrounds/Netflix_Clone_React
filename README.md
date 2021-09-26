@@ -1,5 +1,3 @@
-# Git-scm
-
 # Netflix Movie Cloning
 
 ## This repository is all bout NETFLIX cloning project in ReactJS for educational purpose.
