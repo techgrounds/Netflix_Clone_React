@@ -17,23 +17,21 @@ TOOLS USED:
 CONFIGURATION & FILE / FOLDER STRUCTURES:
 
 ```
-├── public
+
+├──node_modules
+├──public
 │ ├── index.html
 │ ├── manifest.json
 │ └── robot.txt
 │
-├── node_modules
-├── scripts
-│ ├── config.js
-│ └── dev.js
 ├── src
-│ ├── Assets
-│ ├── images
-│ ├── Styles
-│ └── Sass
-│
-├── Components
-│ ├──Contents
+│ ├──Assets
+│ │  ├──images
+│ │  ├── Styles
+│ │    └── Sass
+│ │
+├──Components
+│ ├── Contents
 │ │ │──FooterContents
 │ │ │ │──FooterCallAction.js
 │ │ │ │──FooterCopyright.js
