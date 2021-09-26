@@ -18,69 +18,69 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 
 ```
 
-├──node_modules
-├──public
+├── node_modules
+├── public
 │ ├── index.html
 │ ├── manifest.json
 │ └── robot.txt
 │
 ├── src
-│ ├──Assets
-│ │  ├──images
-│ │  ├── Styles
-│ │    └── Sass
+│ ├── Assets
+│ │  ├── images
+│ │  └── Styles
+│ │     └── SASS
 │ │
-├──Components
+├── Components
 │ ├── Contents
-│ │ │──FooterContents
-│ │ │ │──FooterCallAction.js
-│ │ │ │──FooterCopyright.js
-│ │ │ │──FooterGuest.js
-│ │ │ └──Social.js
+│ │ │── FooterContents
+│ │ │ │── FooterCallAction.js
+│ │ │ │── FooterCopyright.js
+│ │ │ │── FooterGuest.js
+│ │ │ └── Social.js
 │ │ │
-│ │ │──HeaderContents
-│ │ │ │──HeaderNav.js
-│ │ │ │──SearchBar.js
-│ │ │ │
-│ │ │──MovieContents
-│ │ │ │──Carousel.js
-│ │ │ │──CatOverview.js
-│ │ │ │──CatSlider.js
-│ │ │ │──FeaturedSlider.js
-│ │ │ │──Film Categories.js
-│ │ │ │──HomeCategories.js
+│ │ │── HeaderContents
+│ │ │ │── HeaderNav.js
+│ │ │ └── SearchBar.js
+│ │ │
+│ │ │── MovieContents
+│ │ │ │── Carousel.js
+│ │ │ │── CatOverview.js
+│ │ │ │── CatSlider.js
+│ │ │ │── FeaturedSlider.js
+│ │ │ │── Film Categories.js
+│ │ │ │── HomeCategories.js
 │ │ │ └── MovieCard.js
 │ │ │
-│ ├──Forms
-│ │ │──Button.js
-│ │ │──FormInput.js
-│ │ │──PasswordReset.js
-│ │ │──SignIn.js
-│ │ │──SignIn.js
-│ │ └──SignUp.js
+│ ├── Forms
+│ │ │── Button.js
+│ │ │── FormInput.js
+│ │ │── PasswordReset.js
+│ │ │── SignIn.js
+│ │ │── SignIn.js
+│ │ └── SignUp.js
 │ │
-│ ├──Layout
-│ │ │──Footer.jsx
-│ │ │──Header.jsx
+│ ├── Layout
+│ │ │── Footer.jsx
+│ │ │── Header.jsx
 │ │ └── Navigation.jsx
 │ │
-│ ├──Pages
-│ │ │──MainPages
-│ │ │ │──DetailScreen.jsx
-│ │ │ │──FilmScreen.jsx
+│ ├── Pages
+│ │ │── MainPages
+│ │ │ │── DetailScreen.jsx
+│ │ │ │── FilmScreen.jsx
 │ │ │ └── HomeScreen.jsx
-│ │ │──UserPages
-│ │ │ │──Landingcreen.jsx
-│ │ │ │──LogInScreen.jsx
-│ │ │ │──RecoveryScreen.jsx
+│ │ │── UserPages
+│ │ │ │── Landingcreen.jsx
+│ │ │ │── LogInScreen.jsx
+│ │ │ │── RecoveryScreen.jsx
 │ │ │ └── RegistrationScreen.jsx
-│ │ │
+│
 ├── data ?
 ├── firebase
-│ ├──config.js
+│ ├── config.js
 │ └── utils.js
 ├── utilities
-│ ├──axios.jsx
+│ ├── axios.jsx
 │ └── config.jsx
 │
 ├── App.js
