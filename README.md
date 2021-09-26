@@ -70,7 +70,7 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 │ │ │ │── FilmScreen.jsx
 │ │ │ └── HomeScreen.jsx
 │ │ │── UserPages
-│ │ │ │── Landingcreen.jsx
+│ │ │ │── Landingscreen.jsx
 │ │ │ │── LogInScreen.jsx
 │ │ │ │── RecoveryScreen.jsx
 │ │ │ └── RegistrationScreen.jsx
