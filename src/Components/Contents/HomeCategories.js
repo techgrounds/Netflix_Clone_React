@@ -9,7 +9,7 @@ export default function HomeCategories() {
             <CatSlider
                 title="Zeroes"
                 fetchUrl={movieDataRequests.fetchZeroes}
-                isLargeRow
+                // isLargeRow
             />
 
             <CatSlider

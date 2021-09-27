@@ -13,7 +13,7 @@ const Carousel = (props) => {
 
     const [touchPosition, setTouchPosition] = useState(null)
 
-    
+  
     useEffect(() => {
         setLength(children.length)
         setIsRepeating(infiniteLoop && children.length > show)
@@ -94,6 +94,7 @@ const Carousel = (props) => {
         }
         return output
     }
+
 
     return (
         <div className="carousel-container">
