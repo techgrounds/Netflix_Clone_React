@@ -1,5 +1,5 @@
 import React from 'react'
-import movieDataRequests from "../../utilities/config";
+import movieDataRequests from "../../../utilities/config";
 import CatSlider from "./CatSlider";
 
 
@@ -18,31 +18,31 @@ export default function FilmsCategories() {
                 fetchUrl={movieDataRequests.fetchAction}
                 // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Thriller"
                 fetchUrl={movieDataRequests.fetchThriller}
                 // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Family"
                 fetchUrl={movieDataRequests.fetchFamily}
                 // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Fantasy  "
                 fetchUrl={movieDataRequests.fetchFantasy}
                 // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Crime"
                 fetchUrl={movieDataRequests.fetchCrime}
                 // isLargeRow
             />
-               <CatSlider
+            <CatSlider
                 title="Adventure"
                 fetchUrl={movieDataRequests.fetchAdventure}
                 // isLargeRow
             />
-      </>
+        </>
     )
 }

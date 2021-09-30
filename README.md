@@ -22,7 +22,7 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 ├── public
 │ ├── index.html
 │ ├── manifest.json
-│ └── robot.txt
+│ └── robots.txt
 │
 ├── src
 │ ├── Assets
@@ -46,8 +46,8 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 │ │ │ │── Carousel.js
 │ │ │ │── CatOverview.js
 │ │ │ │── CatSlider.js
-│ │ │ │── FeaturedSlider.js
-│ │ │ │── Film Categories.js
+│ │ │ │── FeaturedBanner.js
+│ │ │ │── FilmsCategories.js
 │ │ │ │── HomeCategories.js
 │ │ │ └── MovieCard.js
 │ │ │
@@ -55,7 +55,6 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 │ │ │── Button.js
 │ │ │── FormInput.js
 │ │ │── PasswordReset.js
-│ │ │── SignIn.js
 │ │ │── SignIn.js
 │ │ └── SignUp.js
 │ │
@@ -67,18 +66,21 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 │ ├── Pages
 │ │ │── MainPages
 │ │ │ │── DetailScreen.jsx
-│ │ │ │── FilmScreen.jsx
+│ │ │ │── FilmsScreen.jsx
 │ │ │ └── HomeScreen.jsx
 │ │ │── UserPages
-│ │ │ │── Landingscreen.jsx
+│ │ │ │── LandingScreen.jsx
 │ │ │ │── LogInScreen.jsx
+│ │ │ │── LogOutScreen.jsx
+│ │ │ │── DashboardScreen.jsx
 │ │ │ │── RecoveryScreen.jsx
 │ │ │ └── RegistrationScreen.jsx
-│
-├── data ?
+│ │ │
+├────────────
 ├── firebase
 │ ├── config.js
 │ └── utils.js
+│
 ├── utilities
 │ ├── axios.jsx
 │ └── config.jsx
@@ -91,7 +93,10 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 ├── package.json
 ├── README.md
 ├── SECURITY.md
-└── ===========
+└────────────
 ```
 
 ### TechGrounds Web Development
+
+![Netflix Cloning - Logo](src/Assets/images/netflix-logo.svg)
+![Netflix Cloning - Home Page](src/Assets/images/Netflix-home-page-screenshot.png)

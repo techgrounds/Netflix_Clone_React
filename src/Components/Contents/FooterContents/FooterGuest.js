@@ -1,35 +1,39 @@
 import React from "react";
 
+import { FaGlobe } from "react-icons/fa";
+// using ES6 modules
+import { Link } from "react-router-dom";
+
 const FooterGuest = () => {
     return (
         <footer className="container-fluid footer-guest text-left py-5 mt-5">
             <div class="container text-white-50 p-4">
-                <p> Questions? Call 0800-022-5173</p> <br />
+                <p> Vragen? Bel 0800-022-9647</p> <br />
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 col-md-3">
                         <ul className="list-unstyled">
                             <li className="btn-link">
-                                <a>FAQ</a>
+                                <Link to="/fq">Veelgestelde vragen</Link>
                             </li>
                             <li className="btn-link">
-                                <a>Cookie Preferences</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-md-3">
-                        <ul className="list-unstyled">
-                            <li className="btn-link">
-                                <a>Help Centere</a>
-                            </li>
-                            <li className="btn-link">
-                                <a>Corporate Information</a>
+                                <Link to="/coockie">Cookievoorkeuren</Link>
                             </li>
                         </ul>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-md-3">
                         <ul className="list-unstyled">
                             <li className="btn-link">
-                                <a>Terms of Use</a>
+                                <Link to="/coockie">Helpcentrum</Link>
+                            </li>
+                            <li className="btn-link">
+                                <Link to="/coockie">Bedrijfsgegevens</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-md-3">
+                        <ul className="list-unstyled">
+                            <li className="btn-link">
+                                <Link to="/coockie">Gebruiksvoorwaarden</Link>
                             </li>
                         </ul>
                     </div>
@@ -37,13 +41,23 @@ const FooterGuest = () => {
                     <div class="col-xl-3 col-sm-6 col-md-3">
                         <ul className="list-unstyled">
                             <li className="btn-link">
-                                <a>Privacy</a>
+                                <Link to="/coockie">Privacy</Link>
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
+                <form action="#" className="language-picker-holder">
+                    <FaGlobe />
+                    <select
+                        name="language-picker"
+                        className="language-picker"
+                        id="languages"
+                    >
+                        <label for="language">Select Language: </label>
+                        <option value="Nederlands">Nederlands</option>
+                        <option value="English">English</option>
+                    </select>
+                </form>
             </div>
         </footer>
     );
