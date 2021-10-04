@@ -151,10 +151,10 @@ a.text-white-50.nav-link:hover {
   font-size: 1.2rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .btn--primary {
@@ -753,10 +753,9 @@ textarea:focus {
   height: 2.5rem;
   color: #f5f5f1;
   background-color: rgba(0, 0, 0, 0.4);
-  border: 2px solid whitesmoke;
+  border: 2px solid #aaaaaa;
   border-radius: 3px;
   margin-right: 1.875rem;
-  padding: 0px 10px 0px 10px;
 }
 
 #landing-page > div:nth-of-type(1) .nav button + button {
@@ -767,7 +766,9 @@ textarea:focus {
   margin-right: 3.125rem;
 }
 
-#landing-page > div:nth-of-type(1) .textCenter {
+#landing-page > div:nth-of-type(1) h1,
+#landing-page > div:nth-of-type(1) h4,
+#landing-page > div:nth-of-type(1) h5 {
   text-align: center;
   color: #f1f1f1;
 }
