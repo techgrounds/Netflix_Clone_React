@@ -9,10 +9,12 @@ import Home from "./Components/Pages/MainPages/HomeScreen";
 import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
 import LandingScreen from "./Components/Pages/PagesUser/LandingScreen";
 import LogInScreen from "./Components/Pages/PagesUser/LogInScreen";
-import ModalContainer from "./Components/Contents/ModalContainer";
-import ModalContent from "../src/Components/Contents/ModalContent";
+import ModalContent from "./Components/Contents/ModalContent";
+// import ModalContent from "../src/Components/Contents/ModalContent";
+// import HomeCategories from "./Components/Contents/HomeCategories";
 
-function App() {
+
+export default function App(){
 
 
   return (
@@ -20,20 +22,16 @@ function App() {
       <div className="App">
         {/* <Header /> */}
         <Switch>
-          <Route exact path="/" component={ModalContent} />
+          <Route exact path="/" component={Home} />
           <Route path="/FilmsScreen" component={FilmsScreen} />
           <Route path="/LandingScreen" component={LandingScreen} />
           <Route path="/LogInScreen" component={LogInScreen} />
-          <Route exact path="/more-info/:id" component={ModalContainer} />
         </Switch>
-        <Route exact path="/more-info/:id" component={ModalContainer} />
-        {/* <Footer /> */}
+        <Route path="/" render={(props) => <ModalContent {...props} /> } />
       </div>
     </Router>
   );
-}
-
-export default App;
+};
 
 
 

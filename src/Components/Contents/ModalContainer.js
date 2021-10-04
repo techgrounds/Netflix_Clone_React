@@ -1,22 +1,16 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { createPortal } from "react-dom";
 
-const Modal = () => (
-  <div
-    role="button"
-    className="modal-wrapper"
-    onClick={() => this.props.history.goBack()}
-  >
-    <div
-      role="button"
-      className="modal"
-      onClick={e => e.stopPropagation()}
-    >
-      <p>
-        CONTENT
-      </p>
-    </div>
-  </div>
-);
+export default function Modal(props) {
+  console.log(props)
+    return createPortal(
+      <div className="modal-wrapper">
+        <div className="modal-backdrop" onClick={props.onClick}></div>
+        <div className="modal-box">
+          {props.children}
+        </div>
+      </div>,
+      document.getElementById("modal_root"),
+    );
+  }
 
-export default withRouter(Modal);

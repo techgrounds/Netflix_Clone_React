@@ -10,7 +10,7 @@ import React from "react";
 
 
 
-const CatSlider = ({categories}) => {
+const CatSlider = ({categories, props}) => {
     return (
         <>
         {categories} 

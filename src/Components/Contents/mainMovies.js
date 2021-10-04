@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utilities/axios";
-import {Link} from 'react-router-dom';
 
 // import MovieModal from "./MovieModal";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Main = ({ title, fetchUrl, isLargeRow, id }) => {
+const Main = ({ title, fetchUrl, isLargeRow, id, props }) => {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const [movies, setMovies] = useState([]);
-  const [modalVisibility, setModalVisibility] = useState(false);
-  const [movieSelected, setMovieSelection] = useState({});
-
+  
   //A snippet of code which runs based on a specific condition/variable
   useEffect(() => {
     //if [], run once when the row loads, and dont run again
@@ -27,10 +25,8 @@ const Main = ({ title, fetchUrl, isLargeRow, id }) => {
     fetchData();
   }, [fetchUrl]);
 
-  const handleClick = (movie) => {
-    setModalVisibility(true);
-    setMovieSelection(movie);
-  };
+
+
   return (
     <div className="container-fluid bg-dark py-5">
       <section className="row">
@@ -50,21 +46,23 @@ const Main = ({ title, fetchUrl, isLargeRow, id }) => {
           <div id={id} className="movie__posters">
             {/**Maping movie Thumbnails */}
             {movies.map((movie) => (
-              <Link 
-                to={{pathname: `/more-info/${movie.id}`,
-                state: {modal: true}
-              }}>
-              <img
-                key={movie.id}
-                onClick={() => handleClick(movie)}
-                className={`movie__poster ${isLargeRow && "movie__poster_lg"}`}
-                src={`${base_url}${
-                  isLargeRow ? movie.poster_path : movie.backdrop_path
-                }`}
-                loading="lazy"
-                alt={movie.name}
-              />
+              <Link to={
+                { pathname: props.props.match.url,
+                  search: `?id=${movie.id}`,
+                  movie: movie
+                }}
+              >
+                <img
+                  key={movie.id}
+                  className={`movie__poster ${isLargeRow && "movie__poster_lg"}`}
+                  src={`${base_url}${
+                    isLargeRow ? movie.poster_path : movie.backdrop_path
+                  }`}
+                  loading="lazy"
+                  alt={movie.name}
+                />
               </Link>
+              
             ))}
           </div>
           <div className="cat-slider__arrow-right">
@@ -79,12 +77,6 @@ const Main = ({ title, fetchUrl, isLargeRow, id }) => {
             </span>
           </div>
         </div>
-        {/* {modalVisibility && (
-        <MovieModal
-          {...movieSelected}
-          setModalVisibility={setModalVisibility}
-        />
-      )} */}{" "}
       </section>
     </div>
   );
