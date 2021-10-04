@@ -1,6 +1,6 @@
 // import React, { useState, useEffect, useRef } from "react";
 import React from "react";
-import HeaderNav from "../Contents/HeaderNav";
+import HeaderNav from "../Contents/HeaderContents/HeaderNav";
 
 const Navigation = (props) => {
   // const [navBackground, setNavBackground] = useState(false);

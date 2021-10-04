@@ -3,23 +3,23 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 
 const Carousel = (props) => {
-    const {children, show, infiniteLoop} = props
+    const { children, show, infiniteLoop } = props
 
     const [currentIndex, setCurrentIndex] = useState(infiniteLoop ? show : 0)
     const [length, setLength] = useState(children.length)
-    
+
     const [isRepeating, setIsRepeating] = useState(infiniteLoop && children.length > show)
     const [transitionEnabled, setTransitionEnabled] = useState(true)
 
     const [touchPosition, setTouchPosition] = useState(null)
 
-    
+
     useEffect(() => {
         setLength(children.length)
         setIsRepeating(infiniteLoop && children.length > show)
     }, [children, infiniteLoop, show])
 
-    
+
     useEffect(() => {
         if (isRepeating) {
             if (currentIndex === show || currentIndex === length) {
@@ -48,7 +48,7 @@ const Carousel = (props) => {
     const handleTouchMove = (e) => {
         const touchDown = touchPosition
 
-        if(touchDown === null) {
+        if (touchDown === null) {
             return
         }
 
@@ -95,13 +95,14 @@ const Carousel = (props) => {
         return output
     }
 
+
     return (
         <div className="carousel-container">
             <div className="carousel-wrapper">
                 {
                     (isRepeating || currentIndex > 0) &&
                     <button onClick={prev} className="left-arrow">
-                         <FaArrowLeft />
+                        <FaArrowLeft />
                     </button>
                 }
                 <div
@@ -128,7 +129,7 @@ const Carousel = (props) => {
                         }
                     </div>
                 </div>
-                
+
                 {
                     (isRepeating || currentIndex < (length - show)) &&
                     <button onClick={next} className="right-arrow">

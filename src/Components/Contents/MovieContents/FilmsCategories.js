@@ -1,6 +1,7 @@
 import React from 'react'
-import movieDataRequests from "../../utilities/config";
+import movieDataRequests from "../../../utilities/config";
 import CatSlider from "./CatSlider";
+
 
 
 export default function FilmsCategories() {
@@ -9,39 +10,39 @@ export default function FilmsCategories() {
             <CatSlider
                 title="Comedy"
                 fetchUrl={movieDataRequests.fetchComedy}
-                isLargeRow
+                // isLargeRow
             />
 
             <CatSlider
                 title="Action"
                 fetchUrl={movieDataRequests.fetchAction}
-                isLargeRow
+                // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Thriller"
                 fetchUrl={movieDataRequests.fetchThriller}
-                isLargeRow
+                // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Family"
                 fetchUrl={movieDataRequests.fetchFamily}
-                isLargeRow
+                // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Fantasy  "
                 fetchUrl={movieDataRequests.fetchFantasy}
-                isLargeRow
+                // isLargeRow
             />
-             <CatSlider
+            <CatSlider
                 title="Crime"
                 fetchUrl={movieDataRequests.fetchCrime}
-                isLargeRow
+                // isLargeRow
             />
-               <CatSlider
+            <CatSlider
                 title="Adventure"
                 fetchUrl={movieDataRequests.fetchAdventure}
-                isLargeRow
+                // isLargeRow
             />
-      </>
+        </>
     )
 }
