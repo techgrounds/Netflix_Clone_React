@@ -26,11 +26,12 @@
               height: 2.5rem;
               color: $font-color;
               background-color: rgba(0, 0, 0, 0.4);
-              border: 2px solid rgb(170, 170, 170);
+              border: 2px solid rgb(245, 245, 245);
               -webkit-border-radius: 3px;
               -moz-border-radius: 3px;
               border-radius: 3px;
               margin-right: 1.875rem;
+              padding: 0px 10px 0px 10px;
             
 
               + button {
@@ -43,9 +44,7 @@
           }
       }
       
-      h1,
-      h4,
-      h5 {
+      .textCenter{
           text-align: center;
           color: $light-color;
       }
