@@ -42,9 +42,9 @@ export default function LandingPage() {
                             <button>Inloggen</button></div>
       </Navbar.Brand>
                 </header>
-                <h1>Onbeperkt series, films en meer kijken.</h1>
-                <h4>Kijk waar je wilt. Altijd opzegbaar.</h4>
-                <h5>Klaar om te kijken? Voer je e-mailadres in om je lidmaatschap te starten of te hernieuwen.</h5>
+                <h1 className="textCenter">Onbeperkt series, films en meer kijken.</h1>
+                <h4 className="textCenter">Kijk waar je wilt. Altijd opzegbaar.</h4>
+                <h5 className="textCenter">Klaar om te kijken? Voer je e-mailadres in om je lidmaatschap te starten of te hernieuwen.</h5>
 
                 <form action="" method="post">
                     <input type="email" name="email" id="email" placeholder="E-mailadres" />
