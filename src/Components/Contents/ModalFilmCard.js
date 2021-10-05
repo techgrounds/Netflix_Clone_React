@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FaRegPlayCircle, FaPlus, } from 'react-icons/fa'
 
-export default function ModalFilmCard() {
+export default function ModalFilmCard({movie}) {
     return (
         <Col className="modal-film-container px-0">
             <Container fluid className="film-card-container">
@@ -20,19 +20,19 @@ export default function ModalFilmCard() {
                         {/* </OverlayTrigger> */}
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mb-4">
                     <Col xs={8}>
                         <p className="match-text">xx% match</p>
-                        <Image className="age-pic" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
-                        <span>{"release date"}</span>
+                        <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
+                        <span>{movie.release_date.slice(0,4)}</span>
                     </Col>
-                    <Col>
+                    <Col xs={4}>
                         <button className="circle-button">< FaPlus color="white" /></button>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <p>Here comes a description</p>
+                        <p>{movie.overview}</p>
                     </Col>
                 </Row>
             </Container>

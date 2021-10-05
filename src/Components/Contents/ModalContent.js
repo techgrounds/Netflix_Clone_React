@@ -28,9 +28,11 @@ export default function ModalContent(props) {
     function toggleButton() {
         if (toggleExpanded) {
             element[0].style.height = "400px";
+            element[0].style.marginBottom = "0px";
         }
         else {
             element[0].style.height = "auto";
+            element[0].style.marginBottom = "100px";
         }
         setToggleExpanded(!toggleExpanded);
     };
@@ -66,13 +68,13 @@ export default function ModalContent(props) {
                             </div>
                         </Col>
                     </Row>
-                    <Row id="film-summary" className="px-5">
+                    <Row id="film-summary" className="px-5 mb-4">
                         <Col xs={8}>
-                            <span className="match-text">xx% match</span>
-                            <Image className="age-pic" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
-                            <span>{"release date"}</span>
+                            <span className="match-text mr-2">xx% match</span>
+                            <span className="mr-2">{movie.release_date.slice(0,4)}</span>
+                            <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
                             <span>{"film-duration"}</span>
-                            <p className="">Here comes the description of the movie.</p>
+                            <p className="">{movie.overview}</p>
                         </Col>
                         <Col className="summary-details">
                             <p><span>Cast: </span>{"namen cast"}</p>
@@ -85,29 +87,29 @@ export default function ModalContent(props) {
                     <Container fluid className="meer-zoals-dit-container">
                     <Row className="px-5">
                             <Col>
-                                <h2>{movie.title}</h2>
+                                <h2>Meer zoals dit</h2>
                             </Col>
                         </Row>
                         <Row xs={1} sm={2} md={3} lg={4} className="d-flex justify-content-between px-5">
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
-                            <ModalFilmCard />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
+                            <ModalFilmCard movie={movie} />
                         </Row>
                     </Container>
                     <Container fluid>
@@ -123,7 +125,7 @@ export default function ModalContent(props) {
                     </Container>
 
                     <Container fluid className="trailers-en-meer-container">
-                    <Row className="px-5">
+                    <Row className="px-5 mt-5">
                             <Col>
                                 <h2>Trailers en meer</h2>
                             </Col>
@@ -143,7 +145,7 @@ export default function ModalContent(props) {
                     <Container fluid className="modal-content-footer">
                     <Row xs={1} className="px-5">
                             <Col>
-                                <h2>Over {"filmtitle"}</h2>
+                                <h2>Over {movie.title}</h2>
                             </Col>
                             <Col>
                                 <p><span>Regisseur: </span>{"naam regiseur"}</p>
