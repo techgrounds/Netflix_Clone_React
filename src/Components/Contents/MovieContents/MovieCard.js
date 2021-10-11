@@ -1,19 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaPlay, FaPlus, FaChevronDown, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { movieInstance } from '../../../utilities/axios'
 
 
 
 export default function MovieCard({ movie, index, isLargeRow, id }) {
     const [isHovered, setIsHovered] = useState(false);
+    const [trailerLink, setTrailerLink] = useState();
 
-    const trailer =
-        "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
 
     const img_url = "https://image.tmdb.org/t/p/original/";
+
+    const video_url = "https://www.youtube.com/watch?v="
+
+
+
+
+
+
 
     const ratingToPercentage = (rating) => {
         return (rating * 10).toFixed(0);
     }
+
+
+
+
+    useEffect(() => {
+        async function fetchData() {
+            const request = await movieInstance.get(`${id}`)
+            .then(function (request) {
+                        // handle success
+                        console.log(request.data.results[0].key);
+                        setTrailerLink(request.data.results[0].key);
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+                    .then(function () {
+                        // always executed
+                        // console.log('always executed?');
+                    });
+            
+           
+        }
+
+        fetchData();
+    }, [id]);
+
+
+    console.log(trailerLink)
+
+ 
+
 
 
     return (
@@ -32,7 +72,19 @@ export default function MovieCard({ movie, index, isLargeRow, id }) {
 
             {isHovered && (
                 <div className="movie-card-pop-up">
-                    <video src={trailer} autoPlay={true} loop loading="lazy" />
+                    
+                    {trailerLink ? 
+                    <iframe autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`}></iframe>
+                    :
+                    <img
+                    key={movie.id}
+                    src={`${img_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                        }`}
+                    alt={movie.name}
+                    loading="lazy"
+                />
+                    }
+
                     <div className="itemInfo">
                         <div className="movie-card-buttons-container">
                             <div className="movie-card-buttons-left">

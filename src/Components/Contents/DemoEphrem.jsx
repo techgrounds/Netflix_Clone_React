@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // Netflix Api Call
-import axios from "../../utilities/axios";
+import { baseInstance } from "../../utilities/axios";
 
 // Movie Trailer Dependencies
 import YouTube from "react-youtube";
@@ -33,7 +33,7 @@ const CatSlider = ({ title, fetchUrl, isLargeRow, id }) => {
   // Hooks
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchUrl);
+      const request = await baseInstance.get(fetchUrl);
       setMovies(request.data.results);
       return request;
     }

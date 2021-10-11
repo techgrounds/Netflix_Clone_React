@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaPlay, FaInfo } from "react-icons/fa";
-import axios from "../../../utilities/axios";
+import { baseInstance } from "../../../utilities/axios";
 import movieDataRequests from "../../../utilities/config";
 
 const FeaturedBanner = () => {
@@ -11,7 +11,7 @@ const FeaturedBanner = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(movieDataRequests.fetchZeroes);
+            const request = await baseInstance.get(movieDataRequests.fetchZeroes);
             // Shuffle movies randomly
             setMovie(
                 request.data.results[
