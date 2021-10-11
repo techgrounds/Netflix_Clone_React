@@ -10,12 +10,12 @@ import React from "react";
 
 
 
-const CatSlider = ({categories, props}) => {
+const CatOverview = ({categories, props}) => {
     return (
-        <>
+        <div className="cat-overview-container">
         {categories} 
-        </>
+        </div>
     );
 };
 
-export default CatSlider;
+export default CatOverview;

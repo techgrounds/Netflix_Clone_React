@@ -3,28 +3,28 @@
 //===================== CODDED BY EPHREM ==========================//
 // In Collaboration with Manon, Michell, Elias, Rashid & Frankie  //
 //            Ryno, Adrienn, Patrick, Izzet, Justin              //
-//========================== 2021 ==============================//
+//=================== 2021, A'dam, Netherlands =================//
 //============================================================*//
 
-// 1. Configuration
+// 01. Configuration
 @import "../Styles/sass/abstract-uitilities/variables";
 // @import "../Styles/sass/abstract-uitilities/functions";
 // @import "../Styles/sass/abstract-uitilities/mixin";
 // @import "../Styles/sass/abstract-uitilities/extend";
 
-// 2. Base
+// 02. Base
 @import "../Styles/sass/base/reset";
 @import "../Styles/sass/base/base";
 @import "../Styles/sass/base/fonts";
 @import "../Styles/sass/base/typography";
 
-// 3. Layout
+// 03. Layout
 @import "../Styles/sass/layout/header";
 @import "../Styles/sass/layout/navigation";
 @import "../Styles/sass/layout/mainContent";
 @import "../Styles/sass/layout/footer";
 
-// 4. Components
+// 04. Components
 @import "../Styles/sass/components-modules/buttons";
 @import "../Styles/sass/components-modules/contactForm";
 @import "../Styles/sass/components-modules/detailPage";
@@ -36,19 +36,23 @@
 @import "../Styles/sass/components-modules/subscribe";
 @import "../Styles/sass/components-modules/responsive";
 @import "../Styles/sass/components-modules/logo";
-@import "../Styles/sass/components-modules/featured_slider";
+@import "../Styles/sass/components-modules/featured_banner";
 @import "../Styles/sass/components-modules/cat_slider";
 @import "../Styles/sass/components-modules/social";
 @import "../Styles/sass/components-modules/modal_content";
 @import "../Styles/sass/components-modules/modal_film_card";
 @import "../Styles/sass/components-modules/modal-container";
 
-// Newely Added
+// - Newely Added -
 @import "../Styles/sass/components-modules/slider";
-@import "../Styles/sass/components-modules/login";
+@import "../Styles/sass/components-modules/userAuth";
 @import "../Styles/sass/components-modules/landing-page";
 
 
 .modal_root{
     z-index: 50;
 }
+// - Latest Additions -
+@import "../Styles/sass/components-modules/carousel";
+@import "../Styles/sass/components-modules/cat_overview";
+@import "../Styles/sass/components-modules/movie_card";

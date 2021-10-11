@@ -1,6 +1,6 @@
 
 const movieDataRequests = {
-  fetchZeroes: `discovery/desc/true/2/2000/Drama`,
+  fetchZeroes: `discovery/desc/true/1/2000/Drama`,
   fetchNineties: `discovery/desc/true/1/1990/Drama`,
   fetchEighties: `discovery/desc/true/2/1980/Drama`,
   // fetchDisney:
@@ -12,7 +12,6 @@ const movieDataRequests = {
   fetchFantasy: `discovery/desc/true/1/2021/Fantasy`,
   fetchCrime: `discovery/desc/true/1/2021/Crime`,
   fetchAdventure: `discovery/desc/true/1/2021/Adventure`,
- 
 };
 
 export default movieDataRequests;

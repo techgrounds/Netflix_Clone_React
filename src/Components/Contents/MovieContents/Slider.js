@@ -1,6 +1,6 @@
 import React from "react";
 // import data from "./ExampleData";
-import data from "../../data/moviedData";
+import data from "../../../data/moviedData";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {
 //     faPlay,

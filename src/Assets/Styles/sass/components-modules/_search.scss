@@ -1,4 +1,4 @@
-/*  - Item Search - */
+// == SERACH__BAR ==
 
 // variables
 $search-box-transition-length: 0.6s;
@@ -11,8 +11,8 @@ $sbtl: $search-box-transition-length;
 // Module core
 .search {
   &-container {
-    padding: 20px;
-    margin-top: 5px;
+    // padding: 20px;
+    margin: 0px;
   }
 
   &-box {
@@ -24,7 +24,7 @@ $sbtl: $search-box-transition-length;
     border-color: $search-box-primary-color;
     cursor: pointer;
     height: 40px;
-    transition: width $sbtl, border-radius $sbtl, background $sbtl,
+    transition: width $sbtl, border-radius $sbtl, background-color $sbtl,
       box-shadow $sbtl;
     width: 40px;
 

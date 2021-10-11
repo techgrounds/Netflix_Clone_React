@@ -1,11 +1,12 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../Assets/images/netflix-logo.svg";
-import SearchBar from "../Contents/SearchBar";
-import avator from "../../Assets/images/Netflix-avatar.png";
-import { Nav, Navbar, NavDropdown, Collapse } from "react-bootstrap";
+import logo from "../../../Assets/images/netflix-logo.svg";
+import SearchBar from "../HeaderContents/SearchBar";
+import avator from "../../../Assets/images/Netflix-avatar.png";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import LogOutScreen from "../../Pages/UserPages/LogOutScreen";
 
+import { FaBell } from "react-icons/fa";
 const HeaderNav = (props) => {
     const [navBackground, setNavBackground] = useState(false);
     const navRef = useRef();
@@ -32,30 +33,44 @@ const HeaderNav = (props) => {
                 className="navbar navbar-expand-lg navbar-dark  fixed-top text-white-50"
                 style={{
                     transition: "1s ease",
-                    backgroundColor: navBackground ? "black" : "transparent",
+                    backgroundColor: navBackground ? "#141414" : "transparent",
                 }}
             >
                 <Navbar.Brand href="#home">
-                    <img className="logo" src={logo} alt="Netflix Logo" />
+                    {" "}
+                    <img
+                        className="d-inline-block align-top logo"
+                        src={logo}
+                        alt="Netflix Logo"
+                    />
                 </Navbar.Brand>
-
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav" >
-                <Link className="nav-link" to="/">Home</Link>
-                <Link className="nav-link" to="/FilmsScreen">Films</Link>
-                    <Nav className=" mr-auto- navbar-nav ml-auto">
-                        <SearchBar />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse
+                    id="basic-navbar-nav"
+                    className="px-md-5 px-sm-5 px-xs-5 py-md-5 py-sm-5"
+                >
+                    <Nav className="mr-auto">
+                        <Link className="nav-link active" to="/">
+                            Home <span className="sr-only">(current)</span>
+                        </Link>
+                        <Link className="nav-link" to="/FilmsScreen">
+                            Films
+                        </Link>
                     </Nav>
+                    <SearchBar />
+                    <FaBell
+                        size={32}
+                        style={{ fill: "#fff", margin: "0px 2rem 0px 2rem" }}
+                    />
                     <img className="avator" src={avator} alt="avator" />
-
-                    <NavDropdown title="UserInfo" id="collapsible-nav-dropdown">
-
+                    <NavDropdown title="" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#">Something 1</NavDropdown.Item>
                         <NavDropdown.Item href="#">Something 2</NavDropdown.Item>
                         <NavDropdown.Item href="#">Something 3</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#">
-                            Another Action
+                        <NavDropdown.Item href="#action/3.4">
+
+                            <LogOutScreen />
                         </NavDropdown.Item>
                     </NavDropdown>
                 </Navbar.Collapse>
