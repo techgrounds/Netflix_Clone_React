@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { FaPlay, FaPlus, FaChevronDown, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
-import { movieInstance } from '../../../utilities/axios'
+import { movieInstance } from '../../../utilities/axios';
+import { Link } from 'react-router-dom';
 
 
 
-export default function MovieCard({ movie, index, isLargeRow, id }) {
+export default function MovieCard({ movie, index, isLargeRow, id, props }) {
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
+    console.log(props)
 
 
     const img_url = "https://image.tmdb.org/t/p/original/";
@@ -25,25 +27,24 @@ export default function MovieCard({ movie, index, isLargeRow, id }) {
 
 
 
-
     useEffect(() => {
         async function fetchData() {
             const request = await movieInstance.get(`${id}`)
-            .then(function (request) {
-                        // handle success
-                        console.log(request.data.results[0].key);
-                        setTrailerLink(request.data.results[0].key);
-                    })
-                    .catch(function (error) {
-                        // handle error
-                        console.log(error);
-                    })
-                    .then(function () {
-                        // always executed
-                        // console.log('always executed?');
-                    });
-            
-           
+                .then(function (request) {
+                    // handle success
+                    console.log(request.data.results[0].key);
+                    setTrailerLink(request.data.results[0].key);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                    // console.log('always executed?');
+                });
+
+
         }
 
         fetchData();
@@ -52,7 +53,7 @@ export default function MovieCard({ movie, index, isLargeRow, id }) {
 
     console.log(trailerLink)
 
- 
+
 
 
 
@@ -71,22 +72,40 @@ export default function MovieCard({ movie, index, isLargeRow, id }) {
             />
 
             {isHovered && (
+                <Link to={
+                    {
+                        pathname: props.props.match.url,
+                        search: `?id=${movie.id}`,
+                        movie: movie
+                    }}
+                >
                 <div className="movie-card-pop-up">
-                    
-                    {trailerLink ? 
-                    <iframe autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`}></iframe>
-                    :
-                    <img
-                    key={movie.id}
-                    src={`${img_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
-                        }`}
-                    alt={movie.name}
-                    loading="lazy"
-                />
+
+                    {trailerLink ?
+                        <iframe autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`}></iframe>
+                        :
+                        <img
+                            key={movie.id}
+                            src={`${img_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                                }`}
+                            alt={movie.name}
+                            loading="lazy"
+                        />
                     }
 
                     <div className="itemInfo">
+                        {/* <Link to={
+                            {
+                                pathname: props.props.match.url,
+                                search: `?id=${movie.id}`,
+                                movie: movie
+                            }}
+                        >
+                            <div className="modal-button-backdrop"></div>
+                        </Link> */}
                         <div className="movie-card-buttons-container">
+
+
                             <div className="movie-card-buttons-left">
                                 <div className="movie-card-button">
                                     <FaPlus className="movie-card-button-icon" />
@@ -102,12 +121,19 @@ export default function MovieCard({ movie, index, isLargeRow, id }) {
                                 </div>
                             </div>
                             <div className="movie-card-buttons-right">
-                                <div className="movie-card-button">
-                                    <FaChevronDown className="movie-card-button-icon" />
-                                </div>
+                                <Link to={
+                                    {
+                                        pathname: props.props.match.url,
+                                        search: `?id=${movie.id}`,
+                                        movie: movie
+                                    }}
+                                >
+                                    <div className="movie-card-button">
+                                        <FaChevronDown className="movie-card-button-icon" />
+                                    </div>
+                                </Link>
                             </div>
                         </div>
-
                         <div className="movie-card-info">
 
                             <h2 className="movie-title">{movie.title}</h2>
@@ -122,6 +148,7 @@ export default function MovieCard({ movie, index, isLargeRow, id }) {
                         </div>
                     </div>
                 </div>
+                </Link>
             )}
         </div>
     );

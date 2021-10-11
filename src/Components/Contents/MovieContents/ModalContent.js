@@ -29,7 +29,7 @@ export default function ModalContent(props) {
 
 
     if(movie !== undefined){
-        if(theID === undefined || theID != movie.id){
+        if(theID === undefined || theID !== movie.id){
             setTheID(movie.id);
             setfilmGenres(movie.genre_ids);
         }

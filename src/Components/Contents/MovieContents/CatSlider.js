@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 import MovieCard from "./MovieCard";
 import { baseInstance } from "../../../utilities/axios";
 
-export default function CatSlider({ title, fetchUrl, isLargeRow, id }) {
+export default function CatSlider({ title, fetchUrl, isLargeRow, id,  props}) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id }) {
       <p>Frankie, Joeri + Manon -- This will be used for final product - since it is infinite loop slider [ Removeable TXT! ]</p>
       <Carousel show={6} infiniteLoop={true}>
         {movies.map((movie, index) => (
-          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} />
+          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} props={props} />
         ))}
       </Carousel>
     </div>

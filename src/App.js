@@ -20,7 +20,7 @@ import RegistrationScreen from "./Components/Pages/UserPages/RegistrationScreen"
 import RecoveryScreen from "./Components/Pages/UserPages/RecoveryScreen";
 import DashboardScreen from "./Components/Pages/UserPages/DashboardScreen";
 import LogOutScreen from "./Components/Pages/UserPages/LogOutScreen";
-import ModalContent from "./Components/Contents/ModalContent";
+import ModalContent from "./Components/Contents/MovieContents/ModalContent"
 
 
 const initialState = {
