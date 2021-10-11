@@ -29,7 +29,7 @@ export default function ModalContent(props) {
 
 
     if(movie !== undefined){
-        if(theID === undefined){
+        if(theID === undefined || theID != movie.id){
             setTheID(movie.id);
             setfilmGenres(movie.genre_ids);
         }
@@ -39,7 +39,7 @@ export default function ModalContent(props) {
         if (movie !== undefined) {
             const axios = require('axios');
             // Make a request for a user with a given ID
-            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=0eb418e41e282b41805c991d1a495a28&language=en-US`)
+            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
                 .then(function (response) {
                     // handle success
                     console.log(response.data.results[0].key);
@@ -55,7 +55,7 @@ export default function ModalContent(props) {
                 });
     
     
-            axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=0eb418e41e282b41805c991d1a495a28`)
+            axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
                 .then(function (response) {
                     // handle success
                     console.log(response.data);
