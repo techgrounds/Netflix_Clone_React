@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ModalFilmCard from './ModalFilmCard';
 import Modal from './ModalContainer'
@@ -6,23 +6,89 @@ import { FaChevronDown, FaChevronUp, FaVolumeMute, FaRegThumbsDown, FaRegThumbsU
 
 export default function ModalContent(props) {
     const [toggleExpanded, setToggleExpanded] = useState(false);
+    const [trailerLink, setTrailerLink] = useState();
+    const [filmGenres, setfilmGenres] = useState();
+    const [tmdbGenres, setTmdbGenres] = useState();
+    const [theID, setTheID] = useState();
+
     const movie = props.location.movie;
     let element = document.getElementsByClassName("meer-zoals-dit-container");
     let params = new URLSearchParams(props.location.search);
+
     // console.log(props.location.search)
     // console.log(movie)
     // console.log(props.location.pathname)
     // console.log(props.history)
     console.log(props)
     console.log(movie)
-    if(movie !== undefined || null ){
+    if (movie !== undefined || null) {
         console.log(params.get(`id=${movie.id}`))
     } else {
-        return null
+        // return null
     }
-    
 
+
+    if(movie !== undefined){
+        if(theID === undefined){
+            setTheID(movie.id);
+            setfilmGenres(movie.genre_ids);
+        }
+    }
+
+    useEffect(() => {
+        if (movie !== undefined) {
+            const axios = require('axios');
+            // Make a request for a user with a given ID
+            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=0eb418e41e282b41805c991d1a495a28&language=en-US`)
+                .then(function (response) {
+                    // handle success
+                    console.log(response.data.results[0].key);
+                    setTrailerLink(response.data.results[0].key);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                    // console.log('always executed?');
+                });
     
+    
+            axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=0eb418e41e282b41805c991d1a495a28`)
+                .then(function (response) {
+                    // handle success
+                    console.log(response.data);
+
+                    //this causes infinite loop
+                    setTmdbGenres(response.data.genres);
+                    console.log(tmdbGenres);
+                    //this causes infinite loop
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                    // console.log('always executed?');
+                });
+        }
+
+        return () => {
+
+        }
+    }, [theID])
+
+
+
+
+
+
+
+
+
+
     // console.log(params.get(`id=${movie.id}`))
 
     function toggleButton() {
@@ -49,43 +115,47 @@ export default function ModalContent(props) {
                 <Container fluid id="modal-container" >
 
                     <Container fluid>
-                    <Row xs={1} className="px-0">
-                        <Col className="video-container px-0">
-                            <video autoPlay muted src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" width="100%" height="auto">
-                                </video>
+                        <Row xs={1} className="px-0">
+                            <Col className="video-container px-0">
+                                <iframe autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`} width="100%" height="480">
+                                </iframe>
                             </Col>
                             <Col id="video-controls" className="bg-transparent">
-                            <div className="d-flex justify-content-between">
-                                <div>
-                                    <button className="d-inline-block btn bg-white py-2 px-3 mr-3" ><FaPlay className="mr-3" />Afspelen</button>
-                                    <button className="circle-button mr-1"><FaPlus color="white" /></button>
-                                    <button className="circle-button mr-1"><FaRegThumbsUp color="white" /></button>
-                                    <button className="circle-button mr-1"><FaRegThumbsDown color="white" /></button>
+                                <div className="d-flex justify-content-between">
+                                    <div>
+                                        <button className="d-inline-block btn bg-white py-2 px-3 mr-3" ><FaPlay className="mr-3" />Afspelen</button>
+                                        <button className="circle-button mr-1"><FaPlus color="white" /></button>
+                                        <button className="circle-button mr-1"><FaRegThumbsUp color="white" /></button>
+                                        <button className="circle-button mr-1"><FaRegThumbsDown color="white" /></button>
+                                    </div>
+                                    <div>
+                                        <button className="circle-button mr-5"><FaVolumeMute color="white" /></button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <button className="circle-button mr-5"><FaVolumeMute color="white" /></button>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row id="film-summary" className="px-5 mb-4">
-                        <Col xs={8}>
-                            <span className="match-text mr-2">xx% match</span>
-                            <span className="mr-2">{movie.release_date.slice(0,4)}</span>
-                            <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
-                            <span>{"film-duration"}</span>
-                            <p className="">{movie.overview}</p>
-                        </Col>
-                        <Col className="summary-details">
-                            <p><span>Cast: </span>{"namen cast"}</p>
-                            <p><span>Genres: </span>{"genres"}</p>
-                            <p><span>Deze titel is: </span>{"category?"}</p>
-                        </Col>
+                            </Col>
+                        </Row>
+                        <Row id="film-summary" className="px-5 mb-4">
+                            <Col xs={8}>
+                                <span className="match-text mr-2">xx% match</span>
+                                <span className="mr-2">{movie.release_date.slice(0, 4)}</span>
+                                <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
+                                <span>{"film-duration"}</span>
+                                <p className="">{movie.overview}</p>
+                            </Col>
+                            <Col className="summary-details">
+                                <p><span>Cast: </span>{"namen cast"}</p>
+                                <p><span>Genres: </span>{"genres"}</p>
+                                <p>{filmGenres?.map((genre, index)=>{
+                                    return <p>{genre}</p>
+                                })}</p>
+                                {/* <p>{filmGenres}test</p> */}
+                                <p><span>Deze titel is: </span>{"category?"}</p>
+                            </Col>
                         </Row>
                     </Container>
 
                     <Container fluid className="meer-zoals-dit-container">
-                    <Row className="px-5">
+                        <Row className="px-5">
                             <Col>
                                 <h2>Meer zoals dit</h2>
                             </Col>
@@ -103,18 +173,11 @@ export default function ModalContent(props) {
                             <ModalFilmCard movie={movie} />
                             <ModalFilmCard movie={movie} />
                             <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
                         </Row>
                     </Container>
                     <Container fluid>
-                    <Row className="px-5">
-                        <Col>
+                        <Row className="px-5">
+                            <Col>
                                 {/* <hr /> */}
                                 <div className="my-hr" />
                                 <button className="expand-mzd-button" onClick={toggleButton}>
@@ -125,7 +188,7 @@ export default function ModalContent(props) {
                     </Container>
 
                     <Container fluid className="trailers-en-meer-container">
-                    <Row className="px-5 mt-5">
+                        <Row className="px-5 mt-5">
                             <Col>
                                 <h2>Trailers en meer</h2>
                             </Col>
@@ -143,7 +206,7 @@ export default function ModalContent(props) {
                     </Container>
 
                     <Container fluid className="modal-content-footer">
-                    <Row xs={1} className="px-5">
+                        <Row xs={1} className="px-5">
                             <Col>
                                 <h2>Over {movie.title}</h2>
                             </Col>
@@ -168,7 +231,7 @@ export default function ModalContent(props) {
                     </Container>
                 </Container>
 
-        </Modal>
+            </Modal>
         )
     )
 }
