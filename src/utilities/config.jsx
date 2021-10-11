@@ -12,7 +12,6 @@ const movieDataRequests = {
   fetchFantasy: `discovery/desc/true/1/2021/Fantasy`,
   fetchCrime: `discovery/desc/true/1/2021/Crime`,
   fetchAdventure: `discovery/desc/true/1/2021/Adventure`,
- 
 };
 
 export default movieDataRequests;
