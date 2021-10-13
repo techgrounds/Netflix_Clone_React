@@ -137,7 +137,7 @@ export default function ModalContent(props) {
                         <Row id="film-summary" className="px-5 mb-4">
                             <Col xs={8}>
                                 <span className="match-text mr-2">xx% match</span>
-                                <span className="mr-2">{movie.release_date.slice(0, 4)}</span>
+                                <span className="mr-2">{movie?.release_date.slice(0, 4)}</span>
                                 <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
                                 <span>{"film-duration"}</span>
                                 <p className="">{movie.overview}</p>

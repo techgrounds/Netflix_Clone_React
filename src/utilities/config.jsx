@@ -1,8 +1,8 @@
 
 const movieDataRequests = {
-  fetchZeroes: `discovery/desc/true/1/2000/Drama`,
-  fetchNineties: `discovery/desc/true/1/1990/Drama`,
-  fetchEighties: `discovery/desc/true/2/1980/Drama`,
+  fetchZeroes: `discovery/desc/true/1/2000/Action`,
+  fetchNineties: `discovery/desc/true/1/1990/Action`,
+  fetchEighties: `discovery/desc/true/2/1980/Action`,
   // fetchDisney:
   // fetchActor:
   fetchComedy: `discovery/desc/true/1/2021/Comedy`,
