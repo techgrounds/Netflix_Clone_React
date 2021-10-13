@@ -3,7 +3,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 
 const Carousel = (props) => {
-    const { children, show, infiniteLoop } = props
+    const { children, show, infiniteLoop, active } = props
 
     const [currentIndex, setCurrentIndex] = useState(infiniteLoop ? show : 0)
     const [length, setLength] = useState(children.length)
@@ -96,6 +96,18 @@ const Carousel = (props) => {
     }
 
 
+    const styleCarouselActive = {
+        transform: `translateX(-${currentIndex * (100 / show)}%)`,
+        transition: !transitionEnabled ? 'none' : undefined,
+        zIndex: 2,
+    }
+
+    const styleCarouselInactive = {
+        transform: `translateX(-${currentIndex * (100 / show)}%)`,
+        transition: !transitionEnabled ? 'none' : undefined,   
+    }
+
+
     return (
         <div className="carousel-container">
             <div className="carousel-wrapper">
@@ -112,10 +124,7 @@ const Carousel = (props) => {
                 >
                     <div
                         className={`carousel-content show-${show}`}
-                        style={{
-                            transform: `translateX(-${currentIndex * (100 / show)}%)`,
-                            transition: !transitionEnabled ? 'none' : undefined,
-                        }}
+                        style={active ? {styleCarouselActive} : {styleCarouselInactive}}
                         onTransitionEnd={() => handleTransitionEnd()}
                     >
                         {

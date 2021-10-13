@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function MovieCard({ movie, index, isLargeRow, id, props }) {
+export default function MovieCard({ movie, index, isLargeRow, id, props, setActive }) {
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
     const mountedStyle = {
@@ -45,8 +45,14 @@ export default function MovieCard({ movie, index, isLargeRow, id, props }) {
     return (
         <div
             className="movie-card"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => {
+                setIsHovered(true)
+                setActive(true)
+        }}
+            onMouseLeave={() => {
+                setIsHovered(false)
+                setActive(false)
+            }}
         >
             <img
                 key={movie.id}
