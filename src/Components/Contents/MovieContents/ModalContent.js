@@ -6,9 +6,13 @@ import { FaChevronDown, FaChevronUp, FaVolumeMute, FaRegThumbsDown, FaRegThumbsU
 
 export default function ModalContent(props) {
     const [toggleExpanded, setToggleExpanded] = useState(false);
-    const [trailerLink, setTrailerLink] = useState();
-    const [filmGenres, setfilmGenres] = useState();
-    const [tmdbGenres, setTmdbGenres] = useState();
+    const [mainTrailerLink, setMainTrailerLink] = useState();
+    const [trailerLinks, setTrailerLinks] = useState();
+    const [filmGenres, setfilmGenres] = useState([]);
+    const [tmdbGenres, setTmdbGenres] = useState([]);
+    const [cast, setCast] = useState([]);
+    const [director, setDirector] = useState("-");
+    const [runtime, setRuntime] = useState(null);
     const [theID, setTheID] = useState();
 
     const movie = props.location.movie;
@@ -19,8 +23,8 @@ export default function ModalContent(props) {
     // console.log(movie)
     // console.log(props.location.pathname)
     // console.log(props.history)
-    console.log(props)
-    console.log(movie)
+    // console.log(props)
+    // console.log(movie)
     if (movie !== undefined || null) {
         console.log(params.get(`id=${movie.id}`))
     } else {
@@ -28,8 +32,8 @@ export default function ModalContent(props) {
     }
 
 
-    if(movie !== undefined){
-        if(theID === undefined || theID !== movie.id){
+    if (movie !== undefined) {
+        if (theID === undefined || theID !== movie.id) {
             setTheID(movie.id);
             setfilmGenres(movie.genre_ids);
         }
@@ -38,12 +42,20 @@ export default function ModalContent(props) {
     useEffect(() => {
         if (movie !== undefined) {
             const axios = require('axios');
-            // Make a request for a user with a given ID
+
+            // Get link to trailer to auto play
             axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
                 .then(function (response) {
                     // handle success
-                    console.log(response.data.results[0].key);
-                    setTrailerLink(response.data.results[0].key);
+                    setMainTrailerLink(response.data.results[0].key);
+                    let tempArray = [];
+                    response.data.results.forEach(element => {
+                        tempArray.push({
+                            key: element.key,
+                            type: element.type
+                        });
+                    });
+                    setTrailerLinks(tempArray);
                 })
                 .catch(function (error) {
                     // handle error
@@ -51,19 +63,13 @@ export default function ModalContent(props) {
                 })
                 .then(function () {
                     // always executed
-                    // console.log('always executed?');
                 });
-    
-    
+
+            // Get list of genres
             axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
                 .then(function (response) {
                     // handle success
-                    console.log(response.data);
-
-                    //this causes infinite loop
                     setTmdbGenres(response.data.genres);
-                    console.log(tmdbGenres);
-                    //this causes infinite loop
                 })
                 .catch(function (error) {
                     // handle error
@@ -71,7 +77,41 @@ export default function ModalContent(props) {
                 })
                 .then(function () {
                     // always executed
-                    // console.log('always executed?');
+                });
+
+            // Get names of the cast
+            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/credits?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
+                .then(function (response) {
+                    // handle success
+                    setCast(response.data.cast);
+
+                    for (let index = 0; index < response.data.crew.length; index++) {
+                        const element = response.data.crew[index];
+                        if (element.job == "Director") {
+                            setDirector(element.name);
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                });
+
+            // Get runtime
+            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
+                .then(function (response) {
+                    // handle success
+                    setRuntime(response.data.runtime)
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
                 });
         }
 
@@ -81,9 +121,91 @@ export default function ModalContent(props) {
     }, [theID])
 
 
+    const ratingToPercentage = (rating) => {
+        return (rating * 10).toFixed(0);
+    }
 
 
+    function ShowCast(all) {
 
+        if (all) {
+            let tempArray = [];
+
+            for (let i = 0; i < cast.length; i++) {
+                const element = cast[i];
+                if (i == cast.length - 1) {
+                    tempArray.push(element.name);
+                } else {
+                    tempArray.push(element.name + ", ");
+                }
+            }
+            let stringOfCast = tempArray.join("");
+            return stringOfCast;
+        }
+        else {
+            if (cast.length > 3) {
+                return <>
+                    <span>{cast[0].name + ", "}</span>
+                    <span>{cast[1].name + ", "}</span>
+                    <span>{cast[2].name + ", "}</span>
+                    <span className="font-italic">more</span>
+                </>
+            } else {
+
+                let tempArray = [];
+
+                for (let i = 0; i < cast.length; i++) {
+                    const element = cast[i];
+                    if (i == cast.length - 1) {
+                        tempArray.push(element.name);
+                    } else {
+                        tempArray.push(element.name + ", ");
+                    }
+                }
+
+                return tempArray.forEach(element => {
+                    <span>{element}</span>
+                });
+            }
+        }
+    }
+
+    function ShowGenres() {
+        let tempArray = [];
+        for (let i = 0; i < filmGenres.length; i++) {
+            const element = filmGenres[i];
+
+            for (let j = 0; j < tmdbGenres.length; j++) {
+                const tmdbElement = tmdbGenres[j];
+                if (element == tmdbElement.id) {
+                    if (i == filmGenres.length - 1) {
+                        tempArray.push(tmdbElement.name);
+                    } else {
+                        tempArray.push(tmdbElement.name + ", ");
+                    }
+                }
+            }
+        }
+
+        return tempArray.map(element => {
+            return <span>{element}</span>
+        });
+    }
+
+    function GetRuntime() {
+        let hours = Math.floor(runtime / 60);
+        let minutes = runtime % 60;
+
+        if (hours === 0) {
+            return <>
+                <span>{minutes + "m"}</span>
+            </>
+        } else {
+            return <>
+                <span>{hours + " u " + minutes + "m"}</span>
+            </>
+        }
+    }
 
 
 
@@ -117,7 +239,7 @@ export default function ModalContent(props) {
                     <Container fluid>
                         <Row xs={1} className="px-0">
                             <Col className="video-container px-0">
-                                <iframe autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`} width="100%" height="480">
+                                <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} width="100%" height="480">
                                 </iframe>
                             </Col>
                             <Col id="video-controls" className="bg-transparent">
@@ -136,19 +258,23 @@ export default function ModalContent(props) {
                         </Row>
                         <Row id="film-summary" className="px-5 mb-4">
                             <Col xs={8}>
-                                <span className="match-text mr-2">xx% match</span>
+                                <span className="match-text mr-2">{ratingToPercentage(movie?.vote_average)}% match</span>
                                 <span className="mr-2">{movie.release_date.slice(0, 4)}</span>
                                 <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
-                                <span>{"film-duration"}</span>
+                                <span>{GetRuntime()}</span>
                                 <p className="">{movie.overview}</p>
                             </Col>
-                            <Col className="summary-details">
-                                <p><span>Cast: </span>{"namen cast"}</p>
-                                <p><span>Genres: </span>{"genres"}</p>
-                                <p>{filmGenres?.map((genre, index)=>{
-                                    return <p>{genre}</p>
-                                })}</p>
-                                {/* <p>{filmGenres}test</p> */}
+                            <Col xs={4} className="summary-details">
+                                <p><span>Cast: </span>{
+                                    cast !== undefined ? ShowCast() : null
+                                }</p>
+
+                                <p>
+                                    <span>Genres: </span>{
+                                        tmdbGenres !== undefined ? ShowGenres() : null
+                                    }
+                                </p>
+
                                 <p><span>Deze titel is: </span>{"category?"}</p>
                             </Col>
                         </Row>
@@ -194,14 +320,10 @@ export default function ModalContent(props) {
                             </Col>
                         </Row>
                         <Row xs={3} className="px-5">
-                            <Col>
-                                <iframe width="200" height="auto" src="https://www.youtube.com/embed/DGX9UogxXeA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <p>{"Film title"} (clip)/(trailer)</p>
-                            </Col>
-                            <Col>
-                                <iframe width="200" height="auto" src="https://www.youtube.com/embed/DGX9UogxXeA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <p>{"Film title"} (clip)/(trailer)</p>
-                            </Col>
+                            {trailerLinks?.map(element => {
+                                return <Col><iframe src={`https://www.youtube.com/embed/${element.key}?autoplay=0&mute=0&controls=1`} width="100%" height="100%">
+                                </iframe><span>{movie?.title + " (" + element.type + ")"}</span></Col>
+                            })}
                         </Row>
                     </Container>
 
@@ -211,9 +333,9 @@ export default function ModalContent(props) {
                                 <h2>Over {movie.title}</h2>
                             </Col>
                             <Col>
-                                <p><span>Regisseur: </span>{"naam regiseur"}</p>
-                                <p><span>Cast: </span>{"namen cast"}</p>
-                                <p><span>Genres: </span>{"genres"}</p>
+                                <p><span>Regisseur: </span>{director}</p>
+                                <p><span>Cast: </span>{ShowCast(true)}</p>
+                                <p><span>Genres: </span>{ShowGenres()}</p>
                                 <p><span>Deze titel is: </span>{"category?"}</p>
                             </Col>
                         </Row>

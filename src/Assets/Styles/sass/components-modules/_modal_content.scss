@@ -103,6 +103,11 @@
             span {
                 color: $font-color-alt;
             }
+
+            span + span {
+                color: $font-color;
+                font-weight: 400;
+            }
         }
     }
 
@@ -147,6 +152,18 @@
             color: $font-color;
             font-weight: bold;
         }
+
+        span {
+            color: $font-color;
+            font-weight: bold;
+        }
+
+        iframe{
+            // border-radius: 10px;
+            border-start-start-radius: 10px;
+            border-start-end-radius: 10px;
+            border-color: $background-color-alt;
+        }
     }
 
     .modal-content-footer {
@@ -157,6 +174,10 @@
         }
 
         p {
+            color: $font-color;
+        }
+
+        span + span {
             color: $font-color;
         }
 
