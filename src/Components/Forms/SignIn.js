@@ -61,7 +61,7 @@ class SignIn extends Component {
         // }
 
         return (
-            <div className="container user-auth-form__holder p-5">
+            <div className="user-auth-form__holder p-5">
                 <form className="user-auth__form" onSubmit={this.handleSubmit}>
                     <h2 className="user-auth__heading"> Inloggen</h2>
 

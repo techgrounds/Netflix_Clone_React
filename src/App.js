@@ -14,7 +14,7 @@ import {
 // import Footer from "./Components/Layout/Footer";
 import Home from "./Components/Pages/MainPages/HomeScreen";
 import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
-import LandingScreen from "./Components/Pages/PagesUser/LandingScreen";
+import LandingScreen from "./Components/Pages/UserPages/LandingScreen";
 import LogInScreen from "./Components/Pages/UserPages/LogInScreen";
 import RegistrationScreen from "./Components/Pages/UserPages/RegistrationScreen";
 import RecoveryScreen from "./Components/Pages/UserPages/RecoveryScreen";
