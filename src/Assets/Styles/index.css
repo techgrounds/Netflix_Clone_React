@@ -472,8 +472,8 @@ img.logo {
 
 .featured_banner__fadeShadow_Bottom {
   height: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(rgba(37, 37, 37, 0.61)), to(#111));
-  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(rgba(37, 37, 37, 0.61)), to(#141414));
+  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #141414);
 }
 
 @media (min-width: 1500px) {
@@ -1662,6 +1662,10 @@ span.login-remember-me-label-text {
 
 .modal_root {
   z-index: 50;
+}
+
+.carousel-container {
+  position: relative;
 }
 
 .carousel-wrapper {

@@ -1,4 +1,9 @@
 
+.carousel-container {
+    position: relative; 
+    // top: -40px;
+}
+
 .carousel-wrapper {
     display: flex;
     width: 100%;
@@ -26,6 +31,8 @@
 
 .carousel-content.show-6 > * {
     width: calc(100% / 6);
+
+
 }
 
 .left-arrow, .right-arrow {
