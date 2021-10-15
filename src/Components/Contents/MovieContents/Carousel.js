@@ -13,8 +13,8 @@ const Carousel = (props) => {
 
     const [touchPosition, setTouchPosition] = useState(null)
 
-
-    
+   
+   
 
     useEffect(() => {
         setLength(children.length)

@@ -1665,7 +1665,14 @@ span.login-remember-me-label-text {
 }
 
 .carousel-container {
-  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .carousel-wrapper {
@@ -1674,6 +1681,10 @@ span.login-remember-me-label-text {
   display: flex;
   width: 100%;
   position: relative;
+}
+
+.carousel-content-wrapper {
+  width: 100%;
 }
 
 .carousel-content {
@@ -1705,12 +1716,13 @@ span.login-remember-me-label-text {
 
 .left-arrow, .right-arrow {
   position: absolute;
-  z-index: 100;
+  z-index: 10;
+  font-size: 2rem;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border: none;
   color: white;
   background-color: transparent;
