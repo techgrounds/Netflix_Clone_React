@@ -138,14 +138,12 @@ class SignIn extends Component {
                                 SignIn with Google
                             </Button> */}
 
-
-
                         </div>
                         <br />
                         <div>
                             <p>
                                 Is Netflix nieuw voor jou?{" "}
-                                <Link to="/Registration">Registreer je nu</Link>
+                                <Link to="/RegistrationScreen">Registreer je nu</Link>
                             </p>
                         </div>
                         <p className="">
