@@ -3,13 +3,17 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import ModalFilmCard from './ModalFilmCard';
 import Modal from './ModalContainer'
 import { FaChevronDown, FaChevronUp, FaVolumeMute, FaRegThumbsDown, FaRegThumbsUp, FaPlus, FaPlay } from "react-icons/fa";
+import { baseInstance } from '../../../utilities/axios';
 
 export default function ModalContent(props) {
     const [toggleExpanded, setToggleExpanded] = useState(false);
     const [mainTrailerLink, setMainTrailerLink] = useState();
+    const [mainTrailerHeight, setMainTrailerHeight] = useState();
     const [trailerLinks, setTrailerLinks] = useState();
     const [filmGenres, setfilmGenres] = useState([]);
     const [tmdbGenres, setTmdbGenres] = useState([]);
+    const [realGenres, setRealGenres] = useState([]);
+    const [similarContent, setSimilarContent] = useState();
     const [cast, setCast] = useState([]);
     const [director, setDirector] = useState("-");
     const [runtime, setRuntime] = useState(null);
@@ -48,6 +52,7 @@ export default function ModalContent(props) {
                 .then(function (response) {
                     // handle success
                     setMainTrailerLink(response.data.results[0].key);
+                    response.data.results[0].size < 721 ? setMainTrailerHeight(response.data.results[0].size) : setMainTrailerHeight(720);
                     let tempArray = [];
                     response.data.results.forEach(element => {
                         tempArray.push({
@@ -87,7 +92,7 @@ export default function ModalContent(props) {
 
                     for (let index = 0; index < response.data.crew.length; index++) {
                         const element = response.data.crew[index];
-                        if (element.job == "Director") {
+                        if (element.job === "Director") {
                             setDirector(element.name);
                         }
                     }
@@ -104,7 +109,7 @@ export default function ModalContent(props) {
             axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
                 .then(function (response) {
                     // handle success
-                    setRuntime(response.data.runtime)
+                    setRuntime(response.data.runtime);
                 })
                 .catch(function (error) {
                     // handle error
@@ -113,12 +118,80 @@ export default function ModalContent(props) {
                 .then(function () {
                     // always executed
                 });
+
+            // Get similar movies
+            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US&page=1`)
+                .then(function (response) {
+                    console.log(response.data);
+                    setSimilarContent(response.data.results);
+                })
+                .catch(function (error) {
+
+                })
+                .then(function () {
+
+                });
+
         }
 
         return () => {
 
         }
     }, [theID])
+
+    useEffect(() => {
+        if (filmGenres.length !== 0) {
+            console.log("er zijn genres!");
+            console.log(filmGenres);
+
+            // setRealGenres(ConvertNumberArrayToGenreArray());
+            let tempArray = ConvertNumberArrayToGenreArray();
+            const axios = require('axios');
+
+            tempArray.forEach(element => {
+                axios.get(`https://immense-garden-85870.herokuapp.com/api/v1/discovery/desc/true/1/2021/${element}`)
+                    .then(function (response) {
+                        // handle success
+                        console.log(response.data.results[0]);
+                        console.log(response.data.results[1]);
+                        console.log(response.data.results[2]);
+                    })
+                    .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                    })
+                    .then(function () {
+                        // always executed
+                    });
+            });
+
+
+
+            async function fetchData(slug) {
+                // const request = await baseInstance.get(`/discovery/esc/true/1/2021/${slug}`);
+                // setMovies(request.data.results);
+                // return request;
+            }
+
+            // fetchData(genresArray[0]);
+            // console.log(relatedContent);
+
+        }
+        return () => {
+            //clean up
+        }
+    }, [filmGenres])
+
+    // useEffect(() => {
+    //     console.log("Real genres heeft: "+realGenres?.length);
+    //     if(realGenres?.length !== 0){
+    //         console.log("er is related content gevonden");
+    //         console.log(relatedContent);
+    //     }
+    //     return () => {
+    //         // cleanup
+    //     }
+    // }, [realGenres])
 
 
     const ratingToPercentage = (rating) => {
@@ -133,7 +206,7 @@ export default function ModalContent(props) {
 
             for (let i = 0; i < cast.length; i++) {
                 const element = cast[i];
-                if (i == cast.length - 1) {
+                if (i === cast.length - 1) {
                     tempArray.push(element.name);
                 } else {
                     tempArray.push(element.name + ", ");
@@ -156,7 +229,7 @@ export default function ModalContent(props) {
 
                 for (let i = 0; i < cast.length; i++) {
                     const element = cast[i];
-                    if (i == cast.length - 1) {
+                    if (i === cast.length - 1) {
                         tempArray.push(element.name);
                     } else {
                         tempArray.push(element.name + ", ");
@@ -177,8 +250,8 @@ export default function ModalContent(props) {
 
             for (let j = 0; j < tmdbGenres.length; j++) {
                 const tmdbElement = tmdbGenres[j];
-                if (element == tmdbElement.id) {
-                    if (i == filmGenres.length - 1) {
+                if (element === tmdbElement.id) {
+                    if (i === filmGenres.length - 1) {
                         tempArray.push(tmdbElement.name);
                     } else {
                         tempArray.push(tmdbElement.name + ", ");
@@ -190,6 +263,22 @@ export default function ModalContent(props) {
         return tempArray.map(element => {
             return <span>{element}</span>
         });
+    }
+
+    function ConvertNumberArrayToGenreArray() {
+        let tempArray = [];
+        for (let i = 0; i < filmGenres.length; i++) {
+            const element = filmGenres[i];
+
+            for (let j = 0; j < tmdbGenres.length; j++) {
+                const tmdbElement = tmdbGenres[j];
+                if (element === tmdbElement.id) {
+                    tempArray.push(tmdbElement.name);
+                }
+            }
+        }
+
+        return tempArray;
     }
 
     function GetRuntime() {
@@ -239,10 +328,11 @@ export default function ModalContent(props) {
                     <Container fluid>
                         <Row xs={1} className="px-0">
                             <Col className="video-container px-0">
-                                <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} width="100%" height="480">
+                                <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}>
                                 </iframe>
                             </Col>
                             <Col id="video-controls" className="bg-transparent">
+                                <h1>{movie?.title}</h1>
                                 <div className="d-flex justify-content-between">
                                     <div>
                                         <button className="d-inline-block btn bg-white py-2 px-3 mr-3" ><FaPlay className="mr-3" />Afspelen</button>
@@ -287,18 +377,9 @@ export default function ModalContent(props) {
                             </Col>
                         </Row>
                         <Row xs={1} sm={2} md={3} lg={4} className="d-flex justify-content-between px-5">
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
-                            <ModalFilmCard movie={movie} />
+                            {similarContent?.map(element =>{
+                                return <ModalFilmCard movie={movie} imgSrc={element.poster_path} releaseDate={element.release_date} overview={element.overview} voteAverage={element.vote_average} />
+                            })}
                         </Row>
                     </Container>
                     <Container fluid>
@@ -321,7 +402,7 @@ export default function ModalContent(props) {
                         </Row>
                         <Row xs={3} className="px-5">
                             {trailerLinks?.map(element => {
-                                return <Col><iframe src={`https://www.youtube.com/embed/${element.key}?autoplay=0&mute=0&controls=1`} width="100%" height="100%">
+                                return <Col><iframe src={`https://www.youtube.com/embed/${element.key}?autoplay=0&mute=0&controls=1`} title="YouTube clips with related content" width="100%" height="100%">
                                 </iframe><span>{movie?.title + " (" + element.type + ")"}</span></Col>
                             })}
                         </Row>
