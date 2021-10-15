@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+
 import logo from "../../../Assets/images/netflix-logo.svg";
-import SearchBar from "../HeaderContents/SearchBar";
+
 import avator from "../../../Assets/images/Netflix-avatar.png";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import LogOutScreen from "../../Pages/UserPages/LogOutScreen";
 
-import { FaBell } from "react-icons/fa";
 const HeaderNav = (props) => {
     const [navBackground, setNavBackground] = useState(false);
     const navRef = useRef();
@@ -37,7 +36,6 @@ const HeaderNav = (props) => {
                 }}
             >
                 <Navbar.Brand href="#home">
-                    {" "}
                     <img
                         className="d-inline-block align-top logo"
                         src={logo}
@@ -49,19 +47,8 @@ const HeaderNav = (props) => {
                     id="basic-navbar-nav"
                     className="px-md-5 px-sm-5 px-xs-5 py-md-5 py-sm-5"
                 >
-                    <Nav className="mr-auto">
-                        <Link className="nav-link active" to="/">
-                            Home <span className="sr-only">(current)</span>
-                        </Link>
-                        <Link className="nav-link" to="/FilmsScreen">
-                            Films
-                        </Link>
-                    </Nav>
-                    <SearchBar />
-                    <FaBell
-                        size={32}
-                        style={{ fill: "#fff", margin: "0px 2rem 0px 2rem" }}
-                    />
+                    <Nav className="mr-auto"></Nav>
+
                     <img className="avator" src={avator} alt="avator" />
                     <NavDropdown title="" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#">User 1</NavDropdown.Item>
@@ -69,26 +56,14 @@ const HeaderNav = (props) => {
                         <NavDropdown.Item href="#">Profilen Beheren</NavDropdown.Item>
                         <NavDropdown.Divider />
 
-                        <NavDropdown.Item href="DashboardScreen">
-                            Account
+                        <NavDropdown.Item href="DashboardScreen">Account</NavDropdown.Item>
 
-                        </NavDropdown.Item>
+                        <NavDropdown.Item href="#">Helpcentrum</NavDropdown.Item>
 
-
-                        <NavDropdown.Item href="#">
-                            Helpcentrum
-
-                        </NavDropdown.Item>
-
-
-                        <NavDropdown.Item >
+                        <NavDropdown.Item>
                             <LogOutScreen />
                         </NavDropdown.Item>
-
-
                     </NavDropdown>
-
-
                 </Navbar.Collapse>
             </Navbar>
         </>
