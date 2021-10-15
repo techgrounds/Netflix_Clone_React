@@ -2,13 +2,19 @@ import React from 'react';
 import { Col, Container, Row, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FaRegPlayCircle, FaPlus, } from 'react-icons/fa'
 
-export default function ModalFilmCard({movie}) {
+export default function ModalFilmCard({ movie, imgSrc, overview, releaseDate, voteAverage }) {
+
+    const ratingToPercentage = (rating) => {
+        return (rating * 10).toFixed(0);
+    }
+
     return (
         <Col className="modal-film-container px-0">
             <Container fluid className="film-card-container">
                 <Row>
                     <Col xs={12} className="px-0" >
-                        <Image fluid src="http://images6.fanpop.com/image/photos/40000000/The-Finest-Hours-Banner-movie-trailers-40025062-1200-638.jpg" className="mzd-image" />
+                        <Image fluid src={`https://image.tmdb.org/t/p/original/${imgSrc}`} className="mzd-image" />
+                        <FaRegPlayCircle className="play-button" color="white" />
                     </Col>
                     <Col xs={12}>
                         {/* <OverlayTrigger key="top" placement="top" overlay={
@@ -16,15 +22,14 @@ export default function ModalFilmCard({movie}) {
                                 Toevoegen aan Mijn Lijst
                             </Tooltip>
                         }> */}
-                        <FaRegPlayCircle className="play-button" color="white" />
                         {/* </OverlayTrigger> */}
                     </Col>
                 </Row>
-                <Row className="mb-4">
+                <Row className="mt-3 mb-4">
                     <Col xs={8}>
-                        <p className="match-text">xx% match</p>
+                        <p className="match-text">{ratingToPercentage(voteAverage)}% match</p>
                         <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
-                        <span>{movie.release_date.slice(0,4)}</span>
+                        <span>{releaseDate.slice(0, 4)}</span>
                     </Col>
                     <Col xs={4}>
                         <button className="circle-button">< FaPlus color="white" /></button>
@@ -32,7 +37,7 @@ export default function ModalFilmCard({movie}) {
                 </Row>
                 <Row>
                     <Col>
-                        <p>{movie.overview}</p>
+                        <p>{overview}</p>
                     </Col>
                 </Row>
             </Container>
