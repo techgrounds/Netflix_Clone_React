@@ -13,6 +13,8 @@ const Carousel = (props) => {
 
     const [touchPosition, setTouchPosition] = useState(null)
 
+   
+   
 
     useEffect(() => {
         setLength(children.length)
@@ -31,7 +33,11 @@ const Carousel = (props) => {
     const next = () => {
         if (isRepeating || currentIndex < (length - show)) {
             setCurrentIndex(prevState => prevState + 4)
+            console.log(currentIndex)
+        
         }
+        
+        
     }
 
     const prev = () => {
@@ -98,15 +104,22 @@ const Carousel = (props) => {
 
     const styleCarouselActive = {
         transform: `translateX(-${currentIndex * (100 / show)}%)`,
-        transition: !transitionEnabled ? 'none' : undefined,
+        transition: !transitionEnabled ? 'none' : undefined, 
+        position: "relative",
         zIndex: 2,
     }
 
     const styleCarouselInactive = {
         transform: `translateX(-${currentIndex * (100 / show)}%)`,
-        transition: !transitionEnabled ? 'none' : undefined,   
+        transition: !transitionEnabled ? 'none' : undefined, 
     }
 
+    let styleCarousel = {};
+    if (active) {
+        styleCarousel = styleCarouselActive
+    } else {
+        styleCarousel = styleCarouselInactive
+    }
 
     return (
         <div className="carousel-container">
@@ -124,7 +137,11 @@ const Carousel = (props) => {
                 >
                     <div
                         className={`carousel-content show-${show}`}
-                        style={active ? {styleCarouselActive} : {styleCarouselInactive}}
+                        // style= {{
+                        //     transform: `translateX(-${currentIndex * (100 / show)}%)`,
+                        //     transition: !transitionEnabled ? 'none' : undefined,   
+                        // }}
+                        style={styleCarousel}
                         onTransitionEnd={() => handleTransitionEnd()}
                     >
                         {
