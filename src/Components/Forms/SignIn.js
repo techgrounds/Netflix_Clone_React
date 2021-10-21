@@ -87,7 +87,7 @@ class SignIn extends Component {
                             <Link to="/recovery"></Link>
                         </div>
 
-                        <div class="form__separator---">
+                        <div className="form__separator---">
                             <span className="form__label">
                                 <Link to="/RecoveryScreen">
                                     <font>Forgot your password? Reset</font>
@@ -104,10 +104,10 @@ class SignIn extends Component {
                             Inloggen
                         </Button>
 
-                        <div class="row mt-5">
-                            <div class="col-md-6 p-0 text-left">
-                                <label class="rememberMe">
-                                    <span class="login-remember-me-label-text">
+                        <div className="row mt-5">
+                            <div className="col-md-6 p-0 text-left">
+                                <label className="rememberMe">
+                                    <span className="login-remember-me-label-text">
                                         <font> Mijn gegevens onthouden</font>
                                     </span>
                                     {/* <input type="checkbox" checked="checked" /> */}
@@ -118,10 +118,10 @@ class SignIn extends Component {
                                     // value={checkbox}
                                     // onChange={handleChange}
                                     />
-                                    <span class="checkmark"></span>
+                                    <span className="checkmark"></span>
                                 </label>
                             </div>
-                            <div class="col-md-6 p-0 text-right">
+                            <div className="col-md-6 p-0 text-right">
                                 <Link to="#">Hulp nodig?</Link>
                             </div>
                         </div>
