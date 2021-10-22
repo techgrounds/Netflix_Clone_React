@@ -1,9 +1,9 @@
 .modal-film-container {
     // border: 1px white solid;
     border-radius: 8px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    // margin-left: 15px;
+    // margin-right: 15px;
+    // margin-bottom: 15px;
     background-color: $background-color-alt;
     cursor: pointer; //temporary
 
@@ -15,6 +15,8 @@
     .mzd-image {
         height: auto;
         width: auto;
+        border-start-start-radius: 8px;
+        border-start-end-radius: 8px;
     }
 
     .play-button {
@@ -82,7 +84,21 @@
     }
 
     .row:nth-of-type(3) {
-        max-height: 200px;
-        overflow: hidden;
+        height: 200px;
+        overflow: auto;
+        // scrollbar-color: yellow blue;
+        
+        &::-webkit-scrollbar{
+            background-color: $font-color-alt;
+            width: 5px;
+            border-radius: 25px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $font-color; 
+            border-radius: 10px;
+          }
+
     }
+
 }

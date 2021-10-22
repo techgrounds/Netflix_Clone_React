@@ -12,7 +12,6 @@ export default function ModalContent(props) {
     const [trailerLinks, setTrailerLinks] = useState();
     const [filmGenres, setfilmGenres] = useState([]);
     const [tmdbGenres, setTmdbGenres] = useState([]);
-    const [realGenres, setRealGenres] = useState([]);
     const [similarContent, setSimilarContent] = useState();
     const [cast, setCast] = useState([]);
     const [director, setDirector] = useState("-");
@@ -40,6 +39,7 @@ export default function ModalContent(props) {
         if (theID === undefined || theID !== movie.id) {
             setTheID(movie.id);
             setfilmGenres(movie.genre_ids);
+            setToggleExpanded(false);
         }
     }
 
@@ -138,60 +138,6 @@ export default function ModalContent(props) {
 
         }
     }, [theID])
-
-    useEffect(() => {
-        if (filmGenres.length !== 0) {
-            console.log("er zijn genres!");
-            console.log(filmGenres);
-
-            // setRealGenres(ConvertNumberArrayToGenreArray());
-            let tempArray = ConvertNumberArrayToGenreArray();
-            const axios = require('axios');
-
-            tempArray.forEach(element => {
-                axios.get(`https://immense-garden-85870.herokuapp.com/api/v1/discovery/desc/true/1/2021/${element}`)
-                    .then(function (response) {
-                        // handle success
-                        console.log(response.data.results[0]);
-                        console.log(response.data.results[1]);
-                        console.log(response.data.results[2]);
-                    })
-                    .catch(function (error) {
-                        // handle error
-                        console.log(error);
-                    })
-                    .then(function () {
-                        // always executed
-                    });
-            });
-
-
-
-            async function fetchData(slug) {
-                // const request = await baseInstance.get(`/discovery/esc/true/1/2021/${slug}`);
-                // setMovies(request.data.results);
-                // return request;
-            }
-
-            // fetchData(genresArray[0]);
-            // console.log(relatedContent);
-
-        }
-        return () => {
-            //clean up
-        }
-    }, [filmGenres])
-
-    // useEffect(() => {
-    //     console.log("Real genres heeft: "+realGenres?.length);
-    //     if(realGenres?.length !== 0){
-    //         console.log("er is related content gevonden");
-    //         console.log(relatedContent);
-    //     }
-    //     return () => {
-    //         // cleanup
-    //     }
-    // }, [realGenres])
 
 
     const ratingToPercentage = (rating) => {
@@ -328,8 +274,12 @@ export default function ModalContent(props) {
                     <Container fluid>
                         <Row xs={1} className="px-0">
                             <Col className="video-container px-0">
-                                <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}>
-                                </iframe>
+                                {mainTrailerLink ?
+                                    <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}></iframe>
+                                    :
+                                    <img key={movie.id} src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie.name} loading="lazy" />}
+                                {/* <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}>
+                                </iframe> */}
                             </Col>
                             <Col id="video-controls" className="bg-transparent">
                                 <h1>{movie?.title}</h1>
@@ -347,14 +297,14 @@ export default function ModalContent(props) {
                             </Col>
                         </Row>
                         <Row id="film-summary" className="px-5 mb-4">
-                            <Col xs={8}>
+                            <Col xs={12} sm={8}>
                                 <span className="match-text mr-2">{ratingToPercentage(movie?.vote_average)}% match</span>
                                 <span className="mr-2">{movie?.release_date.slice(0, 4)}</span>
                                 <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
                                 <span>{GetRuntime()}</span>
                                 <p className="">{movie.overview}</p>
                             </Col>
-                            <Col xs={4} className="summary-details">
+                            <Col xs={12} sm={4} className="summary-details">
                                 <p><span>Cast: </span>{
                                     cast !== undefined ? ShowCast() : null
                                 }</p>
@@ -365,7 +315,7 @@ export default function ModalContent(props) {
                                     }
                                 </p>
 
-                                <p><span>Deze titel is: </span>{"category?"}</p>
+                                {/* <p><span>Deze titel is: </span>{"category?"}</p> */}
                             </Col>
                         </Row>
                     </Container>
@@ -376,15 +326,15 @@ export default function ModalContent(props) {
                                 <h2>Meer zoals dit</h2>
                             </Col>
                         </Row>
-                        <Row xs={1} sm={2} md={3} lg={4} className="d-flex justify-content-between px-5">
-                            {similarContent?.map(element =>{
+                        <Row xs={1} sm={2} lg={3} className="d-flex justify-content-between px-5">
+                            {similarContent?.map(element => {
                                 return <ModalFilmCard movie={movie} imgSrc={element.poster_path} releaseDate={element.release_date} overview={element.overview} voteAverage={element.vote_average} />
                             })}
                         </Row>
                     </Container>
                     <Container fluid>
                         <Row className="px-5">
-                            <Col>
+                            <Col className="px-0">
                                 {/* <hr /> */}
                                 <div className="my-hr" />
                                 <button className="expand-mzd-button" onClick={toggleButton}>
@@ -400,9 +350,9 @@ export default function ModalContent(props) {
                                 <h2>Trailers en meer</h2>
                             </Col>
                         </Row>
-                        <Row xs={3} className="px-5">
+                        <Row xs={1} md={2} lg={3} className="px-5">
                             {trailerLinks?.map(element => {
-                                return <Col><iframe src={`https://www.youtube.com/embed/${element.key}?autoplay=0&mute=0&controls=1`} title="YouTube clips with related content" width="100%" height="100%">
+                                return <Col className="mb-5"><iframe src={`https://www.youtube.com/embed/${element.key}?autoplay=0&mute=0&controls=1`} title="YouTube clips with related content" width="100%" height="100%">
                                 </iframe><span>{movie?.title + " (" + element.type + ")"}</span></Col>
                             })}
                         </Row>
@@ -415,9 +365,9 @@ export default function ModalContent(props) {
                             </Col>
                             <Col>
                                 <p><span>Regisseur: </span>{director}</p>
-                                <p><span>Cast: </span>{ShowCast(true)}</p>
+                                <p id="footer-cast"><span>Cast: </span>{ShowCast(true)}</p>
                                 <p><span>Genres: </span>{ShowGenres()}</p>
-                                <p><span>Deze titel is: </span>{"category?"}</p>
+                                {/* <p><span>Deze titel is: </span>{"category?"}</p> */}
                             </Col>
                         </Row>
                         <Row className="px-5">
