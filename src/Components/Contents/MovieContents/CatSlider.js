@@ -18,14 +18,17 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id,  props}) {
   }, [fetchUrl]);
 
 
+ let filteredMovieArray = movies.filter(movie => movie.backdrop_path)
+
+
 
 
   
   return (
     <div className="cat-slider-container container-fluid py-5">
       <h2 className="movie__title text-secondary px-4">{title}</h2>
-      <Carousel show={6} infiniteLoop={true} active={active}>
-        {movies.map((movie, index) => (
+      <Carousel show={5} infiniteLoop={true} active={active}>
+        {filteredMovieArray.map((movie, index) => (
           <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} props={props} setActive={setActive} />
         ))}
       </Carousel>

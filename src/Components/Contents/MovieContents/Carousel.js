@@ -34,10 +34,7 @@ const Carousel = (props) => {
         if (isRepeating || currentIndex < (length - show)) {
             setCurrentIndex(prevState => prevState + 4)
             console.log(currentIndex)
-        
-        }
-        
-        
+        }   
     }
 
     const prev = () => {
