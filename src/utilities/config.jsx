@@ -3,7 +3,7 @@ const movieDataRequests = {
   fetchZeroes: `discovery/desc/true/1/2000/Action`,
   fetchNineties: `discovery/desc/true/1/1995/Adventure`,
   fetchEighties: `discovery/desc/true/1/1980/Drama`,
-  // fetchDisney: `discovery/disney/esc/true/1/2020/disney`,
+  fetchDisney: `discovery/disney/true/esc/disney`,
   // fetchActor: `cast/ryanreynolds`,
   fetchComedy: `discovery/desc/true/1/2020/Comedy`,
   fetchAction: `discovery/desc/true/1/2021/Action`,
