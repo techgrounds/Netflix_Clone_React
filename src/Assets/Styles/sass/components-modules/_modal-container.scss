@@ -30,4 +30,15 @@
     overflow: hidden;
     overflow-y: scroll;
     background-color: $background-color;
+
+    &::-webkit-scrollbar{
+        background-color: $font-color-alt;
+        width: 5px;
+        border-radius: 25px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $font-color; 
+        border-radius: 10px;
+      }
 }
