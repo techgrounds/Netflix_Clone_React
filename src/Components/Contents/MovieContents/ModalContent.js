@@ -384,7 +384,7 @@ export default function ModalContent(props) {
                     </Container>
                 </Container>
 
-            </Modal>
+            </Modal> 
         )
     )
 }

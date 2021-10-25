@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 import MovieCard from "./MovieCard";
 import { baseInstance } from "../../../utilities/axios";
 
-export default function CatSlider({ title, fetchUrl, isLargeRow, id,  props}) {
+export default function CatSlider({ title, fetchUrl, isLargeRow, id, props}) {
   const [movies, setMovies] = useState([]);
   const [active, setActive] = useState(false)
 
