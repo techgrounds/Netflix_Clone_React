@@ -81,7 +81,7 @@ class App extends Component {
               exact
               path="/"
               component={Home}
-              render={() => <Home currentUser={currentUser} />}
+              render={(props) => <Home currentUser={currentUser} {...props} />}
             />
 
             {/* <Route path="/FilmsScreen" component={FilmsScreen} />
@@ -89,7 +89,7 @@ class App extends Component {
 
             <Route
               path="/FilmsScreen"
-              render={() => <FilmsScreen currentUser={currentUser} />}
+              render={(props) => <FilmsScreen currentUser={currentUser} {...props} />}
             />
             <Route
               path="/LandingScreen"

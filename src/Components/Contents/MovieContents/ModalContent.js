@@ -22,17 +22,6 @@ export default function ModalContent(props) {
     let element = document.getElementsByClassName("meer-zoals-dit-container");
     let params = new URLSearchParams(props.location.search);
 
-    // console.log(props.location.search)
-    // console.log(movie)
-    // console.log(props.location.pathname)
-    // console.log(props.history)
-    // console.log(props)
-    // console.log(movie)
-    if (movie !== undefined || null) {
-        console.log(params.get(`id=${movie.id}`))
-    } else {
-        // return null
-    }
 
 
     if (movie !== undefined) {

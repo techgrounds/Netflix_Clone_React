@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 import MovieCard from "./MovieCard";
 import { baseInstance } from "../../../utilities/axios";
 
-export default function CatSlider({ title, fetchUrl, isLargeRow, id, props}) {
+export default function CatSlider({ title, fetchUrl, isLargeRow, id, modal}) {
   const [movies, setMovies] = useState([]);
   const [active, setActive] = useState(false)
 
@@ -26,7 +26,7 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id, props}) {
       <h2 className="movie__title text-secondary px-4">{title}</h2>
       <Carousel show={6} infiniteLoop={true} active={active}>
         {movies.map((movie, index) => (
-          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} props={props} setActive={setActive} />
+          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} modal={modal} setActive={setActive} />
         ))}
       </Carousel>
     </div>
