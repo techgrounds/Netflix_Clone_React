@@ -126,10 +126,10 @@ class App extends Component {
             />
 
             <Route
-              path="/DashboardScreen"
+              exact path="/DashboardScreen"
               render={() =>
                 !currentUser ? (
-                  <Redirect to="/LogInScreen" />
+                  <Redirect to="/LoginScreen" />
                 ) : (
                   <DashboardScreen currentUser={currentUser} />
                 )
