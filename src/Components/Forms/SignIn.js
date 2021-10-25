@@ -103,7 +103,16 @@ class SignIn extends Component {
                         >
                             Inloggen
                         </Button>
-
+                        <Link to = "/Home"> 
+                        <Button
+                    variant="submit"
+                    size="lg"
+                    type="submit"
+                    className="btn btn--signIn-email mt-4 py-3"
+                  >
+                      Door gaan zonder in te loggen
+                  </Button>
+                  </Link>
                         <div className="row mt-5">
                             <div className="col-md-6 p-0 text-left">
                                 <label className="rememberMe">

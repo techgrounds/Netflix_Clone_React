@@ -5,6 +5,7 @@ import FooterGuest from "../../Contents/FooterContents/FooterGuest";
 import logInBg from "../../../Assets/images/Netflix-login-bg.jpeg";
 import logo from "../../../Assets/images/netflix-logo.svg";
 import { Navbar } from "react-bootstrap";
+import Button from "@restart/ui/esm/Button";
 
 const LogInScreen = () => {
   return (

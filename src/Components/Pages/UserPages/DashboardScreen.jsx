@@ -1,6 +1,7 @@
 import React from "react";
 import FooterGuest from "../../Contents/FooterContents/FooterGuest";
 import HeaderNavUser from "../../../Components/Contents/HeaderContents/HeaderNavUser";
+import { Link } from "react-router-dom";
 const Dashboard = (props) => {
   return (
     <>
@@ -15,7 +16,9 @@ const Dashboard = (props) => {
                 <div className="jumbotron bg-transparent">
                   <div className="row text-center">
                     <div className="text-center col-12">
+                      <Link to =  "/Home">
                       <h1>My Account</h1>
+                      </Link>
                       <p>Profile details .....</p>
                     </div>
                   </div>

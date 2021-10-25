@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { Li } from "react";
 import logo from "../../../Assets/images/netflix-logo.svg";
 import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import { FaGlobeAmericas } from "react-icons/fa";
 
@@ -33,7 +34,8 @@ export default function LandingPage() {
     <div id="landing-page">
       <div>
         <header>
-          <Navbar.Brand className="nav" href="#home">
+        <Link to ="/LogInScreen">
+          <Navbar.Brand className="nav">
             <img className="logo" src={logo} alt="Netflix Logo" />
             <div className="navBtn ml-auto">
               <button>
@@ -43,6 +45,7 @@ export default function LandingPage() {
               <button>Inloggen</button>
             </div>
           </Navbar.Brand>
+          </Link>
         </header>
         <h1>Onbeperkt series, films en meer kijken.</h1>
         <h4>Kijk waar je wilt. Altijd opzegbaar.</h4>

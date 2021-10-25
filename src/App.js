@@ -79,9 +79,15 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path="/"
+              path="/Home"
               component={Home}
-              render={(props) => <Home currentUser={currentUser} {...props} />}
+              render={(props) =>
+                !currentUser ? (
+                <Redirect to="/LogInScreen" />
+              ) : (
+                <Home currentUser={currentUser} {...props} />
+              )
+            }
             />
 
             {/* <Route path="/FilmsScreen" component={FilmsScreen} />
@@ -92,12 +98,12 @@ class App extends Component {
               render={(props) => <FilmsScreen currentUser={currentUser} {...props} />}
             />
             <Route
-              path="/LandingScreen"
+              exact path="/"
               render={() => <LandingScreen currentUser={currentUser} />}
             />
 
             <Route
-              path="/LogInScreen"
+              exact path="/LogInScreen"
               render={() =>
                 currentUser ? (
                   <Redirect to="/DashboardScreen" />
