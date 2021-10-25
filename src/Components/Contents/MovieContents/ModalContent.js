@@ -16,6 +16,9 @@ export default function ModalContent(props) {
     const [cast, setCast] = useState([]);
     const [director, setDirector] = useState("-");
     const [runtime, setRuntime] = useState(null);
+    const [tmdbAgeCertificationList, setTmdbAgeCertificationList] = useState([]);
+    const [ageCertification, setAgeCertification] = useState([]);
+    const [kijkwijzerImageSrc, setKijkwijzerImageSrc] = useState();
     const [theID, setTheID] = useState();
 
     const movie = props.location.movie;
@@ -40,6 +43,8 @@ export default function ModalContent(props) {
             setTheID(movie.id);
             setfilmGenres(movie.genre_ids);
             setToggleExpanded(false);
+            setKijkwijzerImageSrc();
+            setAgeCertification();
         }
     }
 
@@ -122,8 +127,67 @@ export default function ModalContent(props) {
             // Get similar movies
             axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US&page=1`)
                 .then(function (response) {
-                    console.log(response.data);
+                    // console.log(response.data);
                     setSimilarContent(response.data.results);
+                })
+                .catch(function (error) {
+
+                })
+                .then(function () {
+
+                });
+
+            // Get age certification for clicked video
+            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/release_dates?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
+                .then(function (response) {
+                    let incomingData = response.data.results;
+                    for (let i = 0; i < incomingData.length; i++) {
+                        if (incomingData[i].iso_3166_1 == "NL") {
+                            let movieCertification = incomingData[i].release_dates[0].certification;
+
+                            let tempObj;
+
+                            switch (movieCertification) {
+                                case "AL":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "AL");
+                                    console.log(tempObj);
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png");
+                                    break;
+                                case "6":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "6");
+                                    console.log(tempObj);
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/3_120_6.png");
+                                    break;
+                                case "9":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "9");
+                                    console.log(tempObj);
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/4_120_9.png");
+                                    break;
+                                case "12":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "12");
+                                    console.log(tempObj);
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/5_120_12.png");
+                                    break;
+                                case "16":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "16");
+                                    console.log(tempObj);
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/6_120_16.png");
+                                    break;
+                            }
+                            // setAgeCertification(incomingData[i].release_dates[0].certification);
+                        } else {
+                            // setAgeCertification({
+                            //     description: "No age certification found for this title",
+                            //     imgSrc: ""
+                            // });
+                        }
+                    }
+
                 })
                 .catch(function (error) {
 
@@ -137,7 +201,26 @@ export default function ModalContent(props) {
         return () => {
 
         }
-    }, [theID])
+    }, [theID]);
+
+    // Get tmdb age certification list for NL
+    useEffect(() => {
+        const axios = require('axios');
+        axios.get(`https://api.themoviedb.org/3/certification/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
+            .then(function (response) {
+                setTmdbAgeCertificationList(response.data.certifications.NL);
+            })
+            .catch(function (error) {
+
+            })
+            .then(function () {
+
+            });
+
+        return () => {
+            // Clean up
+        }
+    }, []);
 
 
     const ratingToPercentage = (rating) => {
@@ -300,7 +383,7 @@ export default function ModalContent(props) {
                             <Col xs={12} sm={8}>
                                 <span className="match-text mr-2">{ratingToPercentage(movie?.vote_average)}% match</span>
                                 <span className="mr-2">{movie?.release_date.slice(0, 4)}</span>
-                                <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
+                                <Image className="age-pic mr-2" src={kijkwijzerImageSrc} />
                                 <span>{GetRuntime()}</span>
                                 <p className="">{movie?.overview}</p>
                             </Col>
@@ -375,16 +458,16 @@ export default function ModalContent(props) {
                                 <span>Leeftijdsclassificatie:</span>
                             </Col>
                             <Col xs="auto" className="px-0">
-                                <Image className="age-pic" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
+                                <Image className="age-pic" src={kijkwijzerImageSrc} />
                             </Col>
                             <Col>
-                                <p>{"Geschikt voor ..."}</p>
+                                <p>{ageCertification ? ageCertification : "-"}</p>
                             </Col>
                         </Row>
                     </Container>
                 </Container>
 
-            </Modal> 
+            </Modal>
         )
     )
 }
