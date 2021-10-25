@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import logo from "../../../Assets/images/netflix-logo.svg";
-
+import { Link } from "react-router-dom";
 import avator from "../../../Assets/images/Netflix-avatar.png";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import LogOutScreen from "../../Pages/UserPages/LogOutScreen";
@@ -34,14 +34,15 @@ const HeaderNav = (props) => {
                     transition: "1s ease",
                     backgroundColor: navBackground ? "#141414" : "transparent",
                 }}
-            >
-                <Navbar.Brand href="#home">
-                    <img
-                        className="d-inline-block align-top logo"
-                        src={logo}
-                        alt="Netflix Logo"
-                    />
-                </Navbar.Brand>
+            >    <Link to="/Home">
+                    <Navbar.Brand >
+                        <img
+                            className="d-inline-block align-top logo"
+                            src={logo}
+                            alt="Netflix Logo"
+                        />
+                    </Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
                     id="basic-navbar-nav"

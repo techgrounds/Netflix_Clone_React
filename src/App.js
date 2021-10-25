@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, lazy } from "react";
 import { auth, handleUserProfile } from "./firebase/utils";
 
 // using ES6 modules
@@ -77,12 +77,12 @@ class App extends Component {
         <div className="App">
           {/* <Header /> */}
           <Switch>
-            <Route
+            <Route 
               exact
               path="/Home"
               component={Home}
-              render={(props) =>
-                !currentUser ? (
+              render = {(props)   => 
+                  !currentUser ? (
                 <Redirect to="/LogInScreen" />
               ) : (
                 <Home currentUser={currentUser} {...props} />
