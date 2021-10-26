@@ -1,38 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ModalFilmCard from './ModalFilmCard';
 import Modal from './ModalContainer'
 import { FaChevronDown, FaChevronUp, FaVolumeMute, FaRegThumbsDown, FaRegThumbsUp, FaPlus, FaPlay } from "react-icons/fa";
-import { baseInstance } from '../../../utilities/axios';
 
 export default function ModalContent(props) {
     const [toggleExpanded, setToggleExpanded] = useState(false);
     const [mainTrailerLink, setMainTrailerLink] = useState();
     const [mainTrailerHeight, setMainTrailerHeight] = useState();
     const [trailerLinks, setTrailerLinks] = useState();
-    const [filmGenres, setfilmGenres] = useState([]);
-    const [tmdbGenres, setTmdbGenres] = useState([]);
+    const [filmGenres, setfilmGenres] = useState();
+    const [tmdbGenres, setTmdbGenres] = useState();
     const [similarContent, setSimilarContent] = useState();
-    const [cast, setCast] = useState([]);
-    const [director, setDirector] = useState("-");
-    const [runtime, setRuntime] = useState(null);
+    const [cast, setCast] = useState();
+    const [director, setDirector] = useState();
+    const [runtime, setRuntime] = useState();
+    const [tmdbAgeCertificationList, setTmdbAgeCertificationList] = useState();
+    const [ageCertification, setAgeCertification] = useState();
+    const [kijkwijzerImageSrc, setKijkwijzerImageSrc] = useState();
     const [theID, setTheID] = useState();
 
-    const movie = props.location.movie;
-    let element = document.getElementsByClassName("meer-zoals-dit-container");
-    let params = new URLSearchParams(props.location.search);
+    const toggleButtonRef = useRef(null);
 
-    // console.log(props.location.search)
-    // console.log(movie)
-    // console.log(props.location.pathname)
-    // console.log(props.history)
-    // console.log(props)
-    // console.log(movie)
-    if (movie !== undefined || null) {
-        console.log(params.get(`id=${movie.id}`))
-    } else {
-        // return null
-    }
+    const movie = props.location.movie;
+    let params = new URLSearchParams(props.location.search);
 
 
     if (movie !== undefined) {
@@ -40,6 +31,11 @@ export default function ModalContent(props) {
             setTheID(movie.id);
             setfilmGenres(movie.genre_ids);
             setToggleExpanded(false);
+            setKijkwijzerImageSrc();
+            setAgeCertification();
+            setDirector();
+            setSimilarContent();
+            setRuntime();
         }
     }
 
@@ -122,8 +118,55 @@ export default function ModalContent(props) {
             // Get similar movies
             axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US&page=1`)
                 .then(function (response) {
-                    console.log(response.data);
                     setSimilarContent(response.data.results);
+                })
+                .catch(function (error) {
+
+                })
+                .then(function () {
+
+                });
+
+            // Get age certification for clicked video
+            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/release_dates?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
+                .then(function (response) {
+                    let incomingData = response.data.results;
+                    for (let i = 0; i < incomingData.length; i++) {
+                        if (incomingData[i].iso_3166_1 == "NL") {
+                            let movieCertification = incomingData[i].release_dates[0].certification;
+
+                            let tempObj;
+
+                            switch (movieCertification) {
+                                case "AL":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "AL");
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png");
+                                    break;
+                                case "6":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "6");
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/3_120_6.png");
+                                    break;
+                                case "9":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "9");
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/4_120_9.png");
+                                    break;
+                                case "12":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "12");
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/5_120_12.png");
+                                    break;
+                                case "16":
+                                    tempObj = tmdbAgeCertificationList.filter(element => element.certification === "16");
+                                    setAgeCertification(tempObj[0].meaning);
+                                    setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/6_120_16.png");
+                                    break;
+                            }
+                        }
+                    }
+
                 })
                 .catch(function (error) {
 
@@ -137,12 +180,26 @@ export default function ModalContent(props) {
         return () => {
 
         }
-    }, [theID])
+    }, [theID]);
 
+    // Get tmdb age certification list for NL
+    useEffect(() => {
+        const axios = require('axios');
+        axios.get(`https://api.themoviedb.org/3/certification/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
+            .then(function (response) {
+                setTmdbAgeCertificationList(response.data.certifications.NL);
+            })
+            .catch(function (error) {
 
-    const ratingToPercentage = (rating) => {
-        return (rating * 10).toFixed(0);
-    }
+            })
+            .then(function () {
+
+            });
+
+        return () => {
+            // Clean up
+        }
+    }, []);
 
 
     function ShowCast(all) {
@@ -242,30 +299,24 @@ export default function ModalContent(props) {
         }
     }
 
-
-
-
-
-    // console.log(params.get(`id=${movie.id}`))
-
     function toggleButton() {
         if (toggleExpanded) {
-            element[0].style.height = "400px";
-            element[0].style.marginBottom = "0px";
+            toggleButtonRef.current.style.height = "400px";
+            toggleButtonRef.current.style.marginBottom = "0px";
         }
         else {
-            element[0].style.height = "auto";
-            element[0].style.marginBottom = "100px";
+            toggleButtonRef.current.style.height = "auto";
+            toggleButtonRef.current.style.marginBottom = "100px";
         }
         setToggleExpanded(!toggleExpanded);
     };
 
     return (
-
         // In case the modal link is found (which is created on click), a modal is created with this information. 
         params.get("id") && (
             <Modal
                 onClick={() => {
+                    setToggleExpanded(false);
                     props.history.push(props.location.pathname);
                 }}
             >
@@ -278,12 +329,10 @@ export default function ModalContent(props) {
                                     <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}></iframe>
                                     :
                                     <img key={movie?.id} src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.name} loading="lazy" />}
-                                {/* <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}>
-                                </iframe> */}
                             </Col>
-                            <Col id="video-controls" className="bg-transparent">
+                            <Row id="video-controls" className="align-items-end bg-transparent px-5">
                                 <h1>{movie?.title}</h1>
-                                <div className="d-flex justify-content-between">
+                                <div className="d-flex justify-content-between w-100 mb-5">
                                     <div>
                                         <button className="d-inline-block btn bg-white py-2 px-3 mr-3" ><FaPlay className="mr-3" />Afspelen</button>
                                         <button className="circle-button mr-1"><FaPlus color="white" /></button>
@@ -294,33 +343,32 @@ export default function ModalContent(props) {
                                         <button className="circle-button mr-5"><FaVolumeMute color="white" /></button>
                                     </div>
                                 </div>
-                            </Col>
+                            </Row>
                         </Row>
                         <Row id="film-summary" className="px-5 mb-4">
                             <Col xs={12} sm={8}>
-                                <span className="match-text mr-2">{ratingToPercentage(movie?.vote_average)}% match</span>
+                                <span className="match-text mr-2">{movie?.vote_average * 10}% match</span>
                                 <span className="mr-2">{movie?.release_date.slice(0, 4)}</span>
-                                <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
+                                <Image className="age-pic mr-2" src={kijkwijzerImageSrc} />
                                 <span>{GetRuntime()}</span>
                                 <p className="">{movie?.overview}</p>
                             </Col>
                             <Col xs={12} sm={4} className="summary-details">
                                 <p><span>Cast: </span>{
-                                    cast !== undefined ? ShowCast() : null
+                                    cast ? ShowCast() : "-"
                                 }</p>
 
                                 <p>
                                     <span>Genres: </span>{
-                                        tmdbGenres !== undefined ? ShowGenres() : null
+                                        tmdbGenres && filmGenres ? ShowGenres() : "-"
                                     }
                                 </p>
-
                                 {/* <p><span>Deze titel is: </span>{"category?"}</p> */}
                             </Col>
                         </Row>
                     </Container>
 
-                    <Container fluid className="meer-zoals-dit-container">
+                    <Container fluid className="meer-zoals-dit-container" ref={toggleButtonRef}>
                         <Row className="px-5">
                             <Col>
                                 <h2>Meer zoals dit</h2>
@@ -328,15 +376,14 @@ export default function ModalContent(props) {
                         </Row>
                         <Row xs={1} sm={2} lg={3} className="d-flex justify-content-between px-5">
                             {similarContent?.map(element => {
-                                return <ModalFilmCard movie={movie} imgSrc={element.poster_path} releaseDate={element.release_date} overview={element.overview} voteAverage={element.vote_average} />
+                                return <ModalFilmCard imgSrc={element.poster_path} releaseDate={element.release_date} overview={element.overview} voteAverage={element.vote_average} />
                             })}
                         </Row>
                     </Container>
                     <Container fluid>
                         <Row className="px-5">
                             <Col className="px-0">
-                                {/* <hr /> */}
-                                <div className="my-hr" />
+                                <div className="modal-hr" />
                                 <button className="expand-mzd-button" onClick={toggleButton}>
                                     {toggleExpanded ? <FaChevronUp color="white" /> : <FaChevronDown color="white" />}
                                 </button>
@@ -364,10 +411,9 @@ export default function ModalContent(props) {
                                 <h2>Over {movie?.title}</h2>
                             </Col>
                             <Col>
-                                <p><span>Regisseur: </span>{director}</p>
-                                <p id="footer-cast"><span>Cast: </span>{ShowCast(true)}</p>
-                                <p><span>Genres: </span>{ShowGenres()}</p>
-                                {/* <p><span>Deze titel is: </span>{"category?"}</p> */}
+                                <p><span>Regisseur: </span>{director ? director : "-"}</p>
+                                <p id="footer-cast"><span>Cast: </span>{cast ? ShowCast(true) : "-"}</p>
+                                <p><span>Genres: </span>{tmdbGenres && filmGenres ? ShowGenres() : "-"}</p>
                             </Col>
                         </Row>
                         <Row className="px-5">
@@ -375,16 +421,16 @@ export default function ModalContent(props) {
                                 <span>Leeftijdsclassificatie:</span>
                             </Col>
                             <Col xs="auto" className="px-0">
-                                <Image className="age-pic" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
+                                <Image className="age-pic" src={kijkwijzerImageSrc} />
                             </Col>
                             <Col>
-                                <p>{"Geschikt voor ..."}</p>
+                                <p>{ageCertification ? ageCertification : "-"}</p>
                             </Col>
                         </Row>
                     </Container>
                 </Container>
 
-            </Modal> 
+            </Modal>
         )
     )
 }
