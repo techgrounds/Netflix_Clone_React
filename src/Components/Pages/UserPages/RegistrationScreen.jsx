@@ -30,11 +30,11 @@ class Registration extends Component {
           </Navbar.Brand>
         </Navbar>
         <div className="container py-5">
-          <div class="row">
-            <div class="col-12 col-md-8 mx-auto">
-              <div class="jumbotron bg-transparent">
-                <div class="row text-center">
-                  <div class="text-center col-12">
+          <div className="row">
+            <div className="col-12 col-md-8 mx-auto">
+              <div className="jumbotron bg-transparent">
+                <div className="row text-center">
+                  <div className="text-center col-12">
                     <SignUp />
                   </div>
                 </div>

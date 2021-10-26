@@ -9,7 +9,8 @@ export default function ModalFilmCard({ movie, imgSrc, overview, releaseDate, vo
     }
 
     return (
-        <Col className="modal-film-container px-0">
+        <Col className="px-3 mb-5">
+        <Col className="modal-film-container px-0 mx-0">
             <Container fluid className="film-card-container">
                 <Row>
                     <Col xs={12} className="px-0" >
@@ -41,6 +42,7 @@ export default function ModalFilmCard({ movie, imgSrc, overview, releaseDate, vo
                     </Col>
                 </Row>
             </Container>
+        </Col>
         </Col>
     )
 }

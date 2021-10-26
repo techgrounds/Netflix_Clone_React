@@ -17,6 +17,10 @@
 
     .video-container {
         background-color: $background-color;
+
+        iframe {
+            // pointer-events: none;
+        }
     }
 
     .video-container::after {
@@ -48,6 +52,7 @@
         position: relative;
         bottom: 260px;
         height: 240px;
+        pointer-events: none;
 
         h1 {
             width: 50%;
@@ -60,6 +65,10 @@
 
         & > div {
             height: 50px;
+        }
+
+        button {
+            pointer-events: all;
         }
 
         .circle-button {
@@ -183,6 +192,22 @@
             color: $font-color-alt;
         }
 
+        #footer-cast{
+            height: 100px;
+            overflow: auto;
+
+            &::-webkit-scrollbar{
+                background-color: $font-color-alt;
+                width: 5px;
+                border-radius: 25px;
+            }
+    
+            &::-webkit-scrollbar-thumb {
+                background: $font-color; 
+                border-radius: 10px;
+              }
+        }
+
         p {
             color: $font-color;
         }
@@ -194,6 +219,29 @@
         .age-pic {
             height: 30px;
             width: auto;
+        }
+    }
+
+    @media screen and (max-width: 585px) {
+        #video-controls {
+            position: static;
+            padding-left: 48px;
+            // margin-bottom: 150px;
+            // padding-right: 48px;
+            height: auto;
+            pointer-events: all;
+
+            & > div {
+                height: auto;
+            }
+
+            h1{
+                width: 100%;
+            }
+        }
+
+        #film-summary {
+            margin-top: 0px;
         }
     }
 }

@@ -39,13 +39,12 @@ const FeaturedBanner = () => {
                     {movie?.title || movie?.name || movie?.original_name}
                 </h1>
 
-                <div class="featured_banner__buttons  btn-block">
-                    <button class="btn btn-light banner__button mr-2 rounded py-3 px-3">
+                <div className="featured_banner__buttons  btn-block">
+                    <button className="btn btn-light banner__button mr-2 rounded py-3 px-3">
                         <FaPlay /> Play
                     </button>
-                    <button class="btn btn-secondary banner__button info ml-2 rounded py-3 px-3">
-                        <FaInfo fontSize="small" paddingRight={20} marginRight={100} /> More
-                        Information
+                    <button className="btn btn-secondary banner__button info ml-2 rounded py-3 px-3">
+                        <FaInfo fontSize="small" paddingRight={20} marginRight={100} /> More Information
                     </button>
                 </div>
 

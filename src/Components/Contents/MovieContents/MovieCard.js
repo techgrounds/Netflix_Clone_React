@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function MovieCard({ movie, index, isLargeRow, id, props, setActive }) {
+export default function MovieCard({ movie, index, isLargeRow, id, setActive, props}) {
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
-    
-
+    const modal = props;
+    console.log(modal)
     const mountedStyle = {
         animation: "inAnimation 0.3s ease-out",
         animationFillMode: "forwards",
@@ -69,7 +69,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, props, setActi
                     style={mountedStyle}>
                     <Link to={
                         {
-                            pathname: props.props.match.url,
+                            pathname: modal.props.match.url,
                             search: `?id=${movie.id}`,
                             movie: movie
                         }}
@@ -91,7 +91,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, props, setActi
                         <div className="itemInfo">
                             {/* <Link to={
                             {
-                                pathname: props.props.match.url,
+                                pathname: modal.props.match.url,
                                 search: `?id=${movie.id}`,
                                 movie: movie
                             }}
@@ -118,7 +118,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, props, setActi
                                 <div className="movie-card-buttons-right">
                                     <Link to={
                                         {
-                                            pathname: props.props.match.url,
+                                            pathname: modal.props.match.url,
                                             search: `?id=${movie.id}`,
                                             movie: movie
                                         }}
