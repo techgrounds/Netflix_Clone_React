@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default function MovieCard({ movie, index, isLargeRow, id, setActive, modal}) {
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
-    console.log(modal)
+    
     const mountedStyle = {
         animation: "inAnimation 0.3s ease-out",
         animationFillMode: "forwards",
@@ -25,7 +25,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, mod
 
     useEffect(() => {
         async function fetchData() {
-            const request = await movieInstance.get(`${id}`)
+            await movieInstance.get(`${id}`)
                 .then(function (request) {
                     // handle success
                     setTrailerLink(request.data.results[0].key);
@@ -76,7 +76,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, mod
 
 
                         {trailerLink ?
-                            <iframe autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`}></iframe>
+                            <iframe title = "Movie" autoPlay muted src={`https://www.youtube.com/embed/${trailerLink}?autoplay=1&mute=1&controls=0`}></iframe>
                             :
                             <img
                                 key={movie.id}

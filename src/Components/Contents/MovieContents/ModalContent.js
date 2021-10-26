@@ -3,7 +3,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import ModalFilmCard from './ModalFilmCard';
 import Modal from './ModalContainer'
 import { FaChevronDown, FaChevronUp, FaVolumeMute, FaRegThumbsDown, FaRegThumbsUp, FaPlus, FaPlay } from "react-icons/fa";
-import { baseInstance } from '../../../utilities/axios';
+
 
 export default function ModalContent(props) {
     const [toggleExpanded, setToggleExpanded] = useState(false);
@@ -126,7 +126,7 @@ export default function ModalContent(props) {
         return () => {
 
         }
-    }, [theID])
+    }, )
 
 
     const ratingToPercentage = (rating) => {
@@ -200,21 +200,21 @@ export default function ModalContent(props) {
         });
     }
 
-    function ConvertNumberArrayToGenreArray() {
-        let tempArray = [];
-        for (let i = 0; i < filmGenres.length; i++) {
-            const element = filmGenres[i];
+    // function ConvertNumberArrayToGenreArray() {
+    //     let tempArray = [];
+    //     for (let i = 0; i < filmGenres.length; i++) {
+    //         const element = filmGenres[i];
 
-            for (let j = 0; j < tmdbGenres.length; j++) {
-                const tmdbElement = tmdbGenres[j];
-                if (element === tmdbElement.id) {
-                    tempArray.push(tmdbElement.name);
-                }
-            }
-        }
+    //         for (let j = 0; j < tmdbGenres.length; j++) {
+    //             const tmdbElement = tmdbGenres[j];
+    //             if (element === tmdbElement.id) {
+    //                 tempArray.push(tmdbElement.name);
+    //             }
+    //         }
+    //     }
 
-        return tempArray;
-    }
+    //     return tempArray;
+    // }
 
     function GetRuntime() {
         let hours = Math.floor(runtime / 60);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Col, Container, Row, Image } from 'react-bootstrap';
 import { FaRegPlayCircle, FaPlus, } from 'react-icons/fa'
 
 export default function ModalFilmCard({ movie, imgSrc, overview, releaseDate, voteAverage }) {

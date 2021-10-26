@@ -1,5 +1,7 @@
 import axios from "axios";
 // BASE OF THE MAIN MOVIE URL
+
+
 const baseInstance = axios.create({
   baseURL: `https://immense-garden-85870.herokuapp.com/api/v1/`,
 

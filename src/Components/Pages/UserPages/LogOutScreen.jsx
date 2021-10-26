@@ -2,7 +2,7 @@ import React from "react";
 
 // // using ES6 modules
 // import { Link } from "react-router-dom";
-import { FaUserAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 
 import { auth } from "../../../firebase/utils";
 

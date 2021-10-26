@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 import MovieCard from "./MovieCard";
 import { baseInstance } from "../../../utilities/axios";
 
-export default function CatSlider({ title, fetchUrl, isLargeRow, id, modal}) {
+export default function CatSlider({ title, fetchUrl, isLargeRow, id, modal }) {
   const [movies, setMovies] = useState([]);
   const [active, setActive] = useState(false)
 
@@ -20,7 +20,7 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id, modal}) {
 
 
 
-  
+
   return (
     <div className="cat-slider-container container-fluid py-5">
       <h2 className="movie__title text-secondary px-4">{title}</h2>

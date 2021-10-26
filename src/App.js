@@ -1,4 +1,4 @@
-import React, { Component, lazy } from "react";
+import React, { Component } from "react";
 import { auth, handleUserProfile } from "./firebase/utils";
 
 // using ES6 modules

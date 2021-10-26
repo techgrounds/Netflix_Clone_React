@@ -14,20 +14,6 @@ export default function LandingPage() {
   //     setClicked(i)
   // }
 
-  const accordion = [
-    {
-      question: "Wat kan ik kijken op Netflix?",
-      answer:
-        "Netflix heeft een uitgebreide catalogus van speelfilms, documentaires, series, anime, bekroonde Netflix Originals en meer. Kijk zoveel je wilt en wanneer je wilt.",
-      link: "",
-    },
-    {
-      question: "Wat is Netflix?",
-      answer:
-        "Netflix is een streamingservice met een zeer groot aanbod van bekroonde series, films, anime, documentaires en nog veel meer op duizenden apparaten met een internetverbinding. Je kijkt zo veel je wilt, wanneer je wilt, zonder enige vorm van reclame. En dit allemaal voor één lage prijs per maand. Er valt altijd iets nieuws te ontdekken en elke week worden er nieuwe series en films toegevoegd!",
-      link: "",
-    },
-  ];
 
   return (
     <div id="landing-page">
@@ -79,7 +65,7 @@ export default function LandingPage() {
             <img
               className="our-story-card-img"
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png"
-              alt="image of a flat screen tv"
+              alt=" of a flat screen tv"
             />
             <div className="our-story-card-animation">
               <video
