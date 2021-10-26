@@ -22,17 +22,6 @@ export default function ModalContent(props) {
     let element = document.getElementsByClassName("meer-zoals-dit-container");
     let params = new URLSearchParams(props.location.search);
 
-    // console.log(props.location.search)
-    // console.log(movie)
-    // console.log(props.location.pathname)
-    // console.log(props.history)
-    // console.log(props)
-    // console.log(movie)
-    if (movie !== undefined || null) {
-        console.log(params.get(`id=${movie.id}`))
-    } else {
-        // return null
-    }
 
 
     if (movie !== undefined) {
@@ -277,7 +266,7 @@ export default function ModalContent(props) {
                                 {mainTrailerLink ?
                                     <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}></iframe>
                                     :
-                                    <img key={movie.id} src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie.name} loading="lazy" />}
+                                    <img key={movie?.id} src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.name} loading="lazy" />}
                                 {/* <iframe src={`https://www.youtube.com/embed/${mainTrailerLink}?autoplay=1&mute=1&controls=0`} title="YouTube trailer for the current video" width="100%" height={mainTrailerHeight}>
                                 </iframe> */}
                             </Col>
@@ -302,7 +291,7 @@ export default function ModalContent(props) {
                                 <span className="mr-2">{movie?.release_date.slice(0, 4)}</span>
                                 <Image className="age-pic mr-2" src="https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png" />
                                 <span>{GetRuntime()}</span>
-                                <p className="">{movie.overview}</p>
+                                <p className="">{movie?.overview}</p>
                             </Col>
                             <Col xs={12} sm={4} className="summary-details">
                                 <p><span>Cast: </span>{
@@ -361,7 +350,7 @@ export default function ModalContent(props) {
                     <Container fluid className="modal-content-footer">
                         <Row xs={1} className="px-5">
                             <Col>
-                                <h2>Over {movie.title}</h2>
+                                <h2>Over {movie?.title}</h2>
                             </Col>
                             <Col>
                                 <p><span>Regisseur: </span>{director}</p>

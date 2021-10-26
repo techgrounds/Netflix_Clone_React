@@ -35,22 +35,24 @@ const HeaderNav = (props) => {
                     transition: "1s ease",
                     backgroundColor: navBackground ? "#141414" : "transparent",
                 }}
-            >
-                <Navbar.Brand href="#home">
+            >   <Link to = "/Home">
+                <Navbar.Brand>
                     {" "}
                     <img
+                    
                         className="d-inline-block align-top logo"
                         src={logo}
                         alt="Netflix Logo"
                     />
                 </Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
                     id="basic-navbar-nav"
                     className="px-md-5 px-sm-5 px-xs-5 py-md-5 py-sm-5"
                 >
                     <Nav className="mr-auto">
-                        <Link className="nav-link active" to="/">
+                        <Link className="nav-link active" to="/Home">
                             Home <span className="sr-only">(current)</span>
                         </Link>
                         <Link className="nav-link" to="/FilmsScreen">

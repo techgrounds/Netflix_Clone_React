@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, lazy } from "react";
 import { auth, handleUserProfile } from "./firebase/utils";
 
 // using ES6 modules
@@ -77,11 +77,17 @@ class App extends Component {
         <div className="App">
           {/* <Header /> */}
           <Switch>
-            <Route
+            <Route 
               exact
-              path="/"
+              path="/Home"
               component={Home}
-              render={() => <Home currentUser={currentUser} />}
+              render = {(props)   => 
+                  !currentUser ? (
+                <Redirect to="/LogInScreen" />
+              ) : (
+                <Home currentUser={currentUser} {...props} />
+              )
+            }
             />
 
             {/* <Route path="/FilmsScreen" component={FilmsScreen} />
@@ -89,15 +95,15 @@ class App extends Component {
 
             <Route
               path="/FilmsScreen"
-              render={() => <FilmsScreen currentUser={currentUser} />}
+              render={(props) => <FilmsScreen currentUser={currentUser} {...props} />}
             />
             <Route
-              path="/LandingScreen"
+              exact path="/"
               render={() => <LandingScreen currentUser={currentUser} />}
             />
 
             <Route
-              path="/LogInScreen"
+              exact path="/LogInScreen"
               render={() =>
                 currentUser ? (
                   <Redirect to="/DashboardScreen" />
@@ -120,10 +126,10 @@ class App extends Component {
             />
 
             <Route
-              path="/DashboardScreen"
+              exact path="/DashboardScreen"
               render={() =>
                 !currentUser ? (
-                  <Redirect to="/LogInScreen" />
+                  <Redirect to="/LoginScreen" />
                 ) : (
                   <DashboardScreen currentUser={currentUser} />
                 )
