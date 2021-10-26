@@ -9,7 +9,6 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, pro
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
     const modal = props;
-    console.log(modal)
     const mountedStyle = {
         animation: "inAnimation 0.3s ease-out",
         animationFillMode: "forwards",
@@ -33,7 +32,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, pro
                 })
                 .catch(function (error) {
                     // handle error
-                    console.log(error);
+                    // console.log(error);
                 })
                 .then(function () {
                     // always executed

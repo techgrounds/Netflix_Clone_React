@@ -62,7 +62,7 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id, props}) {
     }
   }, [width])
 
-  console.log(showAmount)
+  // console.log(showAmount)
 
   let filteredMovieArray = movies.filter(movie => movie.backdrop_path)
 
