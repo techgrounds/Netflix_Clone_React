@@ -77,17 +77,17 @@ class App extends Component {
         <div className="App">
           {/* <Header /> */}
           <Switch>
-            <Route 
+            <Route
               exact
               path="/Home"
               component={Home}
-              render = {(props)   => 
-                  !currentUser ? (
-                <Redirect to="/LogInScreen" />
-              ) : (
-                <Home currentUser={currentUser} {...props} />
-              )
-            }
+              render={(props) =>
+                !currentUser ? (
+                  <Redirect to="/LogInScreen" />
+                ) : (
+                  <Home currentUser={currentUser} {...props} />
+                )
+              }
             />
 
             {/* <Route path="/FilmsScreen" component={FilmsScreen} />
