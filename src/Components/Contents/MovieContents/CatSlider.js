@@ -71,7 +71,7 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id, props}) {
       <h2 className="movie__title text-secondary px-4">{title}</h2>
       <Carousel show={showAmount} infiniteLoop={false} active={active}>
         {filteredMovieArray.map((movie, index) => (
-          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} props={props} setActive={setActive} />
+          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} key={movie.id} id={movie.id} props={props} setActive={setActive} />
         ))}
       </Carousel>
     </div>
