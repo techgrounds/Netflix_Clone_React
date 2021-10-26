@@ -6,11 +6,14 @@ import { baseInstance } from "../../../utilities/axios";
 export default function CatSlider({ title, fetchUrl, isLargeRow, id,  props}) {
   const [movies, setMovies] = useState([]);
   const [active, setActive] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth);
+  const [showAmount, setShowAmount] = useState(6)
 
+  
   useEffect(() => {
     async function fetchData() {
       const request = await baseInstance.get(fetchUrl);
-      setMovies(request.data.results);
+      request.data.results ? setMovies(request.data.results) : setMovies(request.data.cast);
       return request;
     }
 
@@ -18,18 +21,48 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id,  props}) {
   }, [fetchUrl]);
 
 
+    useEffect(() => {
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+
+    console.log(width)
+
+
+    // set number of films shown in category lane
+useEffect(() => {
+  if (width < 1440) {
+    setShowAmount(6)
+  }
+  if ((width < 1200) & (width > 1440)) {
+    setShowAmount(5)
+  }
+ if ((width < 1200) & (width > 1000)) {
+   setShowAmount(4)
+ }
+ if ((width < 1000) & (width > 400)) {
+  setShowAmount(3)
+}
+if (width < 600) {
+  setShowAmount(2)
+}
+  return () => {
+    
+  }
+}, [width])
+
+
  let filteredMovieArray = movies.filter(movie => movie.backdrop_path)
 
-
-
-
-  
   return (
     <div className="cat-slider-container container-fluid py-5">
       <h2 className="movie__title text-secondary px-4">{title}</h2>
-      <Carousel show={5} infiniteLoop={true} active={active}>
+      <Carousel show={showAmount} infiniteLoop={false} active={active}>
         {filteredMovieArray.map((movie, index) => (
-          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} props={props} setActive={setActive} />
+          <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} props={props} setActive={setActive}/>
         ))}
       </Carousel>
     </div>
