@@ -4,10 +4,17 @@ import logo from "../../../Assets/images/netflix-logo.svg";
 import SearchBar from "../HeaderContents/SearchBar";
 import avator from "../../../Assets/images/Netflix-avatar.png";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import LogOutScreen from "../../Pages/UserPages/LogOutScreen";
+
+// UserAuth
+import LogIn from "./../UserAuthContent/LogOut";
+import LogOut from "./../UserAuthContent/LogOut";
+// import UserAuth from "../../Contents/UserAuthContent/UserAuth";
 
 import { FaBell } from "react-icons/fa";
-const HeaderNav = (props) => {
+
+const HeaderNav = ({ children, ...otherProps }) => {
+    const { currentUser } = otherProps;
+
     const [navBackground, setNavBackground] = useState(false);
     const navRef = useRef();
     navRef.current = navBackground;
@@ -35,16 +42,17 @@ const HeaderNav = (props) => {
                     transition: "1s ease",
                     backgroundColor: navBackground ? "#141414" : "transparent",
                 }}
-            >   <Link to = "/Home">
-                <Navbar.Brand>
-                    {" "}
-                    <img
-                    
-                        className="d-inline-block align-top logo"
-                        src={logo}
-                        alt="Netflix Logo"
-                    />
-                </Navbar.Brand>
+            >
+                {" "}
+                <Link to="/HomeScreen">
+                    <Navbar.Brand>
+                        {" "}
+                        <img
+                            className="d-inline-block align-top logo"
+                            src={logo}
+                            alt="Netflix Logo"
+                        />
+                    </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
@@ -52,7 +60,7 @@ const HeaderNav = (props) => {
                     className="px-md-5 px-sm-5 px-xs-5 py-md-5 py-sm-5"
                 >
                     <Nav className="mr-auto">
-                        <Link className="nav-link active" to="/Home">
+                        <Link className="nav-link active" to="/HomeScreen">
                             Home <span className="sr-only">(current)</span>
                         </Link>
                         <Link className="nav-link" to="/FilmsScreen">
@@ -71,26 +79,19 @@ const HeaderNav = (props) => {
                         <NavDropdown.Item href="#">Profilen Beheren</NavDropdown.Item>
                         <NavDropdown.Divider />
 
-                        <NavDropdown.Item href="DashboardScreen">
-                            Account
+                        <NavDropdown.Item href="DashboardScreen">Account</NavDropdown.Item>
 
+                        <NavDropdown.Item href="#">Helpcentrum</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                            {/* <UserAuth /> */}
+
+                            <div>
+                                {!currentUser && <LogIn />}
+                                {currentUser && <LogOut />}
+                            </div>
                         </NavDropdown.Item>
-
-
-                        <NavDropdown.Item href="#">
-                            Helpcentrum
-
-                        </NavDropdown.Item>
-
-
-                        <NavDropdown.Item >
-                            <LogOutScreen />
-                        </NavDropdown.Item>
-
-
                     </NavDropdown>
-
-
                 </Navbar.Collapse>
             </Navbar>
         </>

@@ -4,9 +4,14 @@ import logo from "../../../Assets/images/netflix-logo.svg";
 import { Link } from "react-router-dom";
 import avator from "../../../Assets/images/Netflix-avatar.png";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import LogOutScreen from "../../Pages/UserPages/LogOutScreen";
 
-const HeaderNav = (props) => {
+import LogIn from "./../UserAuthContent/LogOut";
+import LogOut from "./../UserAuthContent/LogOut";
+// import UserAuth from "../../Contents/UserAuthContent/UserAuth";
+
+const HeaderNav = ({ children, ...otherProps }) => {
+    const { currentUser } = otherProps;
+
     const [navBackground, setNavBackground] = useState(false);
     const navRef = useRef();
     navRef.current = navBackground;
@@ -34,8 +39,10 @@ const HeaderNav = (props) => {
                     transition: "1s ease",
                     backgroundColor: navBackground ? "#141414" : "transparent",
                 }}
-            >    <Link to="/Home">
-                    <Navbar.Brand >
+            >
+                {" "}
+                <Link to="/HomeScreen">
+                    <Navbar.Brand>
                         <img
                             className="d-inline-block align-top logo"
                             src={logo}
@@ -60,9 +67,13 @@ const HeaderNav = (props) => {
                         <NavDropdown.Item href="DashboardScreen">Account</NavDropdown.Item>
 
                         <NavDropdown.Item href="#">Helpcentrum</NavDropdown.Item>
-
+                        <NavDropdown.Divider />
                         <NavDropdown.Item>
-                            <LogOutScreen />
+                            {/* <UserAuth /> */}
+                            <div>
+                                {!currentUser && <LogIn />}
+                                {currentUser && <LogOut />}
+                            </div>
                         </NavDropdown.Item>
                     </NavDropdown>
                 </Navbar.Collapse>

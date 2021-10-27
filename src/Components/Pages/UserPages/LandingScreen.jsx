@@ -38,8 +38,7 @@ export default function LandingPage() {
               <img className="logo" src={logo} alt="Netflix Logo" />
             </LinkContainer>
             <div className="navBtn ml-auto">
-              <button>
-                {" "}
+              <button className="px-2 rounded">
                 <FaGlobeAmericas /> Nederlands
               </button>
               <LinkContainer to="/LogInScreen">
