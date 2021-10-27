@@ -73,6 +73,7 @@ export default function ModalContent(props) {
                     let trailerData = results[0];
                     if (trailerData.data.results.length === 0) {
                         setMainTrailerLink(undefined);
+                        setTrailerLinks(undefined);
                     } else {
                         setMainTrailerLink(trailerData.data.results[0].key);
                         trailerData.data.results[0].size < 721 ? setMainTrailerHeight(trailerData.data.results[0].size) : setMainTrailerHeight(720);
