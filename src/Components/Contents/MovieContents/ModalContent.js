@@ -198,15 +198,18 @@ export default function ModalContent(props) {
                     <span className="font-italic">more</span>
                 </>
             } else {
-
+                console.log("Cast is minder dan 3");
+                console.log(cast.length);
                 let tempArray = [];
 
                 for (let i = 0; i < cast.length; i++) {
                     const element = cast[i];
-                    if (i === cast.length - 1) {
-                        tempArray.push(element.name);
-                    } else {
+                    if (i === 0) {
+                        setCast();
+                    } else if (i < cast.length - 1) {
                         tempArray.push(element.name + ", ");
+                    } else {
+                        tempArray.push(element.name);
                     }
                 }
 
