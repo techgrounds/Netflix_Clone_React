@@ -43,98 +43,76 @@ export default function ModalContent(props) {
         if (movie !== undefined) {
             const axios = require('axios');
 
-            // Get link to trailer to auto play
-            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
-                .then(function (response) {
-                    // handle success
-                    setMainTrailerLink(response.data.results[0].key);
-                    response.data.results[0].size < 721 ? setMainTrailerHeight(response.data.results[0].size) : setMainTrailerHeight(720);
-                    let tempArray = [];
-                    response.data.results.forEach(element => {
-                        tempArray.push({
-                            key: element.key,
-                            type: element.type
+            function GetMainTrailerData() {
+                return axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`);
+            }
+
+            function GetGenresListData() {
+                return axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`);
+            }
+
+            function GetCastData() {
+                return axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/credits?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`);
+            }
+
+            function GetRuntimeData() {
+                return axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`);
+            }
+
+            function GetSimilarContentData() {
+                return axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US&page=1`);
+            }
+
+            function GetAgeCertificationData() {
+                return axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/release_dates?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`);
+            }
+
+            Promise.all([GetMainTrailerData(), GetGenresListData(), GetCastData(), GetRuntimeData(), GetSimilarContentData(), GetAgeCertificationData()])
+                .then(function (results) {
+                    // Set link to trailer to auto play
+                    let trailerData = results[0];
+                    if (trailerData.data.results.length === 0) {
+                        setMainTrailerLink(undefined);
+                    } else {
+                        setMainTrailerLink(trailerData.data.results[0].key);
+                        trailerData.data.results[0].size < 721 ? setMainTrailerHeight(trailerData.data.results[0].size) : setMainTrailerHeight(720);
+                        let tempArray = [];
+                        trailerData.data.results.forEach(element => {
+                            tempArray.push({
+                                key: element.key,
+                                type: element.type
+                            });
                         });
-                    });
-                    setTrailerLinks(tempArray);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .then(function () {
-                    // always executed
-                });
+                        setTrailerLinks(tempArray);
+                    }
 
-            // Get list of genres
-            axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
-                .then(function (response) {
-                    // handle success
-                    setTmdbGenres(response.data.genres);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .then(function () {
-                    // always executed
-                });
+                    // Set list of genres
+                    let genresData = results[1];
+                    setTmdbGenres(genresData.data.genres);
 
-            // Get names of the cast
-            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/credits?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
-                .then(function (response) {
-                    // handle success
-                    setCast(response.data.cast);
-
-                    for (let index = 0; index < response.data.crew.length; index++) {
-                        const element = response.data.crew[index];
+                    // Set names of the cast
+                    let castData = results[2];
+                    setCast(castData.data.cast);
+                    for (let index = 0; index < castData.data.crew.length; index++) {
+                        const element = castData.data.crew[index];
                         if (element.job === "Director") {
                             setDirector(element.name);
                         }
                     }
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .then(function () {
-                    // always executed
-                });
 
-            // Get runtime
-            axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
-                .then(function (response) {
-                    // handle success
-                    setRuntime(response.data.runtime);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .then(function () {
-                    // always executed
-                });
+                    // Set runtime
+                    let runtimeData = results[3];
+                    setRuntime(runtimeData.data.runtime);
 
-            // Get similar movies
-            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US&page=1`)
-                .then(function (response) {
-                    setSimilarContent(response.data.results);
-                })
-                .catch(function (error) {
+                    // Set similar movies
+                    let similarContentData = results[4];
+                    setSimilarContent(similarContentData.data.results);
 
-                })
-                .then(function () {
-
-                });
-
-            // Get age certification for clicked video
-            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/release_dates?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
-                .then(function (response) {
-                    let incomingData = response.data.results;
-                    for (let i = 0; i < incomingData.length; i++) {
-                        if (incomingData[i].iso_3166_1 == "NL") {
-                            let movieCertification = incomingData[i].release_dates[0].certification;
-
+                    // Set age certification for clicked video
+                    let ageCertificationData = results[5].data.results;
+                    for (let i = 0; i < ageCertificationData.length; i++) {
+                        if (ageCertificationData[i].iso_3166_1 == "NL") {
+                            let movieCertification = ageCertificationData[i].release_dates[0].certification;
                             let tempObj;
 
                             switch (movieCertification) {
@@ -166,15 +144,7 @@ export default function ModalContent(props) {
                             }
                         }
                     }
-
-                })
-                .catch(function (error) {
-
-                })
-                .then(function () {
-
                 });
-
         }
 
         return () => {
@@ -266,22 +236,6 @@ export default function ModalContent(props) {
         return tempArray.map(element => {
             return <span>{element}</span>
         });
-    }
-
-    function ConvertNumberArrayToGenreArray() {
-        let tempArray = [];
-        for (let i = 0; i < filmGenres.length; i++) {
-            const element = filmGenres[i];
-
-            for (let j = 0; j < tmdbGenres.length; j++) {
-                const tmdbElement = tmdbGenres[j];
-                if (element === tmdbElement.id) {
-                    tempArray.push(tmdbElement.name);
-                }
-            }
-        }
-
-        return tempArray;
     }
 
     function GetRuntime() {
@@ -382,7 +336,7 @@ export default function ModalContent(props) {
                     </Container>
                     <Container fluid>
                         <Row className="px-5">
-                            <Col className="px-0">
+                            <Col className="">
                                 <div className="modal-hr" />
                                 <button className="expand-mzd-button" onClick={toggleButton}>
                                     {toggleExpanded ? <FaChevronUp color="white" /> : <FaChevronDown color="white" />}
