@@ -38,12 +38,12 @@ export default function HomeCategories(props) {
                 fetchUrl={movieDataRequests.fetchDisney}
             // isLargeRow
             />
-            <CatSlider
+            {/* <CatSlider
                 modal={props}
                 title="Ryan Reynolds"
                 fetchUrl={movieDataRequests.fetchActor}
             // isLargeRow
-            />
+            /> */}
 
 
 
