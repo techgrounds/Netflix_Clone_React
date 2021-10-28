@@ -36,29 +36,28 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id, modal}) {
 
  
 
+// set number of films shown in category lane
+useEffect(() => {
+  
+  if (width >= 1440) {
+    setShowAmount(6)
+  }
+  if ((width < 1440) & (width > 1200)) {
+    setShowAmount(5)
+  }
+  if ((width < 1200) & (width > 1000)) {
+    setShowAmount(4)
+  }
+  if ((width < 1000) & (width > 600)) {
+    setShowAmount(3)
+  }
+  if (width < 600) {
+    setShowAmount(2)
+  }
+  return () => {
 
-  // set number of films shown in category lane
-  useEffect(() => {
-    // console.log("width = " + width)
-    if (width < 1440) {
-      setShowAmount(6)
-    }
-    if ((width < 1200) & (width > 1440)) {
-      setShowAmount(5)
-    }
-    if ((width < 1200) & (width > 1000)) {
-      setShowAmount(4)
-    }
-    if ((width < 1000) & (width > 400)) {
-      setShowAmount(3)
-    }
-    if (width < 600) {
-      setShowAmount(2)
-    }
-    return () => {
-
-    }
-  }, [width])
+  }
+}, [width])
 
   // console.log(showAmount)
 
