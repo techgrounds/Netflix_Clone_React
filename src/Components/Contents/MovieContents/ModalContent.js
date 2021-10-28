@@ -176,6 +176,7 @@ export default function ModalContent(props) {
     function ShowCast(all) {
 
         if (all) {
+            // Show the entire cast
             let tempArray = [];
 
             for (let i = 0; i < cast.length; i++) {
@@ -190,6 +191,7 @@ export default function ModalContent(props) {
             return stringOfCast;
         }
         else {
+            // Show 3 names and more
             if (cast.length > 3) {
                 return <>
                     <span>{cast[0].name + ", "}</span>
@@ -202,17 +204,22 @@ export default function ModalContent(props) {
 
                 for (let i = 0; i < cast.length; i++) {
                     const element = cast[i];
-                    if (i === 0) {
+                    if (cast.length === 0) {
                         setCast();
+                    } else if (cast.length === 1){
+                        tempArray.push(element.name);
                     } else if (i < cast.length - 1) {
                         tempArray.push(element.name + ", ");
-                    } else {
+                    } else if (i === cast.length - 1){
                         tempArray.push(element.name);
                     }
                 }
 
+                let stringOfCast = tempArray.join("");
+                return stringOfCast;
+                // onderstaande werkt niet om een of andere reden
                 return tempArray.forEach(element => {
-                    <span>{element}</span>
+                    <span>{"element"}</span>
                 });
             }
         }
