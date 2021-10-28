@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { auth, handleUserProfile } from "./firebase/utils";
 
-// GitHub Pages -- using ES6 modules //
+// GitHub Pages Hosting -- using ES6 modules //
 import {
   HashRouter as Router,
   Route,
@@ -9,7 +9,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-// Firebase hosting -- using ES6 modules //
+// Firebase Hosting -- using ES6 modules //
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -18,19 +18,16 @@ import {
 // } from "react-router-dom";
 import HomeScreen from "./Components/Pages/MainPages/HomeScreen";
 import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
-import LandingScreen from "./Components/Pages/UserPages/LandingScreen";
-import LogInScreen from "./Components/Pages/UserPages/LogInScreen";
-import RegistrationScreen from "./Components/Pages/UserPages/RegistrationScreen";
-import RecoveryScreen from "./Components/Pages/UserPages/RecoveryScreen";
-import DashboardScreen from "./Components/Pages/UserPages/DashboardScreen";
-// import LogOutScreen from "./Components/Pages/UserPages/LogOutScreen";
 import ModalContent from "./Components/Contents/MovieContents/ModalContent";
 import DemoEphremCategories from "./Components/Contents/DemoEphremCategories";
 
-//
-// import LogIn from "./Components/Contents/UserAuthContent/LogIn";
+import RecoveryScreen from "./Components/Pages/UserPages/RecoveryScreen";
+import RegistrationScreen from "./Components/Pages/UserPages/RegistrationScreen";
+import DashboardScreen from "./Components/Pages/UserPages/DashboardScreen";
+import LandingScreen from "./Components/Pages/UserPages/LandingScreen";
+import LogInScreen from "./Components/Pages/UserPages/LogInScreen";
 import LogOut from "./Components/Contents/UserAuthContent/LogOut";
-//
+// import LogIn from "./Components/Contents/UserAuthContent/LogIn";
 
 const initialState = {
   currentUser: null,
