@@ -32,17 +32,14 @@ const Carousel = (props) => {
 
     const next = () => {
         if (isRepeating || currentIndex < (length - show)) {
-            setCurrentIndex(prevState => prevState + 4)
+            setCurrentIndex(prevState => prevState + show)
             console.log(currentIndex)
-        
-        }
-        
-        
+        }   
     }
 
     const prev = () => {
         if (isRepeating || currentIndex > 0) {
-            setCurrentIndex(prevState => prevState - 4)
+            setCurrentIndex(prevState => prevState - show)
         }
     }
 

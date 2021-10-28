@@ -64,7 +64,13 @@ class SignIn extends Component {
         return (
             <div className="container user-auth-form__holder p-5">
                 <form className="user-auth__form" onSubmit={this.handleSubmit}>
-                    <h2 className="user-auth__heading"> Inloggen</h2>
+                    <h2 className="user-auth__heading mb-4"> Inloggen</h2>
+                    <p> Use the following Credentials to SignIn or create an account</p>
+                    <div className=" text-white p-3 rounded guest-user text-left">
+
+                        <p className="text-white-50">Email: <strong>guest@netflixclone.com</strong> </p>
+                        <p className="text-white-50">Password: <strong>guestTG</strong> </p>
+                    </div>
 
                     <div className="form-wrapper my-5">
                         <FormInput
@@ -103,16 +109,16 @@ class SignIn extends Component {
                         >
                             Inloggen
                         </Button>
-                        <Link to = "/Home"> 
-                        <Button
-                    variant="submit"
-                    size="lg"
-                    type="submit"
-                    className="btn btn--signIn-email mt-4 py-3"
-                  >
-                      Door gaan zonder in te loggen
-                  </Button>
-                  </Link>
+                        {/* <Link to="/HomeScreen">
+                            <Button
+                                variant="submit"
+                                size="lg"
+                                type="submit"
+                                className="btn btn--signIn-email mt-4 py-3"
+                            >
+                                Door gaan zonder in te loggen
+                            </Button>
+                        </Link> */}
                         <div className="row mt-5">
                             <div className="col-md-6 p-0 text-left">
                                 <label className="rememberMe">
@@ -137,7 +143,9 @@ class SignIn extends Component {
 
                         <div>
                             <FaGoogle className="fb-login" />
-                            <Link to="#" onClick={signInWithGoogle}>Inloggen met Google</Link>
+                            <Link to="#" onClick={signInWithGoogle}>
+                                Inloggen met Google
+                            </Link>
 
                             {/* 
                             <Button
@@ -146,7 +154,6 @@ class SignIn extends Component {
                             >
                                 SignIn with Google
                             </Button> */}
-
                         </div>
                         <br />
                         <div>

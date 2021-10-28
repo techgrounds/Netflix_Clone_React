@@ -1,32 +1,41 @@
-import React, { Component, lazy } from "react";
+import React, { Component } from "react";
 import { auth, handleUserProfile } from "./firebase/utils";
 
-// using ES6 modules
-// import { Link } from "react-router-dom";
-
+// GitHub Pages -- using ES6 modules //
 import {
-  BrowserRouter as Router,
-  Switch,
+  HashRouter as Router,
   Route,
+  Switch,
   Redirect,
 } from "react-router-dom";
-// import Header from "./Components/Layout/Header";
-// import Footer from "./Components/Layout/Footer";
-import Home from "./Components/Pages/MainPages/HomeScreen";
+
+// Firebase hosting -- using ES6 modules //
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Redirect,
+// } from "react-router-dom";
+import HomeScreen from "./Components/Pages/MainPages/HomeScreen";
 import FilmsScreen from "./Components/Pages/MainPages/FilmsScreen";
 import LandingScreen from "./Components/Pages/UserPages/LandingScreen";
 import LogInScreen from "./Components/Pages/UserPages/LogInScreen";
 import RegistrationScreen from "./Components/Pages/UserPages/RegistrationScreen";
 import RecoveryScreen from "./Components/Pages/UserPages/RecoveryScreen";
 import DashboardScreen from "./Components/Pages/UserPages/DashboardScreen";
-import LogOutScreen from "./Components/Pages/UserPages/LogOutScreen";
+// import LogOutScreen from "./Components/Pages/UserPages/LogOutScreen";
 import ModalContent from "./Components/Contents/MovieContents/ModalContent";
 import DemoEphremCategories from "./Components/Contents/DemoEphremCategories";
+
+//
+// import LogIn from "./Components/Contents/UserAuthContent/LogIn";
+import LogOut from "./Components/Contents/UserAuthContent/LogOut";
+//
+
 const initialState = {
   currentUser: null,
 };
 
-// function App() {  // RESERVED //
 // class App extends React.Component { // RESERVED //
 class App extends Component {
   constructor(props) {
@@ -75,35 +84,40 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <Header /> */}
           <Switch>
-            <Route 
+            <Route
               exact
-              path="/Home"
-              component={Home}
-              render = {(props)   => 
-                  !currentUser ? (
-                <Redirect to="/LogInScreen" />
-              ) : (
-                <Home currentUser={currentUser} {...props} />
-              )
-            }
+              path="/HomeScreen"
+              render={(props) =>
+                !currentUser ? (
+                  <Redirect to="/LogInScreen" />
+                ) : (
+                  <HomeScreen currentUser={currentUser} {...props} />
+                )
+              }
             />
 
-            {/* <Route path="/FilmsScreen" component={FilmsScreen} />
-            <Route path="/LandingScreen" component={LandingScreen} /> */}
-
             <Route
+              exact
               path="/FilmsScreen"
-              render={(props) => <FilmsScreen currentUser={currentUser} {...props} />}
+              render={(props) =>
+                !currentUser ? (
+                  <Redirect to="/LoginScreen" />
+                ) : (
+                  <FilmsScreen currentUser={currentUser} {...props} />
+                )
+              }
             />
+
             <Route
-              exact path="/"
+              exact
+              path="/"
               render={() => <LandingScreen currentUser={currentUser} />}
             />
 
             <Route
-              exact path="/LogInScreen"
+              exact
+              path="/LogInScreen"
               render={() =>
                 currentUser ? (
                   <Redirect to="/DashboardScreen" />
@@ -114,19 +128,19 @@ class App extends Component {
             />
 
             <Route
-              path="/LogOutScreen"
+              path="/LogOut"
               render={() =>
                 !currentUser ? (
-                  // <Redirect to="/LogInScreen" />
-                  <Redirect to="/LandingScreen" />
+                  <Redirect to="/LogInScreen" />
                 ) : (
-                  <LogOutScreen currentUser={currentUser} />
+                  <LogOut currentUser={currentUser} />
                 )
               }
             />
 
             <Route
-              exact path="/DashboardScreen"
+              exact
+              path="/DashboardScreen"
               render={() =>
                 !currentUser ? (
                   <Redirect to="/LoginScreen" />
@@ -147,10 +161,12 @@ class App extends Component {
               }
             />
             <Route path="/RecoveryScreen" component={RecoveryScreen} />
-            <Route path="/DemoEphremCategories" component={DemoEphremCategories} />
+            <Route
+              path="/DemoEphremCategories"
+              component={DemoEphremCategories}
+            />
           </Switch>
           <Route path="/" render={(props) => <ModalContent {...props} />} />
-          {/* <Footer /> */}
         </div>
       </Router>
     );
