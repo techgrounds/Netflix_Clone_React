@@ -39,7 +39,7 @@ export default function HomeCategories(props) {
             // isLargeRow
             />
              <CatSlider
-                props={props}
+                modal={props}
                 title="Scarlett Johansson"
                 fetchUrl={movieDataRequests.fetchActress}            
             // isLargeRow
