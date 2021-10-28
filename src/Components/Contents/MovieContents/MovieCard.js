@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 export default function MovieCard({ movie, index, isLargeRow, id, setActive, modal}) {
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
-    console.log(modal)
+    
+    const modal = props;
     const mountedStyle = {
         animation: "inAnimation 0.3s ease-out",
         animationFillMode: "forwards",
@@ -32,7 +33,7 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, mod
                 })
                 .catch(function (error) {
                     // handle error
-                    console.log(error);
+                    // console.log(error);
                 })
                 .then(function () {
                     // always executed
