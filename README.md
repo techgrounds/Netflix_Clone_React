@@ -96,7 +96,7 @@ CONFIGURATION & FILE / FOLDER STRUCTURES:
 └────────────
 ```
 
-### TechGrounds Web Development
+### TechGrounds Web Development, October / 2021
 
 ![Netflix Cloning - Logo](src/Assets/images/netflix-logo.svg)
 ![Netflix Cloning - Home Page](src/Assets/images/Netflix-home-page-screenshot.png)
