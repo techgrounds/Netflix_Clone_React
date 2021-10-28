@@ -39,19 +39,18 @@ export default function LandingPage() {
             </LinkContainer>
             <div className="navBtn ml-auto">
               <button className="px-2 rounded">
-                <FaGlobeAmericas /> Nederlands
+                <FaGlobeAmericas /> English
               </button>
               <LinkContainer to="/LogInScreen">
-                <button>Inloggen</button>
+                <button>Sign In</button>
               </LinkContainer>
             </div>
           </Navbar.Brand>
         </header>
-        <h1>Onbeperkt series, films en meer kijken.</h1>
-        <h4>Kijk waar je wilt. Altijd opzegbaar.</h4>
+        <h1>Unlimited films, TV programmes and more.</h1>
+        <h4>Watch anywhere. Cancel at any time.</h4>
         <h5>
-          Klaar om te kijken? Voer je e-mailadres in om je lidmaatschap te
-          starten of te hernieuwen.
+        Ready to watch? Enter your email to create or restart your membership.
         </h5>
 
         <form action="" method="post">
@@ -59,18 +58,17 @@ export default function LandingPage() {
             type="email"
             name="email"
             id="email"
-            placeholder="E-mailadres"
+            placeholder="Email address"
           />
-          <button type="submit">Aan de slag &#62;</button>
+          <button type="submit">Get Started &#62;</button>
         </form>
       </div>
 
       <div className="our-story-card">
         <div className="our-story-card-text">
-          <h2 className="our-story-card-title">Kijk op je tv.</h2>
+          <h2 className="our-story-card-title">Enjoy on your TV.</h2>
           <p className="our-story-card-subtitle">
-            Kijk op smart-tv's, PlayStation, Xbox, Chromecast, Apple TV,
-            blu-rayspelers en meer.
+          Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.
           </p>
         </div>
         <div className="our-story-card-img-container">
@@ -116,27 +114,26 @@ export default function LandingPage() {
 
               <div className="our-story-card-animation-text">
                 <div className="text-0">Stranger Things</div>
-                <div className="text-1">Downloaden...</div>
+                <div className="text-1">Downloading...</div>
               </div>
             </div>
           </div>
         </div>
         <div className="our-story-card-text">
           <h2 className="our-story-card-title">
-            Download series die je offline wilt kijken.
+          Download your programmes to watch offline.
           </h2>
           <p className="our-story-card-subtitle">
-            Sla je favorieten eenvoudig op zodat je altijd wat kunt kijken.
+          Save your favourites easily and always have something to watch.
           </p>
         </div>
       </div>
 
       <div className="our-story-card">
         <div className="our-story-card-text">
-          <h2 className="our-story-card-title">Kijk overal.</h2>
+          <h2 className="our-story-card-title">Watch everywhere.</h2>
           <p className="our-story-card-subtitle">
-            Stream onbeperkt series en films op je telefoon, tablet, laptop en
-            tv, zonder meer te betalen.
+          Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.
           </p>
         </div>
         <div className="our-story-card-img-container">
@@ -173,22 +170,20 @@ export default function LandingPage() {
           />
         </div>
         <div className="our-story-card-text">
-          <h2 className="our-story-card-title">Maak profielen voor kids.</h2>
+          <h2 className="our-story-card-title">Create profiles for children.</h2>
           <p className="our-story-card-subtitle">
-            Laat kids op avontuur gaan met hun favoriete personages in een
-            omgeving die speciaal voor hen is gemaakt. Gratis bij je
-            lidmaatschap.
+          Send children on adventures with their favourite characters in a space made just for them – free with your membership.
           </p>
         </div>
       </div>
 
       <div className="our-story-card">
         <div className="our-story-card-text">
-          <h2 className="our-story-card-title">Veelgestelde vragen</h2>
+          <h2 className="our-story-card-title">Frequently Asked Questions</h2>
           <ul className="faq-list">
             <li className="faq-list-item">
               <button className="faq-question">
-                Wat kan ik kijken op Netflix?
+                What can I watch on Netflix?
               </button>
             </li>
           </ul>
@@ -197,8 +192,7 @@ export default function LandingPage() {
           {/* <div className={clicked === i ? "accordion-content open" : "accordion-content"} /> */}
           {/* Accordion */}
           <p>
-            Klaar om te kijken? Voer je e-mailadres in om je lidmaatschap te
-            starten of te hernieuwen.
+          Ready to watch? Enter your email to create or restart your membership.
           </p>
 
           <form className="form" action="" method="post">
@@ -206,9 +200,9 @@ export default function LandingPage() {
               type="email"
               name="email"
               id="email"
-              placeholder="E-mailadres"
+              placeholder="Email address"
             />
-            <button type="submit">Aan de slag &#62;</button>
+            <button type="submit">Get Started &#62;</button>
           </form>
           {/* <FooterGuest /> */}
         </div>

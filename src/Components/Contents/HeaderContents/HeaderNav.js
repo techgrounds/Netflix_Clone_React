@@ -76,12 +76,12 @@ const HeaderNav = ({ children, ...otherProps }) => {
                     <NavDropdown title="" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#">User 1</NavDropdown.Item>
                         <NavDropdown.Item href="#">User 2</NavDropdown.Item>
-                        <NavDropdown.Item href="#">Profilen Beheren</NavDropdown.Item>
+                        <NavDropdown.Item href="#">Manage Profiles</NavDropdown.Item>
                         <NavDropdown.Divider />
 
                         <NavDropdown.Item href="DashboardScreen">Account</NavDropdown.Item>
 
-                        <NavDropdown.Item href="#">Helpcentrum</NavDropdown.Item>
+                        <NavDropdown.Item href="#">Help Centre</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item>
                             {/* <UserAuth /> */}

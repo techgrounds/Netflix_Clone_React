@@ -64,7 +64,7 @@ class SignIn extends Component {
         return (
             <div className="container user-auth-form__holder p-5">
                 <form className="user-auth__form" onSubmit={this.handleSubmit}>
-                    <h2 className="user-auth__heading mb-4"> Inloggen</h2>
+                    <h2 className="user-auth__heading mb-4"> Sign In</h2>
                     <p> Use the following Credentials to SignIn or create an account</p>
                     <div className=" text-white p-3 rounded guest-user text-left">
 
@@ -107,7 +107,7 @@ class SignIn extends Component {
                             type="submit"
                             className="btn btn--signIn-email mt-4 py-3"
                         >
-                            Inloggen
+                            Sign In
                         </Button>
                         {/* <Link to="/HomeScreen">
                             <Button
@@ -123,7 +123,7 @@ class SignIn extends Component {
                             <div className="col-md-6 p-0 text-left">
                                 <label className="rememberMe">
                                     <span className="login-remember-me-label-text">
-                                        <font> Mijn gegevens onthouden</font>
+                                        <font>Remember me</font>
                                     </span>
                                     {/* <input type="checkbox" checked="checked" /> */}
                                     <input
@@ -137,14 +137,14 @@ class SignIn extends Component {
                                 </label>
                             </div>
                             <div className="col-md-6 p-0 text-right">
-                                <Link to="#">Hulp nodig?</Link>
+                                <Link to="#">Need help?</Link>
                             </div>
                         </div>
 
                         <div>
                             <FaGoogle className="fb-login" />
                             <Link to="#" onClick={signInWithGoogle}>
-                                Inloggen met Google
+                                Login with Google
                             </Link>
 
                             {/* 
@@ -158,15 +158,15 @@ class SignIn extends Component {
                         <br />
                         <div>
                             <p>
-                                Is Netflix nieuw voor jou?{" "}
-                                <Link to="/RegistrationScreen">Registreer je nu</Link>
+                            New to Netflix?{" "}
+                                <Link to="/RegistrationScreen">Sign up now.</Link>
                             </p>
                         </div>
                         <p className="">
                             This page is protected by Google reCAPTCHA to ensure you're not a
                             bot.{" "}
                             <Link className="privacy-link" to="#">
-                                Lees meer informatie
+                                Learn more.
                             </Link>
                         </p>
                     </div>

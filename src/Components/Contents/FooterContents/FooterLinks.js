@@ -8,42 +8,20 @@ const FooterLinks = () => {
                 <ul className="list-unstyled">
                     <li className="btn-link">
                         <Link className="text-white-50" to="#">
-                            Audiodescriptie
+                            Audio Description
                         </Link>
 
 
                     </li>
                     <li className="btn-link">
                         <Link className="text-white-50" to="#">
-                            Relaties met investeerders
+                            Investor Relations
                         </Link>
 
                     </li>
                     <li className="btn-link">
                         <Link className="text-white-50" to="#">
-                            Wettelijke bepalingen
-                        </Link>
-
-                    </li>
-                </ul>
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-4 col-12">
-                <ul className="list-unstyled">
-                    <li className="btn-link">
-                        <Link className="text-white-50" to="#">
-                            Helpcentrum
-                        </Link>
-
-                    </li>
-                    <li className="btn-link">
-                        <Link className="text-white-50" to="#">
-                            Vacatures
-                        </Link>
-
-                    </li>
-                    <li className="btn-link">
-                        <Link className="text-white-50" to="#">
-                            Cookievoorkeuren
+                            Legal Notices
                         </Link>
 
                     </li>
@@ -53,19 +31,41 @@ const FooterLinks = () => {
                 <ul className="list-unstyled">
                     <li className="btn-link">
                         <Link className="text-white-50" to="#">
-                            Cadeaubonnen
+                            Help Centre
                         </Link>
 
                     </li>
                     <li className="btn-link">
                         <Link className="text-white-50" to="#">
-                            Gebruksvoorwaarden
+                            Jobs
                         </Link>
 
                     </li>
                     <li className="btn-link">
                         <Link className="text-white-50" to="#">
-                            Bedrijfsgegevens
+                            Cookie Preferences
+                        </Link>
+
+                    </li>
+                </ul>
+            </div>
+            <div className="col-sm-6 col-md-4 col-lg-4 col-12">
+                <ul className="list-unstyled">
+                    <li className="btn-link">
+                        <Link className="text-white-50" to="#">
+                            Gift Cards
+                        </Link>
+
+                    </li>
+                    <li className="btn-link">
+                        <Link className="text-white-50" to="#">
+                            Terms of Use
+                        </Link>
+
+                    </li>
+                    <li className="btn-link">
+                        <Link className="text-white-50" to="#">
+                            Corporate Information
                         </Link>
 
                     </li>

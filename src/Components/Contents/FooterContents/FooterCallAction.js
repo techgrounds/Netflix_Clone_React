@@ -8,13 +8,13 @@ const FooterCallaction = () => {
             <ul className="list-unstyled">
                 <li className="btn-link">
                     <Link className="text-white-50" to="#">
-                        Audio en ondertiteling
+                        Audio and Subtitles
                     </Link>
 
                 </li>
                 <li className="btn-link">
                     <Link className="text-white-50" to="#">
-                        Mediacenter
+                        Media Centre
                     </Link>
                 </li>
                 <li className="btn-link">
@@ -25,7 +25,7 @@ const FooterCallaction = () => {
                 </li>
                 <li className="btn-link">
                     <Link className="text-white-50" to="#">
-                        Contact opneme
+                        Contact Us
                     </Link>
 
                 </li>
@@ -44,7 +44,7 @@ const FooterCallaction = () => {
               --> */}
 
             <button type="button" className="btn btn-secondary">
-                Servicecode
+                Service Code
             </button>
         </>
 

@@ -8,22 +8,22 @@ const FooterGuest = () => {
     return (
         <footer className="container-fluid footer-guest text-left py-5 mt-5">
             <div className="container text-white-50 p-4">
-                <p> Vragen? Bel 0800-022-9647</p> <br />
+                <p>Questions? Call 0800-022-5173</p> <br />
                 <div className="row">
                     <div className="col-xl-3 col-sm-6 col-md-3">
                         <ul className="list-unstyled">
                             <li className="btn-link">
-                                <Link to="/fq">Veelgestelde vragen</Link>
+                                <Link to="/fq">FAQ</Link>
                             </li>
                             <li className="btn-link">
-                                <Link to="/coockie">Cookievoorkeuren</Link>
+                                <Link to="/coockie">Cookie Preferences</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="col-xl-3 col-sm-6 col-md-3">
                         <ul className="list-unstyled">
                             <li className="btn-link">
-                                <Link to="/coockie">Helpcentrum</Link>
+                                <Link to="/coockie">Help Centre</Link>
                             </li>
                             <li className="btn-link">
                                 <Link to="/coockie">Bedrijfsgegevens</Link>
@@ -33,7 +33,7 @@ const FooterGuest = () => {
                     <div className="col-xl-3 col-sm-6 col-md-3">
                         <ul className="list-unstyled">
                             <li className="btn-link">
-                                <Link to="/coockie">Gebruiksvoorwaarden</Link>
+                                <Link to="/coockie">Corporate Information</Link>
                             </li>
                         </ul>
                     </div>

@@ -67,11 +67,11 @@ class PasswordReset extends Component {
             // <AuthWrapper {...configAuthWrapper}>
             <>
                 <div className="user-auth-form__holder p-5">
-                    <h2 className="user-auth__heading">E-mailadres/Wachtwoord vergeten</h2>
+                    <h2 className="user-auth__heading">Forgot Email/Password</h2>
                     <p>
-                        Hoe wil je je wachtwoord resetten?
+                    How would you like to reset your password?
                     </p>
-                    <p>We sturen je een e-mail met instructies over hoe je je wachtwoord kunt resetten.</p>
+                    <p>We will send you an email with instructions on how to reset your password.</p>
 
                     {errors.length > 0 && (
                         <ul>
@@ -90,15 +90,15 @@ class PasswordReset extends Component {
                             type="email"
                             name="email"
                             value={email}
-                            placeholder="Type your Email address"
+                            placeholder="name@example.com"
                             onChange={this.handleChange}
                         />
 
                         <Button className="btn btn--signIn-email mt-4 py-3" type="submit">
-                            Stuur me een e-mail
+                            Email Me 
                         </Button>
                         <p className="mt-4">
-                            <Link to="/PasswordResetScreen"> Ik weet mijn e-mailadres of telefoonnummer niet meer</Link>
+                            <Link to="/PasswordResetScreen">I can't remember my email address or phone number.</Link>
 
                         </p>
                     </form>
