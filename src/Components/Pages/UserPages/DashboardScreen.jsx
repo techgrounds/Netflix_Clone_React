@@ -44,7 +44,7 @@ const Dashboard = (props) => {
                 <div className="jumbotron bg-transparent-">
                   <div className="row text-center">
                     <div className="text-center col-12">
-                      <Link to="/Home">
+                      <Link to="/HomeScreen">
                         <h1>My Account</h1>
                       </Link>
                       {currentUser && (

@@ -4,7 +4,7 @@
 
 > In collaboration with:<br/>
 >
-> - Front-End-Developers -- @Manon, @Elias, @Frankie, @Rashid, @Ryno, @Adrienn, @Joeri, @Patrick, @Justin & @Ephrem.<br/>
+> - Front-End-Developers -- @Manon, @Elias, @Frankie, @Ryno, @Adrienn, @Joeri, @Patrick, @Justin & @Ephrem.<br/>
 > - Back-End-Developers -- @Izzet & @Michell.
 
 TOOLS USED:
