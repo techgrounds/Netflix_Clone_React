@@ -23,7 +23,7 @@ export default function CatSlider({ title, fetchUrl, isLargeRow, id, modal}) {
   
   return (
     <div className="cat-slider-container container-fluid py-5">
-      <h2 className="movie__title text-secondary px-4">{title}</h2>
+      <h2 className="movie__title px-4">{title}</h2>
       <Carousel show={6} infiniteLoop={true} active={active}>
         {movies.map((movie, index) => (
           <MovieCard movie={movie} index={index} isLargeRow={isLargeRow} id={movie.id} modal={modal} setActive={setActive} />

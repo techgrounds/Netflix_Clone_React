@@ -18,9 +18,9 @@
     .video-container {
         background-color: $background-color;
 
-        iframe {
-            // pointer-events: none;
-        }
+        // iframe {
+        //     pointer-events: none;
+        // }
     }
 
     .video-container::after {
