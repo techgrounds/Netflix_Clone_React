@@ -123,9 +123,12 @@ const Carousel = (props) => {
             <div className="carousel-wrapper">
                 {
                     (isRepeating || currentIndex > 0) &&
+                    <div className="btn-background" onClick={prev}>
                     <button onClick={prev} className="left-arrow">
-                        <FaArrowLeft />
+                        
+                        {/* <FaArrowLeft /> */}
                     </button>
+                    </div>
                 }
                 <div
                     className="carousel-content-wrapper"
@@ -155,9 +158,11 @@ const Carousel = (props) => {
 
                 {
                     (isRepeating || currentIndex < (length - show)) &&
-                    <button onClick={next} className="right-arrow">
-                        <FaArrowRight />
+                    <div className="btn-background" onClick={next}>
+                        <button onClick={next} className="right-arrow">
+                        {/* <FaArrowRight /> */}
                     </button>
+                    </div>
                 }
             </div>
         </div>
