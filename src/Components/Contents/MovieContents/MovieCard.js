@@ -8,14 +8,24 @@ import { Link } from 'react-router-dom';
 export default function MovieCard({ movie, index, isLargeRow, id, setActive, props}) {
     const [isHovered, setIsHovered] = useState(false);
     const [trailerLink, setTrailerLink] = useState();
+    const [tmdbAgeCertificationList, setTmdbAgeCertificationList] = useState();
+    const [ageCertification, setAgeCertification] = useState();
+    const [kijkwijzerImageSrc, setKijkwijzerImageSrc] = useState();
+    const [runtime, setRuntime] = useState();
+   
+
+
+
     const modal = props;
     const mountedStyle = {
         animation: "inAnimation 0.3s ease-out",
         animationFillMode: "forwards",
-
     }
-    
-  
+
+
+ 
+
+
 
     const img_url = "https://image.tmdb.org/t/p/original/";
 
@@ -37,10 +47,122 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, pro
                 .then(function () {
                     // always executed
                     // console.log('always executed?');
-                });
+                });        
         }
         fetchData();
     }, [id]);
+
+
+
+    useEffect(() => {
+        const axios = require('axios');
+             // Get runtime
+             axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}&language=en-US`)
+             .then(function (response) {
+                 // handle success
+                 setRuntime(response.data.runtime);
+             })
+             .catch(function (error) {
+                 // handle error
+                 console.log(error);
+             })
+             .then(function () {
+                 // always executed
+             });
+
+             // Get age certification for clicked video
+            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/release_dates?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
+            .then(function (response) {
+                let incomingData = response.data.results;
+                for (let i = 0; i < incomingData.length; i++) {
+                    if (incomingData[i].iso_3166_1 == "NL") {
+                        let movieCertification = incomingData[i].release_dates[0].certification;
+
+                        let tempObj;
+
+                        switch (movieCertification) {
+                            case "AL":
+                                tempObj = tmdbAgeCertificationList.filter(element => element.certification === "AL");
+                                setAgeCertification(tempObj[0].meaning);
+                                setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/1_120_AL.png");
+                                break;
+                            case "6":
+                                tempObj = tmdbAgeCertificationList.filter(element => element.certification === "6");
+                                setAgeCertification(tempObj[0].meaning);
+                                setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/3_120_6.png");
+                                break;
+                            case "9":
+                                tempObj = tmdbAgeCertificationList.filter(element => element.certification === "9");
+                                setAgeCertification(tempObj[0].meaning);
+                                setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/4_120_9.png");
+                                break;
+                            case "12":
+                                tempObj = tmdbAgeCertificationList.filter(element => element.certification === "12");
+                                setAgeCertification(tempObj[0].meaning);
+                                setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/5_120_12.png");
+                                break;
+                            case "16":
+                                tempObj = tmdbAgeCertificationList.filter(element => element.certification === "16");
+                                setAgeCertification(tempObj[0].meaning);
+                                setKijkwijzerImageSrc("https://www.kijkwijzer.nl/upload/pictogrammen/6_120_16.png");
+                                break;
+                        }
+                    }
+                }
+
+            })
+            .catch(function (error) {
+
+            })
+            .then(function () {
+
+            });
+
+        return () => {
+        }
+    }, [id])
+
+        // Get tmdb age certification list for NL
+        useEffect(() => {
+            const axios = require('axios');
+            axios.get(`https://api.themoviedb.org/3/certification/movie/list?api_key=${process.env.REACT_APP_NETFLIX_CLONE_API_KEY}`)
+                .then(function (response) {
+                    setTmdbAgeCertificationList(response.data.certifications.NL);
+                })
+                .catch(function (error) {
+    
+                })
+                .then(function () {
+    
+                });
+    
+            return () => {
+                // Clean up
+            }
+        }, []);
+
+
+    
+    function GetRuntime() {
+        let hours = Math.floor(runtime / 60);
+        let minutes = runtime % 60;
+
+        if (hours === 0) {
+            return <>
+                <span>{minutes + "m"}</span>
+            </>
+        } else {
+            return <>
+                <span>{hours + " u " + minutes + "m"}</span>
+            </>
+        }
+    }
+
+    
+
+
+
+
 
 
     return (
@@ -132,8 +254,13 @@ export default function MovieCard({ movie, index, isLargeRow, id, setActive, pro
 
                                 <h2 className="movie-title">{movie.title}</h2>
                                 <div className="movie-details">
-                                    <p>1h 17m</p>
-                                    <p>PG12</p>
+                                <span>{GetRuntime()}</span>
+                               
+                                <img className="movie-card-age-pic" src={kijkwijzerImageSrc} />
+                         
+                           
+                                <p>{ageCertification ? ageCertification : "-"}</p>
+                
                                     <p className="match-percentage">
                                         {ratingToPercentage(movie.vote_average)}% Match
                                     </p>
