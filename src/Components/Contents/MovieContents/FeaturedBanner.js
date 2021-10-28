@@ -25,7 +25,7 @@ const FeaturedBanner = () => {
 
     return (
         <header
-            className="featured_banner__wrapper"
+            className="featured_banner__wrapper pb-4"
             style={{
                 backgroundImage: `url(
                       "https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
@@ -38,16 +38,21 @@ const FeaturedBanner = () => {
                 <h1 className="featured_banner__title">
                     {movie?.title || movie?.name || movie?.original_name}
                 </h1>
-                <h1 className="featured_banner__description">
+                <p className="featured_banner__description">
                     {truncate(movie?.overview, 125)}
-                </h1>
-                <div className="featured_banner__buttons  btn-block">
-                    <button className="btn btn-light banner__button mr-2 rounded py-3">
+                </p>
+                <div class="featured_banner__buttons  btn-block">
+                    <button class="btn btn-light banner__button mr-2 rounded py-3 px-3">
                         <FaPlay /> Play
                     </button>
                     <button className="btn btn-secondary banner__button info ml-2 rounded py-3 px-3">
-                        <div className= "infoCircle">
-                        <FaInfo fontSize="small" paddingRight={20} marginRight={100} /></div> More Information
+                        <FaInfo
+                            fontSize="small"
+                            className="infoIcon"
+                            paddingRight={20}
+                            marginRight={100}
+                        />{" "}
+                        More Information
                     </button>
                 </div>
             </div>

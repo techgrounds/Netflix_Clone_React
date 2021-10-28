@@ -44,9 +44,8 @@ const Dashboard = (props) => {
                 <div className="jumbotron bg-transparent-">
                   <div className="row text-center">
                     <div className="text-center col-12">
-                      <Link to="/HomeScreen">
-                        <h1>My Account</h1>
-                      </Link>
+                      <h1>My Account</h1>
+
                       {currentUser && (
                         <>
                           <h3>Hi!, {currentUser.displayName}</h3>
@@ -55,13 +54,13 @@ const Dashboard = (props) => {
 
                           <div className="row">
                             <div className=" col-xl-4 col-lg-5 col-md-5 col-sm-6 bg-light text-dark py-3">
-                              <div className="card-body account-detail__body">
+                              <div className="card-body account-detail__body text-left">
                                 <h6>
                                   Edit / view your login details <FaEdit />
                                 </h6>
                                 <br />
                                 <img
-                                  className="profile-image"
+                                  className="profile-image mb-3"
                                   src={currentUser.photoURL}
                                   width="100"
                                   height="100"
@@ -75,7 +74,11 @@ const Dashboard = (props) => {
                               </div>
                             </div>
                             <div class=" col-xl-8 col-lg-7 col-md-7 col-sm-6 bg-white py-3">
-                              .....
+                              <Link to="/HomeScreen">
+                                <h2 className="text-danger mt-5">
+                                  Click to watch Video
+                                </h2>
+                              </Link>
                             </div>
                           </div>
                         </>

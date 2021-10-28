@@ -43,10 +43,8 @@ const HeaderNav = ({ children, ...otherProps }) => {
                     backgroundColor: navBackground ? "#141414" : "transparent",
                 }}
             >
-                {" "}
                 <Link to="/HomeScreen">
                     <Navbar.Brand>
-                        {" "}
                         <img
                             className="d-inline-block align-top logo"
                             src={logo}
@@ -67,22 +65,52 @@ const HeaderNav = ({ children, ...otherProps }) => {
                             Films
                         </Link>
                     </Nav>
-                    <SearchBar />
-                    <FaBell
-                        size={32}
-                        style={{ fill: "#fff", margin: "0px 2rem 0px 2rem" }}
-                    />
-                    <img className="avator" src={avator} alt="avator" />
+                    <div className="user-info-wrapper">
+                        <div className="search-bar">
+                            <SearchBar />
+                        </div>
+                        <div className="notification">
+                            <FaBell
+                                size={32}
+                            // style={{ fill: "#fff", margin: "0px 2rem 0px 2rem" }}
+                            />
+                        </div>
+                        <div className="user-profile">
+                            <img className="avator" src={avator} alt="avator" />
+                        </div>
+                    </div>
+
                     <NavDropdown title="" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#">User 1</NavDropdown.Item>
-                        <NavDropdown.Item href="#">User 2</NavDropdown.Item>
-                        <NavDropdown.Item href="#">Profilen Beheren</NavDropdown.Item>
-                        <NavDropdown.Divider />
+                        <NavDropdown.Item>
+                            <Link className="nav-link text-white-50" to="/DashboardScreen">
+                                User_01
+                            </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
 
-                        <NavDropdown.Item href="DashboardScreen">Account</NavDropdown.Item>
+                            <Link className="nav-link text-white-50" to="/DashboardScreen">
+                                User_02
+                            </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
 
-                        <NavDropdown.Item href="#">Helpcentrum</NavDropdown.Item>
-                        <NavDropdown.Divider />
+                            <Link className="nav-link text-white-50" to="/DashboardScreen">
+                                Profilen Beheren
+                            </Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider className="border border-dark" />
+
+                        {/* <NavDropdown.Item href="/DashboardScreen">Account</NavDropdown.Item> */}
+                        <NavDropdown.Item>
+                            <Link className="nav-link text-white-50" to="/DashboardScreen">
+                                Account
+                            </Link>
+                        </NavDropdown.Item>
+
+                        <NavDropdown.Item>    <Link className="nav-link text-white-50" to="/DashboardScreen">
+                            Helpcentrum
+                        </Link> </NavDropdown.Item>
+                        <NavDropdown.Divider className="border-dark" />
                         <NavDropdown.Item>
                             {/* <UserAuth /> */}
 

@@ -82,7 +82,7 @@ h4 {
 
 /* - Header - */
 .navbar {
-  height: 4rem;
+  height: 6rem;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0), black);
 }
 
@@ -110,6 +110,20 @@ a.dropdown-item:hover {
   width: 40px;
   height: 40px;
   border-radius: 25%;
+}
+
+.user-info-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.notification,
+.notification {
+  padding: 10px;
+}
+
+.dropdown-divider {
+  border-top: 1 px solid #201f1f !important;
 }
 
 /*   - Footer - */
@@ -335,7 +349,19 @@ textarea:focus {
 /* // Medium devices (tablets, less than 992px) */
 @media (max-width: 991px) {
   .navbar-collapse {
-    background-color: #343a40 !important;
+    background-color: #2d2d2d !important;
+    padding: 10px 25px;
+  }
+
+  a.nav-link {
+    border-top-color: #3e3d3d;
+    border-bottom-color: #201f1f;
+    border-width: 1px 0;
+    border-style: solid;
+  }
+
+  .user-info-wrapper {
+    margin: 10px 0px;
   }
 }
 /* // Small devices (landscape phones, less than 768px) */
@@ -362,10 +388,24 @@ img.logo {
   left: 25px;
 }
 
+.infoIcon {
+  width: 2rem;
+  height: 2rem;
+  color: #e5e5e5;
+  border: solid;
+  border-radius: 100px;
+  margin-right: 0.5rem;
+  padding: 5px;
+}
+
+.btn-light {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .featured_banner__buttons {
   display: flex;
   flex-direction: row;
-  margin-top: 5.5rem;
 }
 
 .banner__button {
@@ -385,21 +425,9 @@ img.logo {
 }
 
 .banner__button:hover {
-  opacity: 0.7;
-}
-
-.btn-light {
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
-}
-
-.infoCircle {
-  width: 2rem;
-  height: 2rem;
-  color: #e5e5e5;
-  border: solid;
-  border-radius: 100px;
-  margin-right: 0.5rem;
+  color: #000;
+  background-color: rgba(170, 170, 170, 0.7);
+  transition: all 0.2s;
 }
 
 .caption-text {
@@ -411,7 +439,7 @@ img.logo {
   color: white;
   -o-object-fit: contain;
      object-fit: contain;
-  height: 448px;
+  height: 500px;
 }
 
 .featured_banner {
@@ -426,18 +454,16 @@ img.logo {
   font-size: 3rem;
   font-weight: 800;
   padding-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px #252525;
 }
 
 .featured_banner__description {
   width: 45rem;
-  line-height: 1.4;
+  line-height: 1.3;
   padding-top: 1rem;
   font-weight: 500;
-  font-size: 1.5rem;
-  max-width: 530px;
+  font-size: 1.1rem;
+  max-width: 500px;
   height: 80px;
-  text-shadow: 2px 2px 4px #252525;
 }
 
 .featured_banner__fadeShadow_Bottom {
