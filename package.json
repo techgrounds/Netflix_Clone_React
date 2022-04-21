@@ -1,6 +1,6 @@
 {
   "name": "netflix-react-app-clone",
-  "homepage": "https://marvel-eb.github.io/Netflix_Clone_React/",
+  "homepage": "http://localhost",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
